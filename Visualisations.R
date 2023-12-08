@@ -258,6 +258,7 @@ data_SF_summary <- plyr::ddply(data_SF,
                                 p9 = quantile(N_passengers, 0.9, na.rm=TRUE))
 
 
+#Panel 3a: journey time by origin port
 
 panel_3a <- ggplot(data_SF) +
   geom_jitter(mapping=aes(x=Voyage_days, y=From_code, col=Steam), height=0.1, alpha=0.3) +
@@ -272,6 +273,8 @@ panel_3a <- ggplot(data_SF) +
         legend.position='none',
         aspect.ratio=1.5/1)
 
+#Panel 3b: passenger number by origin port
+
 panel_3b <- ggplot(data_SF) + 
   geom_jitter(mapping=aes(x=N_passengers, y=From_code, col=Steam), height=0.1, alpha=0.3) +
   theme_bw() +
@@ -282,6 +285,8 @@ panel_3b <- ggplot(data_SF) +
         axis.title.x=element_text(margin=margin(t=10, unit='pt')),
         legend.position="none",
         aspect.ratio = 1.5/1) + scale_x_log10()
+
+#panel 3c: number of journeys by origin port
 
 panel_3c <- ggplot(data_SF) +
   geom_bar(mapping=aes(x=From_code, fill=Steam), show.legend = FALSE) +
