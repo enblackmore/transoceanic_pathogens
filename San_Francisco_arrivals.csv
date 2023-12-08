@@ -140,7 +140,7 @@ Arrival_date,From_fullname,From_code,From_code2,From_code3,Ship_name,Type_code,T
 12 Jan 51,"Valparaiso, Chile",VAL,VAL,VAL,Feliciane,,,68,5,,2,92,NA
 27 Jan 51,"Valparaiso, Chile",VAL,VAL,VAL,Alert,BRG,Brig,50,2,,2,96,NA
 29 Jan 51,"Valparaiso, Chile",VAL,VAL,VAL,Graaf Van Nassau,SHP,Ship,47,1,,2,97,NA
-29 Feb 52,"Valparaiso, Chile",VAL,VAL,VAL,Lexington,SST,Storeship [sail],60,0,No passengers but 9 officers listed [not included in total],3,98,NA
+29 Feb 52,"Valparaiso, Chile",VAL,VAL,VAL,Lexington,STR,Storeship [sail],60,0,No passengers but 9 officers listed [not included in total],3,98,NA
 29 Feb 52,"Valparaiso, Chile",VAL,VAL,VAL,Robert and Louise,BRG,Brig,60,3,,3,100,NA
 2 May 52,"Valparaiso, Chile",VAL,VAL,VAL,Huntress,SHP,Ship,101,175,Passengers included “170 unidentified Chilenos”,3,101,NA
 2 Jan 52,"Valparaiso, Chile",VAL,VAL,VAL,Lysa,,,55,95,,1,105,NA
