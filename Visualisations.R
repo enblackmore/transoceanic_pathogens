@@ -202,7 +202,7 @@ simulation_5_critical_susceptibility <- dplyr::distinct(dplyr::select(simulation
 #so when re0=1, S/N = 1/r0
 simulation_5_critical_susceptibility$Susceptibility <- 1/simulation_5_critical_susceptibility$r0
 
-figure_2b <- ggplot(simulation_results_5_median) +
+panel_2b <- ggplot(simulation_results_5_median) +
   geom_line(mapping=aes(x=Susceptible, y=median_duration, col=N), lwd=1.5) +
   facet_wrap(vars(label), labeller=label_parsed) +
   scale_x_log10() +
@@ -214,6 +214,18 @@ figure_2b <- ggplot(simulation_results_5_median) +
         aspect.ratio=1/2) +
   scale_color_manual(values=theme2b,
                      labels=paste("N =", c(50, 100, 200, 500)))
+
+
+#Figure 2 assembly
+
+legend_panel_2b <- cowplot::get_legend(panel_2b + theme(legend.justification = c(1,0.5), 
+                                           legend.box.margin = margin(b=-10, r=25, unit='pt')))
+
+figure_2 <- (panel_2a + legend_panel_2b + patchwork::plot_layout(widths=c(0.75, 0.25))) / 
+  patchwork::wrap_elements(full=panel_2b + guides(col='none')) + 
+  patchwork::plot_layout(heights=c(0.6,3.2), guides=
+                'collect') +
+  patchwork::plot_annotation(tag_levels=list(c('A', '', 'B'))); figure_2
 
 
 
