@@ -1,661 +1,581 @@
-Arrival_date,From_fullname,From_code,From_code2,From_code3,Ship_name,Type_code,Type_full,Voyage_days,N_passengers,Notes,Rasmussen_Volume,Rasmussen_Page,Exclude
-29 Jan 51,Amsterdam,WEU,HOL,AMS,Graaf Van Nassau,SHP,Ship,165,1,,2,97,NA
-16 Jan 52,"Amsterdam, Holland",WEU,HOL,AMS,Doctrina & Amicitia,,,56,1,,1,50,NA
-16 Jan 52,"Amsterdam, Holland",WEU,HOL,AMS,Doctrina & Amicitia,,,252,1,,1,50,NA
-12 Feb 52,"Amsterdam, Holland",WEU,HOL,AMS,Oud Alblas,BRQ,Barque,198,18,,3,76,NA
-14 Dec 50,"Amsterdam, Holland",WEU,HOL,AMS,Hillegonda Catherina Helena,BRQ,Barque,215,5,,2,81,NA
-29 Feb 52,"Amsterdam, Holland",WEU,HOL,AMS,Robert and Louise,BRG,Brig,203,3,,3,100,NA
-29 May 52,"Amsterdam, Holland",WEU,HOL,AMS,John Heinrich,BRQ,Barque,NA,5,,3,210,NA
-19 Sep 50,"Rotterdam, Holland",WEU,HOL,ROT,Holtemade,BRQ,Barque,187,4,,2,40,NA
-17 May 51,"Rotterdam, Holland",WEU,HOL,ROT,Valparaiso,BRQ,Barque,176,4,,2,142,NA
-2 Jan 52,"Antwerp, Belgium",WEU,BLG,ANT,Andreas,BRG,Brig,180,1,,1,6,NA
-19 Sep 50,"Antwerp, Belgium",WEU,BLG,ANT,Princess Charlotte,,,289,31,,2,39,NA
-18 Apr 51,"Antwerp, Belgium",WEU,BLG,ANT,Aurora,SHP,Ship,176,11,,2,126,NA
-18 Jan 51,"Bath, England",WEU,BRI,BTH,Mary,,,178,3,,1,108,NA
-6 Jan 51,"Cardiff, Wales",WEU,BRI,CAR,Royal Sovereign,BRQ,Barque,204,1,"One passenger died of scurvy. Plus: ""Eight seamen now on board are laid up with scurvy”",1,150,NA
-9 Nov 51,"Glasgow, Scotland",WEU,BRI,GLA,Madura,BRQ,Barque,225,6,,3,2,NA
-13 Jul 51,"Glasgow, Scotland",WEU,BRI,GLA,William,SHP,Ship,200,8,,2,175,NA
-12 Apr 51,"Leith, Scotland",WEU,BRI,LEI,Queen of Sheba,SHP,Ship,197,10,,2,125,NA
-13 Aug 50,"Liverpool, England",WEU,BRI,LVP,Prospect,BRG,Brig,232,4,,2,13,NA
-21 Nov 51,"Liverpool, England",WEU,BRI,LVP,Lord Riverside,BRQ,Barque,225,3,,3,19,NA
-30 Jul 50,"Liverpool, England",WEU,BRI,LVP,Carthagena,BRK,Bark,180,14,,1,25,NA
-23 May 51,"Liverpool, England",WEU,BRI,LVP,Diadem,BRG,Brig,270,1,,1,49,NA
-7 Oct 50,"Liverpool, England",WEU,BRI,LVP,Fanny,SHP,Ship,210,6,,2,51,NA
-11 Oct 50,"Liverpool, England",WEU,BRI,LVP,McDonald,BRQ,Barque,170,18,,2,52,NA
-16 Nov 50,"Liverpool, England",WEU,BRI,LVP,Enterprise,BRQ,Barque,214,18,,2,68,NA
-15 Dec 50,"Liverpool, England",WEU,BRI,LVP,Eliza Cornish,BRG,Brig,235,2,,2,83,NA
-22 Dec 50,"Liverpool, England",WEU,BRI,LVP,Margaret,SHP,Ship,162,18,,2,85,NA
-5 Mar 51,"Liverpool, England",WEU,BRI,LVP,Erin’s Queen,SHP,Ship,162,2,,2,111,NA
-4 Apr 51,"Liverpool, England",WEU,BRI,LVP,Gulnare,BRG,Brig,300,2,,2,121,NA
-8 Jan 51,"Liverpool, England",WEU,BRI,LVP,Ocean Hero,BRG,Brig,189,2,,1,129,NA
-3 May 51,"Liverpool, England",WEU,BRI,LVP,Eliza,BRG,Brig,180,4,,2,136,NA
-4 Apr 51,"Liverpool, England",WEU,BRI,LVP,Prince,BRG,Brig,182,5,,1,148,NA
-16 Jan 52,"Liverpool, England",WEU,BRI,LVP,Salem,BRQ,Barque,173,9,,1,151,NA
-16 Oct 51,"Liverpool, England",WEU,BRI,LVP,Orien,BRQ,Barque,214,11,,2,225,NA
-17 Oct 51,"Liverpool, England",WEU,BRI,LVP,Queen,BRQ,Barque,190,4,,2,226,NA
-3 Nov 51,"Liverpool, England",WEU,BRI,LVP,London,SHP,Ship,150,17,,2,236,NA
-5 Dec 51,"London, England",WEU,BRI,LON,Augusta,BRQ,Barque,200,25,,3,31,NA
-2 Oct 50,"London, England",WEU,BRI,LON,Diana,BRQ,Barque,180,38,,2,47,NA
-19 Nov 50,"London, England",WEU,BRI,LON,Lady Amherst,SHP,Ship,168,21,,2,70,NA
-18 Feb 52,"London, England",WEU,BRI,LON,Orissa,BRQ,Barque,206,5,,3,81,NA
-15 Dec 50,"London, England",WEU,BRI,LON,Vanguard,BRQ,Barque,197,8,,2,82,NA
-31 Jan 51,"London, England",WEU,BRI,LON,Fairlie,BRQ,Barque,141,78,,2,97,NA
-4 Aug 50,"London, England",WEU,BRI,LON,John Calvin,BRK,Bark,200,102,,1,98,NA
-4 Mar 52,"London, England",WEU,BRI,LON,Augusta,BRQ,Barque,200,17,,3,104,NA
-23 Mar 52,"London, England",WEU,BRI,LON,Prince Charlie,BRQ,Barque,142,18,,3,120,NA
-21 May 51,"London, England",WEU,BRI,LON,North Star,SHP,Ship,NA,36,,2,143,NA
-13 Jun 51,"London, England",WEU,BRI,LON,John Brewer,BRQ,Barque,NA,6,,2,162,NA
-8 Sep 51,"London, England",WEU,BRI,LON,American Packet,BRQ,Barque,196,85,Passenger total includes “84 unidentified Swedish and Norwegian passengers”,2,200,NA
-26 Jan 51,Swansea /sic/,WEU,BRI,SWA,Glenlyon,BRQ,Barque,170,2,,2,94,NA
-20 Feb 51,Bordeaux,WEU,FRA,BOR,Salomee,BRQ,Barque,155,12,,2,105,NA
-3 Oct 51,Bordeaux,WEU,FRA,BOR,Ville de Tonneins,SHP,Ship,214,6,,2,214,NA
-10 Aug 50,"Bordeaux, France",WEU,FRA,BOR,Pondicherry,SHP,Ship,165,5,,2,10,NA
-30 Sep 50,"Bordeaux, France",WEU,FRA,BOR,Viscompte de Chateaubrand,,,156,13,,2,46,NA
-26 Dec 51,"Bordeaux, France",WEU,FRA,BOR,Montesqieu,SHP,Ship,180,9,,3,48,NA
-2 Jan 52,"Bordeaux, France",WEU,FRA,BOR,Sultan,BRQ,Barque,190,2,,3,52,NA
-28 Jan 52,"Bordeaux, France",WEU,FRA,BOR,Pondicheri,SHP,Ship,166,1,,3,57,NA
-7 Mar 52,"Bordeaux, France",WEU,FRA,BOR,Commerce de Bordeaux,BRQ,Barque,180,2,,3,109,NA
-16 Aug 51,"Bordeaux, France",WEU,FRA,BOR,Siberia,BRQ,Barque,190,11,,2,191,NA
-12 Sep 51,"Bordeaux, France",WEU,FRA,BOR,Louise et Marie,BRG,Brig,273,7,,2,201,NA
-3 Nov 51,"Bordeaux, France",WEU,FRA,BOR,Seine,SHP,Ship,176,5,,2,236,NA
-23 Jul 51,"Cette, France",WEU,FRA,CET,Maria,BRQ,Barque,189,17,,2,179,NA
-29 Mar 51,"Havre, France",WEU,FRA,LHV,Aurelie,,,152,7,,1,9,NA
-3 Aug 50,"Havre, France",WEU,FRA,LHV,Borneo,,,221,2,,1,10,NA
-13 Aug 50,"Havre, France",WEU,FRA,LHV,Robert Surcouf,SHP,Ship,176,11,,2,13,NA
-21 Dec 51,"Havre, France",WEU,FRA,LHV,Circassian,BRK,Bark,180,29,,3,47,NA
-2 Jun 52,"Havre, France",WEU,FRA,LHV,Courrier de Inde,,,180,4,,1,48,NA
-12 Oct 50,"Havre, France",WEU,FRA,LHV,Arche D’Alliance,SHP,Ship,162,16,,2,54,NA
-28 Oct 50,"Havre, France",WEU,FRA,LHV,Raoul et Marie,BRG,Brig,194,13,,2,61,NA
-3 Dec 50,"Havre, France",WEU,FRA,LHV,Pscatore,SHP,Ship,195,117,,2,75,NA
-13 Jun 51,"Havre, France",WEU,FRA,LHV,Anna,SHP,Ship,197,28,,2,161,NA
-3 Jul 51,"Havre, France",WEU,FRA,LHV,Jonas,SHP,Ship,160,75,,2,172,NA
-28 Apr 52,"Havre, France",WEU,FRA,LHV,Malouin,SHP,Ship,180,79,,3,172,NA
-9 Jul 51,"Havre, France",WEU,FRA,LHV,Henri,SHP,Ship,214,58,,2,174,NA
-15 Aug 51,"Havre, France",WEU,FRA,LHV,Union,SHP,Ship,215,20,,2,191,NA
-14 May 52,"Havre, France",WEU,FRA,LHV,Foi,SHP,Ship,130,177,,3,194,NA
-30 Sep 51,"Havre, France",WEU,FRA,LHV,Hera,SHP,Ship,202,68,,2,211,NA
-16 Oct 51,"Havre, France",WEU,FRA,LHV,Superbe,SHP,Ship,196,16,,2,225,NA
-20 Oct 51,"Havre, France",WEU,FRA,LHV,Gulnare,BRQ,Barque,292,23,,2,230,NA
-23 Jul 51,Marseilles,WEU,FRA,MRS,Battina,BRG,Brig,200,26,,2,179,NA
-9 Mar 52,"Marseilles, France",WEU,FRA,MRS,Stella del Mare,BRQ,Barque,143,4,,3,111,NA
-23 Jul 51,"Marseilles, France",WEU,FRA,MRS,Battina,BRG,Brig,200,26,,2,179,NA
-28 Feb 52,"Nantes, France",WEU,FRA,"NAN",Alphonse N. Cezaro,SHP,Ship,123,170,,3,98,NA
-20 Jan 51,"St. Malo, France",WEU,FRA,SMO,Montalembert,,,185,55,,1,112,NA
-20 Nov 51,"Bremen, Germany",WEU,GER,BRE,Jacob Grosse,BRG,Brig,210,13,,3,18,NA
-25 Oct 50,"Bremen, Germany",WEU,GER,BRE,Herman Luis,BRG,Brig,171,1,,2,59,NA
-5 Apr 51,"Bremen, Germany",WEU,GER,BRE,Hermann von Beckerahl,BRQ,Barque,167,8,,2,121,NA
-30 Sep 51,"Bremen, Germany",WEU,GER,BRE,GIl Bas,BRG,Brig,200,2,,2,212,NA
-20 Nov 51,"Hamburg, Germany",WEU,GER,HAM,Metta,BRQ,Barque,200,13,,3,18,NA
-17 Nov 50,"Hamburg, Germany",WEU,GER,HAM,Ingeborg,BRG,Brig,166,6,,2,68,NA
-12 Dec 50,"Hamburg, Germany",WEU,GER,HAM,Gustav,SHP,Ship,164,34,,2,80,NA
-21 Mar 52,"Hamburg, Germany",WEU,GER,HAM,Walter,BRQ,Barque,165,1,,3,119,NA
-3 Jul 51,"Hamburg, Germany",WEU,GER,HAM,Hanna and Fanny,BRQ,Barque,216,11,,2,172,NA
-28 Apr 52,"Hamburg, Germany",WEU,GER,HAM,Frederick VI,SHP,Ship,NA,6,,3,172,NA
-24 Sep 51,"Hamburg, Germany",WEU,GER,HAM,Potsdam,SHP,Ship,142,2,,2,210,NA
-30 Sep 51,"Hamburg, Germany",WEU,GER,HAM,Henriette,BRG,Brig,188,1,,2,212,NA
-21 Oct 51,"Hamburg, Germany",WEU,GER,HAM,Daniel Ross,BRQ,Barque,197,5,,2,230,NA
-23 May 51,"Cork, Ireland",WEU,IRE,CRK,Jessie Byrne,BRQ,Barque,147,1,,2,148,NA
-9 Mar 52,"Genoa, Italy",WEU,ITA,GEN,Distruzione,BRQ,Barque,145,48,,3,110,NA
-9 Sep 51,"Genoa, Italy",WEU,ITA,GEN,Eugenia,BRG,Brig,204,3,,2,201,NA
-12 Dec 50,"Valparaiso, Chile",VAL,VAL,VAL,Gustav,SHP,Ship,54,34,,2,80,NA
-20 Oct 51,"Valparaiso, Chile",VAL,VAL,VAL,Gulnare,BRQ,Barque,56,23,,2,230,NA
-25 Jul 50,"Valparaiso, Chile",VAL,VAL,VAL,Adeline,SCH,Schooner,54,7,,1,1,NA
-8 Nov 51,"Valparaiso, Chile",VAL,VAL,VAL,Gardiner,BRQ,Barque,54,2,,3,1,NA
-9 Nov 51,"Valparaiso, Chile",VAL,VAL,VAL,Madura,BRQ,Barque,63,6,,3,2,NA
-2 Jan 52,"Valparaiso, Chile",VAL,VAL,VAL,Andreas,BRG,Brig,47,1,,1,6,NA
-14 Jan 52,"Valparaiso, Chile",VAL,VAL,VAL,Aurora,BRG,Brig,59,16,,1,9,NA
-1 Jul 50,"Valparaiso, Chile",VAL,VAL,VAL,Cacholet,BRQ,Barque,73,109,,1,13,NA
-13 Aug 50,"Valparaiso, Chile",VAL,VAL,VAL,Virginia,SHP,Ship,56,1,,2,13,NA
-20 Nov 51,"Valparaiso, Chile",VAL,VAL,VAL,Ohio,BRQ,Barque,56,1,,3,20,NA
-7 May 52,"Valparaiso, Chile",VAL,VAL,VAL,Clara,BRG,Brig,57,80,,1,28,NA
-4 Dec 51,"Valparaiso, Chile",VAL,VAL,VAL,Amiga,SHP,Ship,59,7,,3,31,NA
-19 Sep 50,"Valparaiso, Chile",VAL,VAL,VAL,Princess Charlotte,,,63,31,,2,39,NA
-19 Sep 50,"Valparaiso, Chile",VAL,VAL,VAL,Holtemade,BRQ,Barque,67,4,,2,40,NA
-29 Sep 50,"Valparaiso, Chile",VAL,VAL,VAL,Lightning,BRG,Brig,54,2,,2,45,NA
-20 Dec 51,"Valparaiso, Chile",VAL,VAL,VAL,Carib,BRQ,Barque,52,4,,3,46,NA
-21 Dec 51,"Valparaiso, Chile",VAL,VAL,VAL,Circassian,BRK,Bark,48,29,,3,47,NA
-2 Jun 52,"Valparaiso, Chile",VAL,VAL,VAL,Courrier de Inde,,,58,4,,1,48,NA
-26 Dec 51,"Valparaiso, Chile",VAL,VAL,VAL,Montesqieu,SHP,Ship,57,9,,3,48,NA
-16 Jan 52,"Valparaiso, Chile",VAL,VAL,VAL,Diana,BRG,Brig,55,4,,1,49,NA
-20 May 52,"Valparaiso, Chile",VAL,VAL,VAL,Dracut,BRG,Brig,75,10,,1,50,NA
-5 Jan 52,"Valparaiso, Chile",VAL,VAL,VAL,Donna Carmolita,,,53,1,,1,50,NA
-7 Oct 50,"Valparaiso, Chile",VAL,VAL,VAL,Careb,BRQ,Barque,58,2,,2,51,NA
-7 Oct 50,"Valparaiso, Chile",VAL,VAL,VAL,Fanny,SHP,Ship,70,6,,2,51,NA
-6 Jan 51,"Valparaiso, Chile",VAL,VAL,VAL,Edwin Johnson,BRQ,Barque,60,1,,1,52,NA
-11 Oct 50,"Valparaiso, Chile",VAL,VAL,VAL,McDonald,BRQ,Barque,57,18,,2,52,NA
-2 Jan 52,"Valparaiso, Chile",VAL,VAL,VAL,Sultan,BRQ,Barque,190,2,,3,52,NA
-14 Jan 52,"Valparaiso, Chile",VAL,VAL,VAL,Spray,SCH,Schooner,46,3,,3,53,NA
-12 Oct 50,"Valparaiso, Chile",VAL,VAL,VAL,Arche D’Alliance,SHP,Ship,49,16,,2,54,NA
-21 Jan 52,"Valparaiso, Chile",VAL,VAL,VAL,David Cross,SHP,Ship,52,1,,3,54,NA
-28 Jan 52,"Valparaiso, Chile",VAL,VAL,VAL,Marieta,SHP,Ship,55,103,,3,57,NA
-10 Nov 50,"Valparaiso, Chile",VAL,VAL,VAL,Shakspeare [sic],SHP,Ship,80,8,,2,65,NA
-16 Nov 50,"Valparaiso, Chile",VAL,VAL,VAL,Enterprise,BRQ,Barque,80,18,,2,68,NA
-7 Feb 52,"Valparaiso, Chile",VAL,VAL,VAL,Mary A. Jones,BRG,Brig,45,71,,3,70,NA
-12 Feb 52,"Valparaiso, Chile",VAL,VAL,VAL,Oud Alblas,BRQ,Barque,68,18,,3,76,NA
-12 Dec 50,"Valparaiso, Chile",VAL,VAL,VAL,Haidee,SHP,Ship,55,22,,2,79,NA
-17 Feb 52,"Valparaiso, Chile",VAL,VAL,VAL,Moulton,BRQ,Barque,56,1,,3,80,NA
-18 Feb 52,"Valparaiso, Chile",VAL,VAL,VAL,Orissa,BRQ,Barque,63,5,,3,81,NA
-22 Feb 52,"Valparaiso, Chile",VAL,VAL,VAL,Hindostan,SHP,Ship,51,116,,3,83,NA
-18 Dec 50,"Valparaiso, Chile",VAL,VAL,VAL,Venezuela,BRG,Brig,49,1,,2,84,NA
-12 Jan 51,"Valparaiso, Chile",VAL,VAL,VAL,Feliciane,,,68,5,,2,92,NA
-27 Jan 51,"Valparaiso, Chile",VAL,VAL,VAL,Alert,BRG,Brig,50,2,,2,96,NA
-29 Jan 51,"Valparaiso, Chile",VAL,VAL,VAL,Graaf Van Nassau,SHP,Ship,47,1,,2,97,NA
-29 Feb 52,"Valparaiso, Chile",VAL,VAL,VAL,Lexington,STR,Storeship [sail],60,0,No passengers but 9 officers listed [not included in total],3,98,NA
-29 Feb 52,"Valparaiso, Chile",VAL,VAL,VAL,Robert and Louise,BRG,Brig,60,3,,3,100,NA
-2 May 52,"Valparaiso, Chile",VAL,VAL,VAL,Huntress,SHP,Ship,101,175,Passengers included “170 unidentified Chilenos”,3,101,NA
-2 Jan 52,"Valparaiso, Chile",VAL,VAL,VAL,Lysa,,,55,95,,1,105,NA
-20 Feb 51,"Valparaiso, Chile",VAL,VAL,VAL,Salomee,BRQ,Barque,48,12,,2,105,NA
-18 Jan 51,"Valparaiso, Chile",VAL,VAL,VAL,Mary,,,57,3,,1,108,NA
-9 Jan 51,"Valparaiso, Chile",VAL,VAL,VAL,Mary Melville,BRQ,Barque,45,7,,1,109,NA
-8 Mar 51,"Valparaiso, Chile",VAL,VAL,VAL,Almendral,BRQ,Barque,59,9,,2,113,NA
-18 Mar 51,"Valparaiso, Chile",VAL,VAL,VAL,Joseph Fish,BRQ,Barque,61,29,,2,115,NA
-23 Mar 51,"Valparaiso, Chile",VAL,VAL,VAL,Holder Borden,SCH,Schooner,60,3,,2,119,NA
-21 Mar 52,"Valparaiso, Chile",VAL,VAL,VAL,Walter,BRQ,Barque,48,1,,3,119,NA
-25 Mar 52,"Valparaiso, Chile",VAL,VAL,VAL,J. W. Havener,BRG,Brig,47,16,,3,120,NA
-4 Apr 51,"Valparaiso, Chile",VAL,VAL,VAL,Gulnare,BRG,Brig,75,2,,2,121,NA
-10 Apr 51,"Valparaiso, Chile",VAL,VAL,VAL,Mary & Adaline,SHP,Ship,52,3,,2,124,NA
-12 Apr 51,"Valparaiso, Chile",VAL,VAL,VAL,Queen of Sheba,SHP,Ship,38,10,,2,125,NA
-18 Apr 51,"Valparaiso, Chile",VAL,VAL,VAL,Aurora,SHP,Ship,50,11,,2,126,NA
-19 Apr 51,"Valparaiso, Chile",VAL,VAL,VAL,Elida,BRQ,Barque,73,3,,2,127,NA
-29 Mar 52,"Valparaiso, Chile",VAL,VAL,VAL,Abyssinia,BRQ,Barque,48,17,,3,128,NA
-25 Apr 51,"Valparaiso, Chile",VAL,VAL,VAL,Audubon,SHP,Ship,49,11,,2,132,NA
-3 May 51,"Valparaiso, Chile",VAL,VAL,VAL,Eliza,BRG,Brig,60,4,,2,136,NA
-11 May 51,"Valparaiso, Chile",VAL,VAL,VAL,Toulon,BRQ,Barque,58,54,,2,141,NA
-17 May 51,"Valparaiso, Chile",VAL,VAL,VAL,Valparaiso,BRQ,Barque,50,4,,2,142,NA
-17 May 51,"Valparaiso, Chile",VAL,VAL,VAL,Sea Serpent,CLP,Clipper,45,125,,2,142,NA
-8 Apr 52,"Valparaiso, Chile",VAL,VAL,VAL,Envelope,BRQ,Barque,NA,2,,3,142,NA
-6 Aug 50,"Valparaiso, Chile",VAL,VAL,VAL,Polka,BRQ,Barque,63,1,,1,147,NA
-21 May 51,"Valparaiso, Chile",VAL,VAL,VAL,North Star,SHP,Ship,45,36,,2,147,NA
-25 May 51,"Valparaiso, Chile",VAL,VAL,VAL,Staghound,CLP,Clipper,42,7,,2,149,NA
-20 May 52,"Valparaiso, Chile",VAL,VAL,VAL,Seaman’s Bride,CLP,Clipper,42,6,,1,157,NA
-24 Jul 50,"Valparaiso, Chile",VAL,VAL,VAL,Sea Witch,,,38,7,,1,157,NA
-22 Apr 52,"Valparaiso, Chile",VAL,VAL,VAL,Eclipse,CLP,Clipper,39,20,,3,158,NA
-13 Jun 51,"Valparaiso, Chile",VAL,VAL,VAL,Anna,SHP,Ship,55,28,,2,161,NA
-15 Jun 51,"Valparaiso, Chile",VAL,VAL,VAL,Southerner,BRQ,Barque,84,7,,2,163,NA
-23 Jun 51,"Valparaiso, Chile",VAL,VAL,VAL,Caroline Clark,BRG,Brig,83,21,,2,165,NA
-21 Jan 51,"Valparaiso, Chile",VAL,VAL,VAL,Vesta,BRG,Brig,44,19,,1,170,NA
-1 Jul 51,"Valparaiso, Chile",VAL,VAL,VAL,Washington Irving,SHP,Ship,60,27,,2,170,NA
-7 Jul 51,"Valparaiso, Chile",VAL,VAL,VAL,Guilford,BRQ,Barque,58,2,,2,173,NA
-23 Jul 51,"Valparaiso, Chile",VAL,VAL,VAL,Battina,BRG,Brig,75,26,,2,179,NA
-2 May 52,"Valparaiso, Chile",VAL,VAL,VAL,Satellite,SHP,Ship,53,13,,3,181,NA
-4 Aug 51,"Valparaiso, Chile",VAL,VAL,VAL,Swea,BRQ,Barque,65,3,,2,185,NA
-13 Jul 51,"Valparaiso, Chile",VAL,VAL,VAL,William,SHP,Ship,74,8,,2,185,NA
-15 Aug 51,"Valparaiso, Chile",VAL,VAL,VAL,Union,SHP,Ship,60,20,,2,191,NA
-16 Aug 51,"Valparaiso, Chile",VAL,VAL,VAL,Volant,BRG,Brig,60,5,,2,192,NA
-16 Aug 51,"Valparaiso, Chile",VAL,VAL,VAL,Siberia,BRQ,Barque,56,11,,2,192,NA
-24 May 52,"Valparaiso, Chile",VAL,VAL,VAL,Carib,BRQ,Barque,57,1,,3,198,NA
-9 Sep 51,"Valparaiso, Chile",VAL,VAL,VAL,Eugenia,BRG,Brig,68,3,,2,201,NA
-21 Sep 51,"Valparaiso, Chile",VAL,VAL,VAL,Martha,BRQ,Barque,56,116,,2,208,NA
-24 Sep 51,"Valparaiso, Chile",VAL,VAL,VAL,George Washington,BRQ,Barque,73,7,,2,209,NA
-28 May 52,"Valparaiso, Chile",VAL,VAL,VAL,Potsdam,SHP,Ship,58,1,,3,209,NA
-28 Sep 51,"Valparaiso, Chile",VAL,VAL,VAL,Capitol,SHP,Ship,75,5,,2,211,NA
-30 Sep 51,"Valparaiso, Chile",VAL,VAL,VAL,GIl Bas,BRG,Brig,70,2,,2,212,NA
-3 Oct 51,"Valparaiso, Chile",VAL,VAL,VAL,Ville de Tonneins,SHP,Ship,67,6,,2,214,NA
-17 Oct 51,"Valparaiso, Chile",VAL,VAL,VAL,Queen,BRQ,Barque,70,4,,2,225,NA
-17 Oct 51,"Valparaiso, Chile",VAL,VAL,VAL,Eureka,SHP,Ship,45,2,,2,225,NA
-16 Oct 51,"Valparaiso, Chile",VAL,VAL,VAL,Superbe,SHP,Ship,62,16,,2,225,NA
-18 Oct 51,"Valparaiso, Chile",VAL,VAL,VAL,Southampton,STM,Steamer,23,NA,"No passengers listed, but 7 officers [not included in total]",2,229,NA
-21 Oct 51,"Valparaiso, Chile",VAL,VAL,VAL,Daniel Ross,BRQ,Barque,56,5,,2,230,NA
-19 Oct 51,"Valparaiso, Chile",VAL,VAL,VAL,Orpheus,SHP,Ship,61,5,,2,230,NA
-31 Dec 50,"Sydney, Australia",SYD,SYD,SYD,Balmoral,BRQ,Barque,70,20,,1,10,NA
-17 Aug 50,"Sydney, Australia",SYD,SYD,SYD,Constant,BRQ,Barque,111,4,,2,18,NA
-17 Aug 50,"Sydney, Australia",SYD,SYD,SYD,Rosetta Joseph,BRQ,Barque,79,8,,2,18,NA
-20 Sep 50,"Sydney, Australia",SYD,SYD,SYD,Backus,BRQ,Barque,188,6,Journey time is correct (and long),2,40,NA
-30 Jul 50,"Sydney, Australia",SYD,SYD,SYD,Dispatch,BRG,Brig,85,2,,1,49,NA
-11 Dec 50,"Sydney, Australia",SYD,SYD,SYD,Eleanor Lancaster,BRQ,Barque,104,15,,2,79,NA
-25 Mar 51,"Sydney, Australia",SYD,SYD,SYD,Louisa Baillie,SHP,Ship,108,23,,2,119,NA
-7 Jun 52,"Sydney, Australia",SYD,SYD,SYD,Speed,BRQ,Barque,91,75,,1,161,NA
-12 Feb 52,"Sydney, N.S.W",SYD,SYD,SYD,Walter Claxton,BRQ,Barque,67,39,,3,76,NA
-4 Jan 51,"Sydney, N.S.W",SYD,SYD,SYD,Maria,BRQ,Barque,86,22,,2,90,NA
-16 Apr 51,"Sydney, N.S.W",SYD,SYD,SYD,Henry Kelsey,BRQ,Barque,103,3,,2,126,NA
-22 Feb 52,"Sydney, N.S.W.",SYD,SYD,SYD,Home,BRQ,Barque,99,39,,3,83,NA
-26 Jan 51,"Sydney, N.S.W.",SYD,SYD,SYD,Samuel Churchman,BRG,Brig,87,4,,2,94,NA
-23 May 51,"Sydney, N.S.W.",SYD,SYD,SYD,Cameo,BRG,Brig,112,28,,2,149,NA
-21 Apr 52,"Sydney, N.S.W.",SYD,SYD,SYD,Picard,BRG,Brig,NA,4,,3,158,NA
-23 Apr 52,"Sydney, N.S.W.",SYD,SYD,SYD,Whiton,BRQ,Barque,70,16,,3,159,NA
-17 Aug 51,"Sydney, N.S.W.",SYD,SYD,SYD,Robert Bowe,SHP,Ship,93,9,,2,192,NA
-21 Aug 51,"Sydney, N.S.W.",SYD,SYD,SYD,Edgar,SHP,Ship,83,142,,2,196,NA
-27 May 52,"Sydney, New South Wales",SYD,SYD,SYD,Gulnare,BRG,Brig,90,55,,3,207,NA
-28 Jul 50,"Sydney, NSW",SYD,SYD,SYD,Laura,BRQ,Barque,92,12,,2,5,NA
-11 May 52,Hongkong [sic],SHP,SHP,SHP,Robert Small,SHP,Ship,53,379,Passenger total includes “375 unidentified in steerage* *(Believed to be Chinese)” [Asterisk is Rasmussen’s],3,190,NA
-24 Sep 50,Panama,PAN,PAN,PAN,New Orleans,STM,Steamer,17,111,,2,43,NA
-20 Jun 50,Panama,PAN,PAN,PAN,Tennessee,STM,Steamer,21,343,,2,1,NA
-14 Nov 51,Panama,PAN,PAN,PAN,Unicorn,STM,Steamer,28,157,,3,5,NA
-9 Jan 51,Panama,PAN,PAN,PAN,Antelope,STM,Steamer,21,81,,1,8,NA
-17 Nov 51,Panama,PAN,PAN,PAN,Oregon,STM,Steamer,18,337,,3,9,NA
-12 Aug 50,Panama,PAN,PAN,PAN,Cachelot,SHP,Ship,68,67,“Compelled to put into Sandwich Islands for water”,2,12,NA
-18 Nov 51,Panama,PAN,PAN,PAN,Monumental City,PRO,Propeller,30,315,,3,12,NA
-14 Aug 50,Panama,PAN,PAN,PAN,Lota,BRQ,Barque,63,13,,2,14,NA
-14 Aug 50,Panama,PAN,PAN,PAN,Northerner,STM,Steamer,16,379,One report stated 19 days. Stopped three days at Acapulco. “Many passengers ailing from slight attacks of Panama Fever”,2,14,NA
-23 Jun 50,Panama,PAN,PAN,PAN,California,STM,Steamer,22,273,,1,19,NA
-20 Aug 50,Panama,PAN,PAN,PAN,Magdela,BRQ,Barque,80,123,,2,19,NA
-19 Aug 50,Panama,PAN,PAN,PAN,Sarah,BRQ,Barque,75,199,,2,19,NA
-21 Aug 50,Panama,PAN,PAN,PAN,Republic,STM,Steamer,25,286,,2,20,NA
-23 Aug 50,Panama,PAN,PAN,PAN,California,STM,Steamer,19,202,40 additional passengers boarded at San Diego,2,23,1
-23 Aug 50,Panama,PAN,PAN,PAN,Ecuador,STM,Steamer,34,92,,2,25,NA
-3 Dec 51,Panama,PAN,PAN,PAN,California,STM,Steamer,17.5,320,"2 deaths on Nov 29, one from fever",3,25,NA
-29 Aug 50,Panama,PAN,PAN,PAN,Sarah and Eliza,SHP,Ship,122,175,,2,27,NA
-4 Aug 50,Panama,PAN,PAN,PAN,Circassian,BRQ,Barque,52,94,,1,28,NA
-2 Dec 51,Panama,PAN,PAN,PAN,New Orleans,STM,Steamer,18,420,,3,28,NA
-22 May 52,Panama,PAN,PAN,PAN,Clarissa Andrews,SHP,Ship,63,40,,1,30,NA
-4 Sep 50,Panama,PAN,PAN,PAN,Tenessee,STM,Steamer,18,76,,2,30,NA
-7 Sep 50,Panama,PAN,PAN,PAN,Sarah Sands,STM,Steamer,30,287,,2,31,NA
-7 Sep 50,Panama,PAN,PAN,PAN,Hungarian,BRG,Brig,46,23,,2,34,NA
-15 Sep 50,Panama,PAN,PAN,PAN,Isthmus,STM,Steamer,22,82,,2,35,NA
-12 Dec 51,Panama,PAN,PAN,PAN,Carolina,STM,Steamer,27,269,Two deaths of ‘Isthmus fever’,3,35,NA
-23 May 51,Panama,PAN,PAN,PAN,Columbus,STM,Steamer,24.5,223,,1,38,NA
-18 Sep 50,Panama,PAN,PAN,PAN,Change,BRQ,Barque,66,138,,2,38,NA
-14 Dec 51,Panama,PAN,PAN,PAN,Tennessee,STM,Steamer,15,554,,3,39,NA
-6 Aug 50,Panama,PAN,PAN,PAN,Columbus,STM,Steamer,21,225,"“Upon arrival in San Francisco put into quarantine due to having touched at cholera port. A passenger, Mortimer J. Smith, succeeded in getting ashore before the quarantine lifted. Many steerage passengers came on board in Panama with the Isthmus fever”",1,40,NA
-22 Sep 50,Panama,PAN,PAN,PAN,Panama,STM,Steamer,19.5,212,,2,40,NA
-22 May 52,Panama,PAN,PAN,PAN,Constitution,STM,Steamer,42,172,>10 boarded at Acapulco. 2 deaths on board from dysentary,1,42,NA
-22 Sep 50,Panama,PAN,PAN,PAN,B. L. Allen,SCH,Schooner,40,21,,2,42,NA
-18 Dec 51,Panama,PAN,PAN,PAN,Columbus,STM,Steamer,21,253,,3,43,NA
-20 Dec 51,Panama,PAN,PAN,PAN,Undine,BRQ,Barque,76,75,"8 deaths, unstated cause",3,46,NA
-7 Oct 50,Panama,PAN,PAN,PAN,Carolina,STM,Steamer,20,171,Outbreak of asiatic cholera,2,48,NA
-21 May 52,Panama,PAN,PAN,PAN,Dudley,BRG,Brig,68,110,,1,50,NA
-12 Oct 50,Panama,PAN,PAN,PAN,Columbus,STM,Steamer,23,75,,2,53,NA
-18 Oct 50,Panama,PAN,PAN,PAN,Oregon,STM,Steamer,17,137,,2,55,NA
-28 Jan 52,Panama,PAN,PAN,PAN,J. C. Legrange,BRG,Brig,61,73,,3,56,NA
-22 Oct 50,Panama,PAN,PAN,PAN,Northener,STM,Steamer,15.5,128,>10 boarded from San Diego,2,57,1
-2 Feb 52,Panama,PAN,PAN,PAN,B. L. Allen,CLP,Clipper,40,61,,3,58,NA
-25 Oct 50,Panama,PAN,PAN,PAN,Antelope,STM,Steamer,24,34,,2,59,NA
-3 Feb 52,Panama,PAN,PAN,PAN,Panama,STM,Steamer,21,483,,3,60,NA
-31 Oct 50,Panama,PAN,PAN,PAN,Republic,STM,Steamer,22,40,,2,61,NA
-7 Nov 50,Panama,PAN,PAN,PAN,Tenessee,STM,Steamer,20,67,,2,63,NA
-8 Nov 50,Panama,PAN,PAN,PAN,Isthmus,STM,Steamer,21,53,,2,64,NA
-6 Feb 52,Panama,PAN,PAN,PAN,Republic,STM,Steamer,21,367,,3,67,NA
-9 Jan 52,Panama,PAN,PAN,PAN,Golden Gate,STM,Steamer,15,828,“Included in the list of passengers are 70 women and 50 children”,1,68,NA
-21 Nov 50,Panama,PAN,PAN,PAN,California,STM,Steamer,19.5,215,,2,70,NA
-11 Feb 52,Panama,PAN,PAN,PAN,Oregon,STM,Steamer,14.5,483,,3,72,NA
-21 May 52,Panama,PAN,PAN,PAN,Golden Gate,STM,Steamer,12,1050,“Among which are 60 females and 30 children”,1,73,NA
-2 Dec 50,Panama,PAN,PAN,PAN,Jane,BRG,Brig,50,6,,2,75,NA
-8 Dec 50,Panama,PAN,PAN,PAN,Carolina,STM,Steamer,20,45,,2,76,NA
-6 Dec 50,Panama,PAN,PAN,PAN,Columbus,STM,Steamer,20,95,,2,76,NA
-11 Dec 50,Panama,PAN,PAN,PAN,New Orleans,STM,Steamer,24,109,,2,78,NA
-11 Dec 50,Panama,PAN,PAN,PAN,Rhode Island,SHP,Ship,76,1,,2,79,NA
-21 Jan 51,Panama,PAN,PAN,PAN,Goliah,STM,Steamer,20,13,,1,83,NA
-17 Dec 50,Panama,PAN,PAN,PAN,Sarah Sands,STM,Steamer,25,74,,2,83,NA
-28 Jul 50,Panama,PAN,PAN,PAN,Gustave,BRQ,Barque,85,111,,1,84,NA
-22 Dec 50,Panama,PAN,PAN,PAN,Chester,BRQ,Barque,83,2,,2,85,NA
-23 Dec 50,Panama,PAN,PAN,PAN,Colonel Tayloe,BRG,Brig,71,8,“suffered severely from the effects of a hurricane”,2,86,NA
-28 Dec 50,Panama,PAN,PAN,PAN,Constitution,STM,Steamer,23,166,,2,86,NA
-29 Dec 50,Panama,PAN,PAN,PAN,Northerner,STM,Steamer,19,16,>10 boarded from San Diego,2,88,1
-26 Feb 52,Panama,PAN,PAN,PAN,California,STM,Steamer,16,46,,3,88,NA
-2 Jan 51,Panama,PAN,PAN,PAN,Panama,STM,Steamer,28,96,,2,89,NA
-12 Jul 50,Panama,PAN,PAN,PAN,Isthmus,STM,Steamer,23,288,,1,91,NA
-8 Jan 51,Panama,PAN,PAN,PAN,Tenessee,STM,Steamer,20,91,,2,91,NA
-23 Jan 51,Panama,PAN,PAN,PAN,Republic,STM,Steamer,20,82,,2,93,NA
-14 Jan 52,Panama,PAN,PAN,PAN,Isthmus,STM,Steamer,22,306,,1,94,NA
-26 Feb 52,Panama,PAN,PAN,PAN,Golden Gate,STM,Steamer,14,875,,3,95,NA
-28 Feb 52,Panama,PAN,PAN,PAN,Comet,SCH,Schooner,54,46,,3,98,NA
-5 Feb 51,Panama,PAN,PAN,PAN,Isthmus,STM,Steamer,22,49,,2,100,NA
-14 Aug 50,Panama,PAN,PAN,PAN,Kingston,,,60,82,,1,102,NA
-4 Mar 52,Panama,PAN,PAN,PAN,Monumental City,STM,Steamer,45,NA,> 10 boarded at San Diego,3,102,1
-19 Feb 51,Panama,PAN,PAN,PAN,B. L. Allen,SCH,Schooner,56,22,,2,104,NA
-15 Feb 51,Panama,PAN,PAN,PAN,Commodore Preble,STM,Steamer,45,19,,2,104,NA
-5 Mar 52,Panama,PAN,PAN,PAN,New Orleans,STM,Steamer,18,473,,3,105,NA
-24 Feb 51,Panama,PAN,PAN,PAN,Columbia,STM,Steamer,21,133,,2,106,NA
-15 May 52,Panama,PAN,PAN,PAN,Margaret,BRG,Brig,110,143,,1,107,NA
-20 May 52,Panama,PAN,PAN,PAN,Maria,,,44,94,,1,107,NA
-23 May 51,Panama,PAN,PAN,PAN,Marianna,,,46,53,,1,108,NA
-27 Feb 51,Panama,PAN,PAN,PAN,Carolina,STM,Steamer,22,102,,2,108,NA
-7 Mar 52,Panama,PAN,PAN,PAN,Cabargo,BRQ,Barque,79,121,,3,108,NA
-4 Mar 51,Panama,PAN,PAN,PAN,Tenessee,STM,Steamer,17,141,One person died of “congestion of the brain”,2,110,NA
-6 May 51,Panama,PAN,PAN,PAN,New Orleans,STM,Steamer,18,118,,2,112,NA
-9 Mar 51,Panama,PAN,PAN,PAN,Antelope,STM,Steamer,21,68,,2,113,NA
-14 Mar 52,Panama,PAN,PAN,PAN,Tennessee,STM,Steamer,17,573,,3,115,NA
-20 Mar 51,Panama,PAN,PAN,PAN,Florida,BRQ,Barque,45,8,,2,116,NA
-21 Mar 51,Panama,PAN,PAN,PAN,Panama,STM,Steamer,20,133,,2,116,NA
-21 Mar 51,Panama,PAN,PAN,PAN,Columbus,STM,Steamer,20,136,,2,118,NA
-2 Apr 51,Panama,PAN,PAN,PAN,Union,STM,Steamer,30,117,,2,119,NA
-4 Apr 51,Panama,PAN,PAN,PAN,Trescott,SHP,Ship,36,3,,2,120,NA
-9 Apr 51,Panama,PAN,PAN,PAN,Isthmus,STM,Steamer,24.5,85,,2,122,NA
-10 Apr 51,Panama,PAN,PAN,PAN,Sarah Sands,STM,Steamer,33,114,>10 from Acapulco,2,123,1
-19 Apr 51,Panama,PAN,PAN,PAN,Republic,STM,Steamer,19,274,,2,127,NA
-4 Aug 50,Panama,PAN,PAN,PAN,Ocean,BRK,Bark,63,3,,1,128,NA
-1 Apr 52,Panama,PAN,PAN,PAN,Panama,STM,Steamer,20,543,One death from dysentery. >10 boarded from wreck of North America at Acapulco,3,129,1
-23 Apr 51,Panama,PAN,PAN,PAN,California,STM,Steamer,21.5,203,,2,131,NA
-20 Jul 50,Panama,PAN,PAN,PAN,Oregon,STM,Steamer,19,309,,1,133,NA
-20 Jan 51,Panama,PAN,PAN,PAN,Oregon,STM,Steamer,16,69,>10 boarded at San Diego and Monterey,1,135,1
-3 May 51,Panama,PAN,PAN,PAN,New Orleans,STM,Steamer,18,156,,2,135,NA
-1 Apr 52,Panama,PAN,PAN,PAN,Fremont,STM,Steamer,24,194,,3,135,NA
-2 Apr 52,Panama,PAN,PAN,PAN,Aurora,SHP,Ship,70,5,,3,136,NA
-4 May 51,Panama,PAN,PAN,PAN,Jane,STM,Steamer,58,40,,2,137,NA
-5 May 51,Panama,PAN,PAN,PAN,Northerner,STM,Steamer,19,296,,2,137,NA
-3 Apr 51,Panama,PAN,PAN,PAN,Oregon,STM,Steamer,16.5,249,,1,138,NA
-5 Apr 52,Panama,PAN,PAN,PAN,Eliza Taylor,BRG,Brig,80,22,,3,138,NA
-7 Apr 52,Panama,PAN,PAN,PAN,Oregon,STM,Steamer,15.5,504,>10 boarded at Acapulco from the wreck of the N America,3,139,1
-20 May 51,Panama,PAN,PAN,PAN,Tennessee,STM,Steamer,19,377,,2,143,NA
-6 Jul 50,Panama,PAN,PAN,PAN,Panama,STM,Steamer,18,287,,1,144,NA
-14 Apr 52,Panama,PAN,PAN,PAN,Northerner,STM,Steamer,15,626,14 people boarded at San Diego,3,146,1
-21 May 51,Panama,PAN,PAN,PAN,Ruth,BRG,Brig,63,13,,2,148,NA
-29 May 51,Panama,PAN,PAN,PAN,Antelope,STM,Steamer,43,241,,2,150,NA
-1 Jun 51,Panama,PAN,PAN,PAN,Panama,STM,Steamer,16,99,"“A good deal of sickness among the passengers during the voyage, principally fever and dysentery”",2,153,NA
-15 Apr 52,Panama,PAN,PAN,PAN,Isthmus,STM,Steamer,30,354,19 boarded at Acapulco,3,153,1
-6 Jun 51,Panama,PAN,PAN,PAN,Isthmus,STM,Steamer,22.5,200,,2,156,NA
-21 May 52,Panama,PAN,PAN,PAN,Sir Charles Napier,SHP,Ship,90,211,"“Thirty-six passengers died on the passenge. When one week out of Panama the measles, dysentery and fever broke out. Disease continued for about 3 weeks. A succession of calms, common near the Equator, and the excessive heat may have been responsible for the toll”",1,158,NA
-12 Jun 51,Panama,PAN,PAN,PAN,Gold Hunter,STM,Steamer,NA,163,One case of smallpox on board,2,158,NA
-27 Apr 52,Panama,PAN,PAN,PAN,Ceres,BRG,Brig,63,96,,3,161,NA
-13 Jun 51,Panama,PAN,PAN,PAN,E. Randall,BRG,Brig,80,40,,2,162,NA
-19 Jun 51,Panama,PAN,PAN,PAN,Oregon,STM,Steamer,17,196,,2,163,NA
-24 Jun 51,Panama,PAN,PAN,PAN,Republic,STM,Steamer,24,211,,2,166,NA
-28 Apr 52,Panama,PAN,PAN,PAN,Winfield Scott,STM,Steamer,27,743,,3,166,NA
-26 Jun 51,Panama,PAN,PAN,PAN,Union,STM,Steamer,26,193,,2,167,NA
-3 Apr 51,Panama,PAN,PAN,PAN,Unidine,BRQ,Barque,41,19,,1,169,NA
-1 Jul 51,Panama,PAN,PAN,PAN,Sarah Sands,STM,Steamer,28,44,,2,170,NA
-2 Jul 51,Panama,PAN,PAN,PAN,Pacific,STM,Steamer,17,73,,2,171,NA
-7 Jul 51,Panama,PAN,PAN,PAN,Northerner,STM,Steamer,20,321,,2,172,NA
-28 Apr 52,Panama,PAN,PAN,PAN,Dorothea Ernestine,BRG,Brig,64,52,,3,172,NA
-11 Jul 51,Panama,PAN,PAN,PAN,Independence,STM,Steamer,22,19,,2,174,NA
-29 Apr 52,Panama,PAN,PAN,PAN,Blonde,BRQ,Barque,67,287,,3,175,NA
-30 Apr 52,Panama,PAN,PAN,PAN,New Orleans,STM,Steamer,19,544,,3,175,NA
-20 Jul 51,Panama,PAN,PAN,PAN,Tenessee,STM,Steamer,19.5,244,>10 boarded during intermediate stops,2,178,1
-29 Jul 51,Panama,PAN,PAN,PAN,Fremont,STM,Steamer,27,68,,2,181,NA
-3 Aug 51,Panama,PAN,PAN,PAN,California,STM,Steamer,16,120,,2,184,NA
-6 Aug 51,Panama,PAN,PAN,PAN,Carolina,STM,Steamer,20,93,,2,185,NA
-10 May 52,Panama,PAN,PAN,PAN,Tennessee,STM,Steamer,14,645,,3,185,NA
-8 Aug 51,Panama,PAN,PAN,PAN,Constitution,STM,Steamer,24,159,,2,187,NA
-19 Aug 51,Panama,PAN,PAN,PAN,Panama,STM,Steamer,18,243,,2,192,NA
-20 Aug 51,Panama,PAN,PAN,PAN,Columbus,STM,Steamer,20,156,,2,194,NA
-30 Aug 51,Panama,PAN,PAN,PAN,Pacific,STM,Steamer,16,116,,2,197,NA
-24 May 52,Panama,PAN,PAN,PAN,Brutus,SHP,Ship,57,162,,3,198,NA
-8 Sep 51,Panama,PAN,PAN,PAN,Northerner,STM,Steamer,22,303,,2,199,NA
-18 Sep 51,Panama,PAN,PAN,PAN,Oregon,STM,Steamer,16.5,250,,2,204,NA
-27 May 52,Panama,PAN,PAN,PAN,Panama,STM,Steamer,17,391,,3,204,NA
-19 Sep 51,Panama,PAN,PAN,PAN,New Orleans,STM,Steamer,18,180,,2,206,NA
-26 Sep 51,Panama,PAN,PAN,PAN,Isthmus,STM,Steamer,22,11,,2,210,NA
-5 Oct 51,Panama,PAN,PAN,PAN,California,STM,Steamer,17.3,219,,2,214,NA
-15 Jun 52,Panama,PAN,PAN,PAN,Winfield Scott,STM,Steamer,14,487,,3,214,NA
-6 Oct 51,Panama,PAN,PAN,PAN,Republic,STM,Steamer,21,184,>10 from Acapulco,2,216,1
-19 Jun 52,Panama,PAN,PAN,PAN,Northener,STM,Steamer,19,586,Dysentary on board,3,217,NA
-17 Oct 51,Panama,PAN,PAN,PAN,Tenessee,STM,Steamer,15.5,358,,2,225,NA
-27 Oct 51,Panama,PAN,PAN,PAN,Constitution,STM,Steamer,25,227,,2,232,NA
-4 Nov 51,Panama,PAN,PAN,PAN,Panama,STM,Steamer,18,448,"“Since leaving Acapulco had a great deal of sickness on board- 7 deaths from fever, and a great many sick on board.’ Name of dead are listed; range of ages”",2,237,NA
-1 Jan 52,Panama via way ports,PAN,PAN,PAN,Northerner,STM,Steamer,15,556,,1,125,NA
-12 Jun 52,Oregon Territory,ORE ,ORE ,ORE ,Success,BRQ,Barque,3.5,4,,3,214,NA
-12 Dec 51,"Astoria, O. T.",ORE,ORE,ORE,Columbia,STM,Steamer,3,157,Passenger total includes “119 U.S. Troops”,3,37,NA
-20 Feb 51,"Astoria, O. T.",ORE,ORE,ORE,Grecian,BRG,Brig,7,5,,2,104,NA
-28 Feb 51,"Astoria, O. T.",ORE,ORE,ORE,Gold Hunter,STM,Steamer,2.5,32,,2,109,NA
-19 Mar 51,"Astoria, O. T.",ORE,ORE,ORE,Merchantman,SCH,Schooner,10,5,,2,116,NA
-11 Apr 51,"Astoria, O. T.",ORE,ORE,ORE,Columbia,STM,Steamer,2.5,4,,2,125,NA
-17 Apr 51,"Astoria, O. T.",ORE,ORE,ORE,Goliah,STM,Steamer,2.5,23,,2,126,NA
-1 May 51,"Astoria, O. T.",ORE,ORE,ORE,Columbia,STM,Steamer,2.5,3,,2,133,NA
-4 Apr 52,"Astoria, O. T.",ORE,ORE,ORE,Vicennes,SLP,Sloop-o-War,4,0,16 ship officers listed [not in passenger total],3,136,NA
-14 May 51,"Astoria, O. T.",ORE,ORE,ORE,Columbia,STM,Steamer,2.5,19,,2,142,NA
-14 Apr 52,"Astoria, O. T.",ORE,ORE,ORE,Williamantic,SCH,Schooner,8,4,,3,152,NA
-20 Apr 52,"Astoria, O. T.",ORE,ORE,ORE,Desdemona,BRQ,Barque,6,1,,3,157,NA
-27 Aug 51,"Astoria, O. T.",ORE,ORE,ORE,Columbia,STM,Steamer,3,12,,2,196,NA
-10 Sep 51,"Astoria, O. T.",ORE,ORE,ORE,Matthew Vassar,SCH,Schooner,4,5,,2,202,NA
-15 Sep 51,"Astoria, O. T.",ORE,ORE,ORE,Columbia,STM,Steamer,2.5,15,,2,203,NA
-27 Sep 51,"Astoria, O. T.",ORE,ORE,ORE,Columbia,STM,Steamer,3,38,,2,210,NA
-11 Oct 51,"Astoria, O. T.",ORE,ORE,ORE,Grecian,BRG,Brig,14,5,,2,221,NA
-13 Oct 51,"Astoria, O. T.",ORE,ORE,ORE,Columbia,STM,Steamer,2.5,42,,2,221,NA
-30 Mar 51,"Astoria, O.T.",ORE,ORE,ORE,Columbia,STM,Steamer,2,8,,1,33,NA
-23 Jul 50,"Astoria, Oregon",ORE,ORE,ORE,Carolina,STM,Steamer,2,12,,1,24,NA
-26 Sep 50,"Astoria, Oregon",ORE,ORE,ORE,Emma,BRQ,Barque,8,1,,2,44,NA
-9 Jun 52,"Astoria, Oregon",ORE,ORE,ORE,Fremont,STM,Steamer,2.5,12,,1,59,NA
-28 Sep 50,"Astoria, Oregon",ORE,ORE,ORE,Sea Gull,PRO,Propeller,5,36,,2,60,NA
-28 Sep 50,"Astoria, Oregon",ORE,ORE,ORE,Oregon,STM,Steamer,3,25,“Several of these passengers were residents of San Francisco and had been to Astoria on a pleasure trip.”,2,60,NA
-2 Dec 50,"Astoria, Oregon",ORE,ORE,ORE,California,STM,Steamer,7,28,,2,75,NA
-17 Dec 50,"Astoria, Oregon",ORE,ORE,ORE,Gold Hunter,STM,Steamer,3,25,,2,84,NA
-8 Feb 51,"Astoria, Oregon",ORE,ORE,ORE,Gold Hunter,STM,Steamer,4,37,,2,101,NA
-29 Jun 51,"Astoria, Oregon",ORE,ORE,ORE,Columbia,STM,Steamer,3,23,,2,169,NA
-15 Feb 52,"Astoria, Oregon Terr.",ORE,ORE,ORE,Columbia,STM,Steamer,3,58,,3,77,NA
-24 Feb 52,"Astoria, Oregon Terr.",ORE,ORE,ORE,George & Martha,BRQ,Barque,3,3,,3,85,NA
-13 Aug 51,"Astoria, Oregon Terr.",ORE,ORE,ORE,Columbia,STM,Steamer,3,20,,2,190,NA
-28 Dec 51,Columbia,ORE,ORE,ORE,Columbia,STM,Steamer,5,51,,3,50,NA
-7 Aug 50,"Ft. Vancouver, Oregon",ORE,ORE,ORE,Carolina,STM,Steamer,2.5,22,,1,24,NA
-29 Dec 51,"Gardiner, O. T.",ORE,ORE,ORE,Fawn,BRG,Brig,11,4,,3,52,NA
-23 May 52,"Kowes River, O. T.",ORE,ORE,ORE,Nassau,SCH,Schooner,4,2,"And crew (unidentified) of the schooner “Lincoln”’ [number not given, not included in total]",1,117,NA
-13 Jan 52,Oregon,ORE,ORE,ORE,Columbia,STM,Steamer,3,32,,1,32,NA
-29 Sep 50,Oregon,ORE,ORE,ORE,Panama,STM,Steamer,2,24,,2,44,NA
-22 May 52,Oregon,ORE,ORE,ORE,Emma Preston,BRG,Brig,6,4,,1,55,NA
-23 May 52,Oregon,ORE,ORE,ORE,Fremont,STM,Steamer,3,28,,1,59,NA
-9 Jun 52,Oregon,ORE,ORE,ORE,Vandalia,BRG,Brig,7,6,,1,169,NA
-5 Oct 51,Oregon,ORE,ORE,ORE,Keoka,BRQ,Barque,10,3,,2,218,NA
-1 Feb 51,Oregon (Astoria),ORE,ORE,ORE,Oregon,STM,Steamer,4,4,,2,98,NA
-12 Nov 51,Oregon Territory,ORE,ORE,ORE,Columbia,STM,Steamer,3,75,,3,2,NA
-13 Nov 51,Oregon Territory,ORE,ORE,ORE,Ocean Bird,BRQ,Barque,8,6,,3,5,NA
-15 Nov 51,Oregon Territory,ORE,ORE,ORE,New World,BRQ,Barque,9,11,,3,7,NA
-20 Nov 51,Oregon Territory,ORE,ORE,ORE,Matthew Vassar,SCH,Schooner,6,6,,3,19,NA
-30 Nov 51,Oregon Territory,ORE,ORE,ORE,Columbia,STM,Steamer,3,74,,3,24,NA
-9 Dec 51,Oregon Territory,ORE,ORE,ORE,Anna E. Maine,BRG,Brig,10,6,,3,34,NA
-13 Dec 51,Oregon Territory,ORE,ORE,ORE,Quadratus,SCH,Schooner,16,4,,3,37,NA
-17 Dec 51,Oregon Territory,ORE,ORE,ORE,Juliette,SCH,Schooner,7,4,,3,42,NA
-5 Sep 50,Oregon Territory,ORE,ORE,ORE,California,STM,Steamer,3,26,,2,51,NA
-28 Dec 51,Oregon Territory,ORE,ORE,ORE,Tarquina,BRG,Brig,13,4,,3,51,NA
-28 Dec 51,Oregon Territory,ORE,ORE,ORE,Louisiana,BRQ,Barque,16,5,,3,51,NA
-19 Jan 51,Oregon Territory,ORE,ORE,ORE,J. F. K. Mansfield,SCH,Schooner,8,1,,3,54,NA
-15 Jan 51,Oregon Territory,ORE,ORE,ORE,Sea Gull,STM,Steamer,7,28,,3,54,NA
-28 Jan 52,Oregon Territory,ORE,ORE,ORE,Columbia,STM,Steamer,NA,63,,3,56,NA
-7 Feb 52,Oregon Territory,ORE,ORE,ORE,Grecian,BRG,Brig,7,4,,3,70,NA
-7 Feb 52,Oregon Territory,ORE,ORE,ORE,Vesuvius,BRQ,Barque,9,1,,3,71,NA
-17 Feb 52,Oregon Territory,ORE,ORE,ORE,Matthew Vassar,SCH,Schooner,6,1,,3,80,NA
-20 Feb 52,Oregon Territory,ORE,ORE,ORE,Venezuela,BRG,Brig,7,3,,3,82,NA
-20 Feb 52,Oregon Territory,ORE,ORE,ORE,New World,BRQ,Barque,7,1,,3,82,NA
-26 Feb 52,Oregon Territory,ORE,ORE,ORE,Mary Melville,BRQ,Barque,4,5,,3,89,NA
-20 Mar 52,Oregon Territory,ORE,ORE,ORE,Quickstep,STM,Steamer,5,22,,3,119,NA
-22 Mar 52,Oregon Territory,ORE,ORE,ORE,Emma Preston,BRG,Brig,3,1,,3,120,NA
-24 Mar 52,Oregon Territory,ORE,ORE,ORE,Sussex,BRG,Brig,8,1,,3,121,NA
-28 Mar 52,Oregon Territory,ORE,ORE,ORE,Columbia,STM,Steamer,2.5,49,,3,127,NA
-2 May 51,Oregon Territory,ORE,ORE,ORE,Ocean Bird,BRQ,Barque,7,10,,2,135,NA
-14 Apr 52,Oregon Territory,ORE,ORE,ORE,Columbia,STM,Steamer,2.5,30,,3,152,NA
-13 Jun 51,Oregon Territory,ORE,ORE,ORE,Sea Gull,STM,Steamer,5,43,,2,160,NA
-30 Apr 52,Oregon Territory,ORE,ORE,ORE,Columbia,STM,Steamer,4,31,,3,179,NA
-2 May 52,Oregon Territory,ORE,ORE,ORE,M. Vassar,SCH,Schooner,10,2,,3,181,NA
-29 Jul 51,Oregon Territory,ORE,ORE,ORE,Columbia,STM,Steamer,NA,24,,2,182,NA
-7 May 52,Oregon Territory,ORE,ORE,ORE,Grecian,BRG,Brig,4,4,,3,182,NA
-12 May 52,Oregon Territory,ORE,ORE,ORE,Cyclops,BRG,Brig,5,3,,3,190,NA
-23 Aug 51,Oregon Territory,ORE,ORE,ORE,Sea Gull,STM,Steamer,8,20,,2,196,NA
-29 May 52,Oregon Territory,ORE,ORE,ORE,Mary Melville,BRQ,Barque,5,4,,3,209,NA
-31 May 52,Oregon Territory,ORE,ORE,ORE,Levret,BRG,Brig,5,5,,3,211,NA
-9 Jun 52,Oregon Territory,ORE,ORE,ORE,Tarquina,BRG,Brig,4,5,,3,213,NA
-13 Oct 51,Oregon Territory,ORE,ORE,ORE,Tarquina,BRG,Brig,7,11,,2,222,NA
-20 Oct 51,Oregon Territory,ORE,ORE,ORE,Mary Melville,BRQ,Barque,9,12,,2,230,NA
-9 Nov 51,"Port Orford, O.T.",ORE,ORE,ORE,Sea Gull,STM,Steamer,4,30,"“And Captain Hasty with the crew of the steamer ‘Chesapeake’” [number not given, not included in total]",3,2,NA
-27 Oct 51,"Port Orford, O.T.",ORE,ORE,ORE,Columbia,STM,Steamer,2.5,66,"And several unidentified Chinese’ [number not given, not included in total]",2,234,NA
-26 Nov 50,"Portland, O. T.",ORE,ORE,ORE,Seguin,BRG,Brig,12,2,,2,73,NA
-29 Feb 52,"Portland, O. T.",ORE,ORE,ORE,Columbia,STM,Steamer,2.5,45,,3,99,NA
-15 Mar 51,"Portland, O. T.",ORE,ORE,ORE,Sea Gull,STM,Steamer,5,18,,2,115,NA
-5 Apr 51,"Portland, O. T.",ORE,ORE,ORE,Sea Gull,STM,Steamer,4,40,,2,120,NA
-21 Apr 52,"Portland, O. T.",ORE,ORE,ORE,J. B. Lunt,BRG,Brig,8,4,,3,158,NA
-17 Sep 51,"Portland, O. T.",ORE,ORE,ORE,Sea Gull,PRO,Propeller,5,35,,2,204,NA
-26 Jan 51,"Portland, O. T. ",ORE,ORE,ORE,Ocean Bird,BRQ,Barque,10,2,,2,94,NA
-14 Mar 52,"Portland, O. T. ",ORE,ORE,ORE,Columbia,STM,Steamer,3,47,,3,118,NA
-17 Jan 51,"Portland, Oregon",ORE,ORE,ORE,Sea Gull,STM,Steamer,5,27,,1,156,NA
-14 May 52,"Umpqua River, O.T.",ORE,ORE,ORE,Oretoleon,SCH,Schooner,3,3,,3,194,NA
-31 Aug 51,"Umpqua River, O.T.",ORE,ORE,ORE,Ortolien,SCH,Schooner,3,6,,2,198,NA
-10 Oct 51,"Umpqua River, O.T.",ORE,ORE,ORE,Almeda,BRG,Brig,10,5,,2,220,NA
-24 May 52,"Umpqua, O.T.",ORE,ORE,ORE,Fawn,BRG,Brig,3,4,,3,198,NA
-7 Nov 51,New York,NYC,NYC,NYC,Rockland,SHP,Ship,150,9,,3,1,NA
-15 Nov 51,New York,NYC,NYC,NYC,Telegraph,CLP,Clipper,125,1,,3,6,NA
-30 Jul 50,New York,NYC,NYC,NYC,Anson,,,176,2,,1,7,NA
-10 Aug 50,New York,NYC,NYC,NYC,Sea Gull,STM,Steamer,180,5,In coming up San Francisco got athwart the hawse of ship ‘Cheshire’,2,8,NA
-18 Nov 51,New York,NYC,NYC,NYC,Typhon,SLP,Sloop-o-War,107,5,,3,10,NA
-12 Aug 50,New York,NYC,NYC,NYC,Clarissa Andrews,SHP,Ship,181,1,,2,11,NA
-18 Nov 51,New York,NYC,NYC,NYC,Eagle,CLP,Clipper,128,11,,3,11,NA
-19 Nov 51,New York,NYC,NYC,NYC,Golden Gate,STM,Steamer,65,458,"Via Rio. 5 deaths after Panama, one from ‘Panama Fever’. Records date/time of all intermediate stops. First voyage for this steamer",3,15,NA
-2 Dec 51,New York,NYC,NYC,NYC,Valparaiso,SHP,Ship,160,2,,3,27,NA
-7 Aug 50,New York,NYC,NYC,NYC,Chesapeake,STM,Steamer,364,27,Condemned in Humboldt bay Nov 1851 (Rasmussen 3:1),1,27,NA
-13 Jan 52,New York,NYC,NYC,NYC,Comet,CLP,Clipper,100,15,,1,32,NA
-7 Sep 50,New York,NYC,NYC,NYC,Elizabeth,BRQ,Barque,178,12,,2,33,NA
-6 Jun 50,New York,NYC,NYC,NYC,Columbus,STM,Steamer,114,347,“Vessel crowded beyond limits of comfort”,1,34,NA
-1 Oct 50,New York,NYC,NYC,NYC,Como,BRQ,Barque,168,2,,2,46,NA
-10 Oct 50,New York,NYC,NYC,NYC,Albania,SHP,Ship,190,3,,2,52,NA
-20 Oct 50,New York,NYC,NYC,NYC,Jane Doden,BRQ,Barque,190,1,,2,57,NA
-28 Jan 52,New York,NYC,NYC,NYC,Wild Pigeon,CLP,Clipper,103,2,,3,57,NA
-5 Feb 52,New York,NYC,NYC,NYC,Golden Gate,CLP,Clipper,113,5,,3,63,NA
-10 Nov 50,New York,NYC,NYC,NYC,Shakspeare [sic],SHP,Ship,272,8,,2,65,NA
-18 Nov 50,New York,NYC,NYC,NYC,Coriolanus,SHP,Ship,218,2,,2,69,NA
-23 Nov 50,New York,NYC,NYC,NYC,La Bella Francesa,SCH,Schooner,142,3,,2,72,NA
-23 Nov 50,New York,NYC,NYC,NYC,Caroline Reed,SHP,Ship,142,9,,2,72,NA
-29 Nov 50,New York,NYC,NYC,NYC,Mandarin,SHP,Ship,126,3,,2,73,NA
-1 Dec 50,New York,NYC,NYC,NYC,Mendora,BRQ,Barque,263,6,,2,74,NA
-12 Dec 50,New York,NYC,NYC,NYC,Haidee,SHP,Ship,187,22,,2,79,NA
-11 Dec 50,New York,NYC,NYC,NYC,Rhode Island,SHP,Ship,245,1,,2,79,NA
-18 Dec 50,New York,NYC,NYC,NYC,Venezuela,BRG,Brig,223,1,Vessel lost rudder on way to Valparaiso (!),2,84,NA
-26 Jan 51,New York,NYC,NYC,NYC,Desdemona,SHP,Ship,196,10,,2,95,NA
-26 Jan 51,New York,NYC,NYC,NYC,St Louis,SHP,Ship,162,8,,2,95,NA
-27 Jan 51,New York,NYC,NYC,NYC,Alert,BRG,Brig,220,2,,2,96,NA
-29 Jan 51,New York,NYC,NYC,NYC,Marcella,BRQ,Barque,210,8,,2,97,NA
-29 Feb 52,New York,NYC,NYC,NYC,Lexington,STR,Storeship [sail],217,0,No passengers but 9 officers listed [not included in total],3,98,NA
-6 Aug 50,New York,NYC,NYC,NYC,John Kendall,BRG,Brig,170,3,,1,99,NA
-3 Feb 51,New York,NYC,NYC,NYC,Jamestown,SHP,Ship,128,8,,2,99,NA
-22 Feb 51,New York,NYC,NYC,NYC,Mary,BRQ,Barque,200,2,,2,105,NA
-22 Feb 51,New York,NYC,NYC,NYC,Ohio,SHP,Ship,212,2,,2,105,NA
-12 Mar 51,New York,NYC,NYC,NYC,Helena,SHP,Ship,132,9,,2,114,NA
-19 Mar 51,New York,NYC,NYC,NYC,Roscoe,SHP,Ship,160,22,,2,116,NA
-11 Jul 50,New York,NYC,NYC,NYC,New World,STM,Steamer,152,229,"“Touched Rio de Janeiro, Brazil when Yellow Fever was raging. Lost 15 of the crew by the fever”",1,117,NA
-10 Apr 51,New York,NYC,NYC,NYC,Lantio,SHP,Ship,120,4,,2,124,NA
-10 Apr 51,New York,NYC,NYC,NYC,Mary & Adaline,SHP,Ship,195,3,,2,124,NA
-11 Apr 51,New York,NYC,NYC,NYC,Robert Hooper,SHP,Ship,153,5,,2,125,NA
-11 Apr 51,New York,NYC,NYC,NYC,Samuel Appleton,SHP,Ship,122,8,,2,125,NA
-18 Apr 51,New York,NYC,NYC,NYC,Bothnia,SHP,Ship,147,20,,2,126,NA
-25 Apr 51,New York,NYC,NYC,NYC,Audubon,SHP,Ship,150,11,,2,132,NA
-5 May 51,New York,NYC,NYC,NYC,Uriel,SHP,Ship,156,11,,2,140,NA
-18 May 51,New York,NYC,NYC,NYC,Maria,BRQ,Barque,144,2,,2,143,NA
-13 Apr 52,New York,NYC,NYC,NYC,Invincible,CLP,Clipper,114,17,,3,146,NA
-20 May 51,New York,NYC,NYC,NYC,Eclipse,CLP,Clipper,124,11,,2,147,NA
-21 May 51,New York,NYC,NYC,NYC,Sea Nymph,CLP,Clipper,157,1,,2,147,NA
-25 May 51,New York,NYC,NYC,NYC,Staghound,CLP,Clipper,113,7,,2,149,NA
-30 May 51,New York,NYC,NYC,NYC,Gray Feather,SHP,Ship,138,2,,2,152,NA
-30 Jul 50,New York,NYC,NYC,NYC,Saratoga,,,175,68,,1,155,NA
-15 Apr 52,New York,NYC,NYC,NYC,Hurricane,CLP,Clipper,120,8,,3,155,NA
-18 Apr 52,New York,NYC,NYC,NYC,Crescent,SHP,Ship,140,8,,3,156,NA
-20 May 52,New York,NYC,NYC,NYC,Seaman’s Bride,CLP,Clipper,152,6,,1,157,NA
-24 Jul 50,New York,NYC,NYC,NYC,Sea Witch,,,97,7,“Quickest trip on record to date…for sail or steam”,1,157,NA
-8 Jun 51,New York,NYC,NYC,NYC,Daniel Sharp,SHP,Ship,150,8,,2,158,NA
-8 Jun 51,New York,NYC,NYC,NYC,Elsinore,SHP,Ship,195,17,,2,158,NA
-22 Apr 52,New York,NYC,NYC,NYC,Eclipse,CLP,Clipper,104,20,,3,158,NA
-28 Apr 52,New York,NYC,NYC,NYC,Winfield Scott,STM,Steamer,93,743,,3,166,NA
-1 Jul 51,New York,NYC,NYC,NYC,Washington Irving,SHP,Ship,209,27,,2,170,NA
-30 Jul 50,New York,NYC,NYC,NYC,Winthrop,BRG,Brig,141,5,,1,171,NA
-1 Jul 51,New York,NYC,NYC,NYC,Oregon,BRQ,Barque,160,5,,2,171,NA
-7 Jul 51,New York,NYC,NYC,NYC,Guilford,BRQ,Barque,192,2,,2,173,NA
-1 May 52,New York,NYC,NYC,NYC,John M. Mayo,SHP,Ship,138,5,,3,180,NA
-30 Jul 51,New York,NYC,NYC,NYC,Architect,SHP,Ship,129,3,,2,182,NA
-31 Jul 51,New York,NYC,NYC,NYC,Sea Bird,STM,Steamer,240,76,"Vessel ran ashore on San Martine Island, had to be repaired",2,182,NA
-9 Aug 51,New York,NYC,NYC,NYC,Arthur,BRQ,Barque,200,4,,2,189,NA
-11 Aug 51,New York,NYC,NYC,NYC,Witchcraft,SHP,Ship,127,3,,2,189,NA
-31 Aug 51,New York,NYC,NYC,NYC,Flying Cloud,SHP,Ship,89,10,“89 days from New York — the shortest time ever made”,2,198,NA
-16 Oct 51,New York,NYC,NYC,NYC,Joshua Bates,SHP,Ship,151,2,,2,225,NA
-17 Oct 51,New York,NYC,NYC,NYC,Eureka,SHP,Ship,170,2,,2,226,NA
-29 Oct 51,New York,NYC,NYC,NYC,Challenge,SHP,Ship,102,4,,2,235,NA
-1 Aug 50,"New York, N.Y.",NYC,NYC,NYC,Adirondack,,,200,4,,1,2,NA
-3 Aug 50,"New York, N.Y.",NYC,NYC,NYC,Alpha,BRK,Bark,169,29,,1,3,NA
-5 Aug 50,"New York, N.Y.",NYC,NYC,NYC,Rose Standish,,,155,5,,2,7,NA
-4 Sep 50,"New York, N.Y.",NYC,NYC,NYC,Detroit,BRG,Brig,270,2,Time backcalculated from the note “9 months from New York”,2,31,NA
-7 Oct 50,"New York, N.Y.",NYC,NYC,NYC,Inca,SHP,Ship,183,7,,2,51,NA
-1 Feb 52,"New York, N.Y.",NYC,NYC,NYC,Trade Wind,CLP,Clipper,121,1,,3,58,NA
-17 Feb 52,"New York, N.Y.",NYC,NYC,NYC,Celestial,CLP,Clipper,106,3,,3,80,NA
-21 Jan 51,"New York, N.Y.",NYC,NYC,NYC,Goliah,STM,Steamer,279,13,,1,83,NA
-8 Jan 51,"New York, N.Y.",NYC,NYC,NYC,White Squall,,,124,1,,2,90,NA
-20 May 52,"New York, N.Y.",NYC,NYC,NYC,Mechanic’s Own,,,150,28,,1,111,NA
-10 Apr 51,"New York, N.Y.",NYC,NYC,NYC,Genessee,SHP,Ship,195,5,,2,124,NA
-17 May 51,"New York, N.Y.",NYC,NYC,NYC,Sea Serpent,CLP,Clipper,125,6,,2,142,NA
-6 Aug 50,"New York, N.Y.",NYC,NYC,NYC,Polka,BRQ,Barque,211,1,,1,147,NA
-29 Jul 50,"New York, N.Y.",NYC,NYC,NYC,Powhatan,,,228,160,,1,147,NA
-29 Jul 50,"New York, N.Y.",NYC,NYC,NYC,Providence,SCH,Schooner,279,6,,1,148,NA
-24 Jun 50,"New York, N.Y.",NYC,NYC,NYC,Wisconsin,,,121,19,,1,171,NA
-22 May 52,"New York, N.Y.",NYC,NYC,NYC,Wisconsin,SHP,Ship,118,8,,1,172,NA
-18 Oct 51,"New York, N.Y.",NYC,NYC,NYC,St Thomas,SHP,Ship,156,10,,2,229,NA
-12 Aug 50,"New York, New York",NYC,NYC,NYC,Falmouth,SCH,Schooner,146,3,"Rasmussen gives NYC as origin but states: “One source states the vessel was from Baltimore, Maryland”",2,11,NA
-27 Aug 50,"New York, New York",NYC,NYC,NYC,Christina,SHP,Ship,148,103,,2,26,NA
-17 Sep 50,"New York, New York",NYC,NYC,NYC,Sidi Hamlet,BRG,Brig,174,2,,2,36,NA
-17 Sep 50,"New York, New York",NYC,NYC,NYC,Isaac Allerton,SHP,Ship,150,10,,2,36,NA
-18 Sep 50,"New York, New York",NYC,NYC,NYC,Orleans,BRG,Brig,270,34,Time backcalculated from the note “9 months from New York”,2,38,NA
-24 Sep 50,"New York, New York",NYC,NYC,NYC,New Orleans,STM,Steamer,210,111,“Via intermediate ports”,2,43,NA
-30 Sep 50,"New York, New York",NYC,NYC,NYC,Primoguet,BRQ,Barque,283,11,“Via intermediate ports”,2,45,NA
-24 Jul 50,"New York, New York",NYC,NYC,NYC,Kensington,,,169,2,,1,100,NA
-12 Oct 50,"Sag Harbor, New York",NYC,NYC,NYC,Robert Bruce,SCH,Schooner,162,4,,2,53,NA
-27 Dec 51,Hongkong [sic],HKG,HKG,HKG,Jackin,BRG,Brig,70,102,“100 unidentified Chinese in steerage”,3,49,NA
-9 Jun 52,Hongkong [sic],HKG,HKG,HKG,Iowa,,,54,377,Passenger total includes “377 unidentified in steerage (steerage probably Chinese)”,1,89,NA
-8 Feb 51,Hongkong [sic],HKG,HKG,HKG,Freyer,BRQ,Barque,57,4,,2,100,NA
-31 Jul 50,"Hongkong [sic], China ",HKG,HKG,HKG,George Pollock,,,56,47,Total includes “43 unidentified Chinese”,2,6,NA
-8 Jun 52,"Hongkong [sic], China ",HKG,HKG,HKG,Exchange,,,53,258,Passenger total includes “257 unidentified Chinese”,1,56,NA
-19 Feb 52,"Hongkong [sic], China ",HKG,HKG,HKG,Brant,SHP,Ship,90,365,Passenger total includes “359 unidentified passengers*’ *Probably Chinese” [Asterisk is Rasmussen’s],3,81,NA
-25 Feb 52,"Hongkong [sic], China ",HKG,HKG,HKG,Mazeppa,BRQ,Barque,95,39,"Passenger total includes “33 unidentified Chinamen""",3,88,NA
-2 Mar 52,"Hongkong [sic], China ",HKG,HKG,HKG,William Watson,BRQ,Barque,60,163,Passengers included “158 unidentified Chinese”,3,101,NA
-4 Aug 50,"Hongkong [sic], China ",HKG,HKG,HKG,Mary Ann Follet,,,63,50,Passenger total includes “49 unidentified Chinese in steerage”,1,110,NA
-25 Mar 52,"Hongkong [sic], China ",HKG,HKG,HKG,Henbury,SHP,Ship,63,239,Passenger total includes “236 unidentified Chinamen”,3,122,NA
-22 Apr 52,"Hongkong [sic], China ",HKG,HKG,HKG,Challenge,CLP,Clipper,33,553,"“Fastest ever trip from China coast to NW America”. Also: 553 passengers are “Chinese emigrants”, included in total",3,159,NA
-16 May 52,"Hongkong [sic], China ",HKG,HKG,HKG,Witchcraft,CLP,Clipper,44,344,Passenger total includes “342 unidentified in Steerage (6 Chinamen died in passage)”,1,172,NA
-15 Jul 51,"Hongkong [sic], China ",HKG,HKG,HKG,Catalpa,BRQ,Barque,60,1,,2,176,NA
-11 Dec 50,"Honolulu, Sandwich Islands",HAI,HAI,HAI,Eleanor Lancaster,BRQ,Barque,27,15,,2,79,NA
-23 Oct 50,"Atoi, S.I.",HAI,HAI,HAI,Maria,SCH,Schooner,18,3,,2,58,NA
-15 Apr 51,"Atoi, S.I.",HAI,HAI,HAI,St Andrew,LCH,Loocha,28,2,,2,125,NA
-1 May 51,"Atoi, S.I.",HAI,HAI,HAI,Spartacus,SCH,Schooner,25,18,,2,133,NA
-5 Aug 50,"Atoy, S.I.",HAI,HAI,HAI,Penelope,SCH,Schooner,26,5,,2,6,NA
-9 Sep 51,Hawaii,HAI,HAI,HAI,Reindeer,BRG,Brig,38,3,,2,201,NA
-1 Jan 52,Honolulu,HAI,HAI,HAI,Golden Rule,SCH,Schooner,14,46,,1,83,NA
-5 Jun 52,Honolulu,HAI,HAI,HAI,Maria,SCH,Schooner,16,25,,1,108,NA
-4 Aug 50,Honolulu,HAI,HAI,HAI,Roe,SCH,Schooner,29,13,,1,150,NA
-21 Apr 52,Honolulu,HAI,HAI,HAI,Picard,BRG,Brig,26,4,,3,158,NA
-2 Jan 52,Honolulu,HAI,HAI,HAI,Wyandot,BRG,Brig,16,8,,1,172,NA
-29 Sep 51,Honolulu,HAI,HAI,HAI,Catherine,SCH,Schooner,37,5,,2,211,NA
-30 Jul 50,"Honolulu, S. I. ",HAI,HAI,HAI,Brothers,BRG,Brig,28,2,,2,5,NA
-10 Aug 50,"Honolulu, S. I. ",HAI,HAI,HAI,Alice Tarlton,BRQ,Barque,35,3,,2,9,NA
-18 Nov 51,"Honolulu, S. I. ",HAI,HAI,HAI,Aldebaran,SHP,Ship,22,1,,3,11,NA
-29 Nov 51,"Honolulu, S. I. ",HAI,HAI,HAI,Monticello,SCH,Schooner,24,4,,3,24,NA
-6 Dec 51,"Honolulu, S. I. ",HAI,HAI,HAI,Loo Choo,SCH,Schooner,15,2,,3,31,NA
-19 Sep 50,"Honolulu, S. I. ",HAI,HAI,HAI,Connecticut,BRQ,Barque,21,9,,2,39,NA
-27 Dec 51,"Honolulu, S. I. ",HAI,HAI,HAI,Baltimore,BRG,Brig,14,29,,3,49,NA
-30 Nov 50,"Honolulu, S. I. ",HAI,HAI,HAI,Penelope,SCH,Schooner,23,8,,2,74,NA
-18 Feb 52,"Honolulu, S. I. ",HAI,HAI,HAI,Constitution,STM,Steamer,13,18,,3,81,NA
-2 Jan 51,"Honolulu, S. I. ",HAI,HAI,HAI,Susan Abigail,BRG,Brig,29,3,,2,89,NA
-16 Mar 52,"Honolulu, S. I. ",HAI,HAI,HAI,Noble,BRG,Brig,18,7,,3,118,NA
-22 Mar 52,"Honolulu, S. I. ",HAI,HAI,HAI,Maid of Julpha,BRG,Brig,26,12,,3,119,NA
-26 Mar 52,"Honolulu, S. I. ",HAI,HAI,HAI,Baltimore,BRG,Brig,15,6,,3,123,NA
-26 Mar 52,"Honolulu, S. I. ",HAI,HAI,HAI,Eagle,BRG,Brig,30,1,,3,123,NA
-27 Mar 52,"Honolulu, S. I. ",HAI,HAI,HAI,Elizabeth Newell,BRG,Brig,22,2,,3,127,NA
-2 May 51,"Honolulu, S. I. ",HAI,HAI,HAI,Vandalia,SLP,Sloop-o-War,29,2,Lists ship officers (15); not included in total,2,134,NA
-3 Jun 51,"Honolulu, S. I. ",HAI,HAI,HAI,Velasco,SCH,Schooner,22,9,,2,155,NA
-19 Apr 52,"Honolulu, S. I. ",HAI,HAI,HAI,Vandalia,SLP,Sloop-o-War,18,0,No passengers listed; 21 officers listed [not included in total],3,156,NA
-21 Apr 52,"Honolulu, S. I. ",HAI,HAI,HAI,Zoe,BRG,Brig,20,21,,3,157,NA
-1 Jul 51,"Honolulu, S. I. ",HAI,HAI,HAI,Joseph Butler,BRQ,Barque,24,2,,2,171,NA
-14 Jul 51,"Honolulu, S. I. ",HAI,HAI,HAI,J. K. F. Mansfield,SCH,Schooner,23,7,,2,175,NA
-1 May 52,"Honolulu, S. I. ",HAI,HAI,HAI,George Washington,SCH,Schooner,20,16,,3,180,NA
-15 May 52,"Honolulu, S. I. ",HAI,HAI,HAI,Noble,SCH,Schooner,18,6,,3,195,NA
-5 Oct 51,"Honolulu, S. I. ",HAI,HAI,HAI,Golden Rule,SCH,Schooner,19,5,,2,239,NA
-20 Sep 50,"Honolulu, Sandwich Islands",HAI,HAI,HAI,Backus,BRQ,Barque,80,6,,2,40,NA
-22 Feb 52,"Honolulu, Sandwich Islands",HAI,HAI,HAI,Home,BRQ,Barque,21,39,,3,83,NA
-25 Feb 52,"Honolulu, Sandwich Islands",HAI,HAI,HAI,Mazeppa,BRQ,Barque,17,39,Passenger total includes “33 unidentified Chinamen”,3,88,NA
-15 Jun 51,"Honolulu, Sandwich Islands",HAI,HAI,HAI,Deborah,BRG,Brig,24,6,,2,163,NA
-17 Aug 51,"Honolulu, Sandwich Islands",HAI,HAI,HAI,Robert Bowe,SHP,Ship,29,9,,2,192,NA
-21 Aug 51,"Honolulu, Sandwich Islands",HAI,HAI,HAI,Edgar,SHP,Ship,40,142,,2,196,NA
-16 Oct 51,"Honolulu, Sandwich Islands",HAI,HAI,HAI,Orien,BRQ,Barque,33,11,,2,225,NA
-2 Jan 51,"Karakokoa, S. I.",HAI,HAI,HAI,Avon,SCH,Schooner,26,3,,1,10,NA
-16 May 52,"Kawaihe, S. I.",HAI,HAI,HAI,Curlew,SCH,Schooner,30,2,,1,48,NA
-29 Nov 50,Lahaina,HAI,HAI,HAI,Oriental,BRG,Brig,20,2,,2,73,NA
-10 Nov 51,"Lahaina, S. I. ",HAI,HAI,HAI,Oriental,BRG,Brig,17,5,,3,3,NA
-21 Nov 51,"Lahaina, S. I. ",HAI,HAI,HAI,Koh-i-Noor,SCH,Schooner,16,10,,3,19,NA
-25 Nov 51,"Lahaina, S. I. ",HAI,HAI,HAI,Mary W.,SCH,Schooner,18,6,,3,20,NA
-15 May 52,"Lahaina, S. I. ",HAI,HAI,HAI,Edward L. Frost,SCH,Schooner,19,1,,1,52,NA
-17 Feb 52,"Lahaina, S. I. ",HAI,HAI,HAI,George Washington,SCH,Schooner,20,13,,3,79,NA
-17 Feb 52,"Lahaina, S. I. ",HAI,HAI,HAI,John Allyn,SCH,Schooner,26,8,,3,80,NA
-31 Jul 51,"Lahaina, S. I. ",HAI,HAI,HAI,J. A. Jesuran,BRQ,Barque,29,3,,1,96,NA
-10 Jan 52,"Lahaina, S. I. ",HAI,HAI,HAI,Laura Bevan,SCH,Schooner,16,2,,1,104,NA
-4 Apr 52,"Lahaina, S. I. ",HAI,HAI,HAI,Laura Bevan,SCH,Schooner,14,2,,3,136,NA
-24 May 52,"Lahaina, S. I. ",HAI,HAI,HAI,Manuku,SCH,Schooner,27,7,,3,197,NA
-7 Jun 52,"Lahaina, S. I. ",HAI,HAI,HAI,Wilhelmina,BRG,Brig,25,2,,3,213,NA
-25 Oct 51,"Lahaina, S. I. ",HAI,HAI,HAI,Arno,SCH,Schooner,25,2,,2,232,NA
-12 Aug 50,"Lahaina, S.I.",HAI,HAI,HAI,Anglona,SCH,Schooner,19,2,,2,12,NA
-15 Aug 50,"Lahaina, S.I.",HAI,HAI,HAI,Montgomery,BRQ,Barque,21,7,,2,17,NA
-12 Dec 50,"Lahaina, S.I.",HAI,HAI,HAI,Fawn,BRG,Brig,20,2,,2,80,NA
-2 Jan 51,"Lahaina, S.I.",HAI,HAI,HAI,Wilhelmina,BRG,Brig,26,1,,2,89,NA
-2 Jan 51,"Lahaina, S.I.",HAI,HAI,HAI,Russell,BRQ,Barque,21,2,,2,89,NA
-31 Jan 51,"Lahaina, S.I.",HAI,HAI,HAI,Golden Rule,SCH,Schooner,22,4,,2,97,NA
-4 Feb 51,"Lahaina, S.I.",HAI,HAI,HAI,Almeida,BRQ,Barque,15,2,,2,100,NA
-30 May 51,"Lahaina, S.I.",HAI,HAI,HAI,Almira,BRG,Brig,20,3,,2,152,NA
-6 Jun 51,"Lahaina, S.I.",HAI,HAI,HAI,Gazelle,SCH,Schooner,20,1,,2,156,NA
-15 Jul 51,"Lahaina, S.I.",HAI,HAI,HAI,Penelope,SCH,Schooner,24,5,,2,176,NA
-3 Aug 51,"Lahaina, S.I.",HAI,HAI,HAI,Napae,SCH,Schooner,38,8,,2,184,NA
-17 Oct 51,"Lahaina, S.I.",HAI,HAI,HAI,Robert Bruce,SCH,Schooner,26,2,,2,227,NA
-23 Feb 52,"Lahaina, S.I. ",HAI,HAI,HAI,E.L. Frost,SCH,Schooner,18,7,,3,84,NA
-7 Jun 52,"Lahaina, Sandwich Islands",HAI,HAI,HAI,Speed,BRQ,Barque,25,75,,1,161,NA
-15 Nov 51,"Oahu, S. I.",HAI,HAI,HAI,Flavius,SHP,Ship,20,10,,3,7,NA
-9 Jun 52,"Oahu, S. I.",HAI,HAI,HAI,Eagle,BRG,Brig,26,11,,1,51,NA
-8 Sep 51,"Oahu, S. I.",HAI,HAI,HAI,Curlew,SCH,Schooner,43,5,,2,200,NA
-25 Mar 51,Sandwich Islands,HAI,HAI,HAI,Louisa Baillie,SHP,Ship,26,23,,2,119,NA
-28 May 52,"Waimea, S.I.",HAI,HAI,HAI,Baltimore,BRG,Brig,18,10,,3,209,NA
+Arrival_date,From_fullname,From_code,Ship_name,Type_code,Type_full,Voyage_days,N_passengers,Notes,Rasmussen_Volume,Rasmussen_Page,Exclude,Steam
+13 Aug 50,"Liverpool, England",LVP,Prospect,BRG,Brig,232,4,,2,13,NA,FALSE
+21 Nov 51,"Liverpool, England",LVP,Lord Riverside,BRQ,Barque,225,3,,3,19,NA,FALSE
+30 Jul 50,"Liverpool, England",LVP,Carthagena,BRK,Bark,180,14,,1,25,NA,FALSE
+23 May 51,"Liverpool, England",LVP,Diadem,BRG,Brig,270,1,,1,49,NA,FALSE
+7 Oct 50,"Liverpool, England",LVP,Fanny,SHP,Ship,210,6,,2,51,NA,FALSE
+11 Oct 50,"Liverpool, England",LVP,McDonald,BRQ,Barque,170,18,,2,52,NA,FALSE
+16 Nov 50,"Liverpool, England",LVP,Enterprise,BRQ,Barque,214,18,,2,68,NA,FALSE
+15 Dec 50,"Liverpool, England",LVP,Eliza Cornish,BRG,Brig,235,2,,2,83,NA,FALSE
+22 Dec 50,"Liverpool, England",LVP,Margaret,SHP,Ship,162,18,,2,85,NA,FALSE
+5 Mar 51,"Liverpool, England",LVP,Erin’s Queen,SHP,Ship,162,2,,2,111,NA,FALSE
+4 Apr 51,"Liverpool, England",LVP,Gulnare,BRG,Brig,300,2,,2,121,NA,FALSE
+8 Jan 51,"Liverpool, England",LVP,Ocean Hero,BRG,Brig,189,2,,1,129,NA,FALSE
+3 May 51,"Liverpool, England",LVP,Eliza,BRG,Brig,180,4,,2,136,NA,FALSE
+4 Apr 51,"Liverpool, England",LVP,Prince,BRG,Brig,182,5,,1,148,NA,FALSE
+16 Jan 52,"Liverpool, England",LVP,Salem,BRQ,Barque,173,9,,1,151,NA,FALSE
+16 Oct 51,"Liverpool, England",LVP,Orien,BRQ,Barque,214,11,,2,225,NA,FALSE
+17 Oct 51,"Liverpool, England",LVP,Queen,BRQ,Barque,190,4,,2,226,NA,FALSE
+3 Nov 51,"Liverpool, England",LVP,London,SHP,Ship,150,17,,2,236,NA,FALSE
+12 Dec 50,"Valparaiso, Chile",VAL,Gustav,SHP,Ship,54,34,,2,80,NA,FALSE
+20 Oct 51,"Valparaiso, Chile",VAL,Gulnare,BRQ,Barque,56,23,,2,230,NA,FALSE
+25 Jul 50,"Valparaiso, Chile",VAL,Adeline,SCH,Schooner,54,7,,1,1,NA,FALSE
+8 Nov 51,"Valparaiso, Chile",VAL,Gardiner,BRQ,Barque,54,2,,3,1,NA,FALSE
+9 Nov 51,"Valparaiso, Chile",VAL,Madura,BRQ,Barque,63,6,,3,2,NA,FALSE
+2 Jan 52,"Valparaiso, Chile",VAL,Andreas,BRG,Brig,47,1,,1,6,NA,FALSE
+14 Jan 52,"Valparaiso, Chile",VAL,Aurora,BRG,Brig,59,16,,1,9,NA,FALSE
+1 Jul 50,"Valparaiso, Chile",VAL,Cacholet,BRQ,Barque,73,109,,1,13,NA,FALSE
+13 Aug 50,"Valparaiso, Chile",VAL,Virginia,SHP,Ship,56,1,,2,13,NA,FALSE
+20 Nov 51,"Valparaiso, Chile",VAL,Ohio,BRQ,Barque,56,1,,3,20,NA,FALSE
+7 May 52,"Valparaiso, Chile",VAL,Clara,BRG,Brig,57,80,,1,28,NA,FALSE
+4 Dec 51,"Valparaiso, Chile",VAL,Amiga,SHP,Ship,59,7,,3,31,NA,FALSE
+19 Sep 50,"Valparaiso, Chile",VAL,Princess Charlotte,,,63,31,,2,39,NA,FALSE
+19 Sep 50,"Valparaiso, Chile",VAL,Holtemade,BRQ,Barque,67,4,,2,40,NA,FALSE
+29 Sep 50,"Valparaiso, Chile",VAL,Lightning,BRG,Brig,54,2,,2,45,NA,FALSE
+20 Dec 51,"Valparaiso, Chile",VAL,Carib,BRQ,Barque,52,4,,3,46,NA,FALSE
+21 Dec 51,"Valparaiso, Chile",VAL,Circassian,BRK,Bark,48,29,,3,47,NA,FALSE
+2 Jun 52,"Valparaiso, Chile",VAL,Courrier de Inde,,,58,4,,1,48,NA,FALSE
+26 Dec 51,"Valparaiso, Chile",VAL,Montesqieu,SHP,Ship,57,9,,3,48,NA,FALSE
+16 Jan 52,"Valparaiso, Chile",VAL,Diana,BRG,Brig,55,4,,1,49,NA,FALSE
+20 May 52,"Valparaiso, Chile",VAL,Dracut,BRG,Brig,75,10,,1,50,NA,FALSE
+5 Jan 52,"Valparaiso, Chile",VAL,Donna Carmolita,,,53,1,,1,50,NA,FALSE
+7 Oct 50,"Valparaiso, Chile",VAL,Careb,BRQ,Barque,58,2,,2,51,NA,FALSE
+7 Oct 50,"Valparaiso, Chile",VAL,Fanny,SHP,Ship,70,6,,2,51,NA,FALSE
+6 Jan 51,"Valparaiso, Chile",VAL,Edwin Johnson,BRQ,Barque,60,1,,1,52,NA,FALSE
+11 Oct 50,"Valparaiso, Chile",VAL,McDonald,BRQ,Barque,57,18,,2,52,NA,FALSE
+2 Jan 52,"Valparaiso, Chile",VAL,Sultan,BRQ,Barque,190,2,,3,52,NA,FALSE
+14 Jan 52,"Valparaiso, Chile",VAL,Spray,SCH,Schooner,46,3,,3,53,NA,FALSE
+12 Oct 50,"Valparaiso, Chile",VAL,Arche D’Alliance,SHP,Ship,49,16,,2,54,NA,FALSE
+21 Jan 52,"Valparaiso, Chile",VAL,David Cross,SHP,Ship,52,1,,3,54,NA,FALSE
+28 Jan 52,"Valparaiso, Chile",VAL,Marieta,SHP,Ship,55,103,,3,57,NA,FALSE
+10 Nov 50,"Valparaiso, Chile",VAL,Shakspeare [sic],SHP,Ship,80,8,,2,65,NA,FALSE
+16 Nov 50,"Valparaiso, Chile",VAL,Enterprise,BRQ,Barque,80,18,,2,68,NA,FALSE
+7 Feb 52,"Valparaiso, Chile",VAL,Mary A. Jones,BRG,Brig,45,71,,3,70,NA,FALSE
+12 Feb 52,"Valparaiso, Chile",VAL,Oud Alblas,BRQ,Barque,68,18,,3,76,NA,FALSE
+12 Dec 50,"Valparaiso, Chile",VAL,Haidee,SHP,Ship,55,22,,2,79,NA,FALSE
+17 Feb 52,"Valparaiso, Chile",VAL,Moulton,BRQ,Barque,56,1,,3,80,NA,FALSE
+18 Feb 52,"Valparaiso, Chile",VAL,Orissa,BRQ,Barque,63,5,,3,81,NA,FALSE
+22 Feb 52,"Valparaiso, Chile",VAL,Hindostan,SHP,Ship,51,116,,3,83,NA,FALSE
+18 Dec 50,"Valparaiso, Chile",VAL,Venezuela,BRG,Brig,49,1,,2,84,NA,FALSE
+12 Jan 51,"Valparaiso, Chile",VAL,Feliciane,,,68,5,,2,92,NA,FALSE
+27 Jan 51,"Valparaiso, Chile",VAL,Alert,BRG,Brig,50,2,,2,96,NA,FALSE
+29 Jan 51,"Valparaiso, Chile",VAL,Graaf Van Nassau,SHP,Ship,47,1,,2,97,NA,FALSE
+29 Feb 52,"Valparaiso, Chile",VAL,Lexington,STR,Storeship [sail],60,0,No passengers but 9 officers listed [not included in total],3,98,NA,FALSE
+29 Feb 52,"Valparaiso, Chile",VAL,Robert and Louise,BRG,Brig,60,3,,3,100,NA,FALSE
+2 May 52,"Valparaiso, Chile",VAL,Huntress,SHP,Ship,101,175,Passengers included “170 unidentified Chilenos”,3,101,NA,FALSE
+2 Jan 52,"Valparaiso, Chile",VAL,Lysa,,,55,95,,1,105,NA,FALSE
+20 Feb 51,"Valparaiso, Chile",VAL,Salomee,BRQ,Barque,48,12,,2,105,NA,FALSE
+18 Jan 51,"Valparaiso, Chile",VAL,Mary,,,57,3,,1,108,NA,FALSE
+9 Jan 51,"Valparaiso, Chile",VAL,Mary Melville,BRQ,Barque,45,7,,1,109,NA,FALSE
+8 Mar 51,"Valparaiso, Chile",VAL,Almendral,BRQ,Barque,59,9,,2,113,NA,FALSE
+18 Mar 51,"Valparaiso, Chile",VAL,Joseph Fish,BRQ,Barque,61,29,,2,115,NA,FALSE
+23 Mar 51,"Valparaiso, Chile",VAL,Holder Borden,SCH,Schooner,60,3,,2,119,NA,FALSE
+21 Mar 52,"Valparaiso, Chile",VAL,Walter,BRQ,Barque,48,1,,3,119,NA,FALSE
+25 Mar 52,"Valparaiso, Chile",VAL,J. W. Havener,BRG,Brig,47,16,,3,120,NA,FALSE
+4 Apr 51,"Valparaiso, Chile",VAL,Gulnare,BRG,Brig,75,2,,2,121,NA,FALSE
+10 Apr 51,"Valparaiso, Chile",VAL,Mary & Adaline,SHP,Ship,52,3,,2,124,NA,FALSE
+12 Apr 51,"Valparaiso, Chile",VAL,Queen of Sheba,SHP,Ship,38,10,,2,125,NA,FALSE
+18 Apr 51,"Valparaiso, Chile",VAL,Aurora,SHP,Ship,50,11,,2,126,NA,FALSE
+19 Apr 51,"Valparaiso, Chile",VAL,Elida,BRQ,Barque,73,3,,2,127,NA,FALSE
+29 Mar 52,"Valparaiso, Chile",VAL,Abyssinia,BRQ,Barque,48,17,,3,128,NA,FALSE
+25 Apr 51,"Valparaiso, Chile",VAL,Audubon,SHP,Ship,49,11,,2,132,NA,FALSE
+3 May 51,"Valparaiso, Chile",VAL,Eliza,BRG,Brig,60,4,,2,136,NA,FALSE
+11 May 51,"Valparaiso, Chile",VAL,Toulon,BRQ,Barque,58,54,,2,141,NA,FALSE
+17 May 51,"Valparaiso, Chile",VAL,Valparaiso,BRQ,Barque,50,4,,2,142,NA,FALSE
+17 May 51,"Valparaiso, Chile",VAL,Sea Serpent,CLP,Clipper,45,125,,2,142,NA,FALSE
+8 Apr 52,"Valparaiso, Chile",VAL,Envelope,BRQ,Barque,NA,2,,3,142,NA,FALSE
+6 Aug 50,"Valparaiso, Chile",VAL,Polka,BRQ,Barque,63,1,,1,147,NA,FALSE
+21 May 51,"Valparaiso, Chile",VAL,North Star,SHP,Ship,45,36,,2,147,NA,FALSE
+25 May 51,"Valparaiso, Chile",VAL,Staghound,CLP,Clipper,42,7,,2,149,NA,FALSE
+20 May 52,"Valparaiso, Chile",VAL,Seaman’s Bride,CLP,Clipper,42,6,,1,157,NA,FALSE
+24 Jul 50,"Valparaiso, Chile",VAL,Sea Witch,,,38,7,,1,157,NA,FALSE
+22 Apr 52,"Valparaiso, Chile",VAL,Eclipse,CLP,Clipper,39,20,,3,158,NA,FALSE
+13 Jun 51,"Valparaiso, Chile",VAL,Anna,SHP,Ship,55,28,,2,161,NA,FALSE
+15 Jun 51,"Valparaiso, Chile",VAL,Southerner,BRQ,Barque,84,7,,2,163,NA,FALSE
+23 Jun 51,"Valparaiso, Chile",VAL,Caroline Clark,BRG,Brig,83,21,,2,165,NA,FALSE
+21 Jan 51,"Valparaiso, Chile",VAL,Vesta,BRG,Brig,44,19,,1,170,NA,FALSE
+1 Jul 51,"Valparaiso, Chile",VAL,Washington Irving,SHP,Ship,60,27,,2,170,NA,FALSE
+7 Jul 51,"Valparaiso, Chile",VAL,Guilford,BRQ,Barque,58,2,,2,173,NA,FALSE
+23 Jul 51,"Valparaiso, Chile",VAL,Battina,BRG,Brig,75,26,,2,179,NA,FALSE
+2 May 52,"Valparaiso, Chile",VAL,Satellite,SHP,Ship,53,13,,3,181,NA,FALSE
+4 Aug 51,"Valparaiso, Chile",VAL,Swea,BRQ,Barque,65,3,,2,185,NA,FALSE
+13 Jul 51,"Valparaiso, Chile",VAL,William,SHP,Ship,74,8,,2,185,NA,FALSE
+15 Aug 51,"Valparaiso, Chile",VAL,Union,SHP,Ship,60,20,,2,191,NA,FALSE
+16 Aug 51,"Valparaiso, Chile",VAL,Volant,BRG,Brig,60,5,,2,192,NA,FALSE
+16 Aug 51,"Valparaiso, Chile",VAL,Siberia,BRQ,Barque,56,11,,2,192,NA,FALSE
+24 May 52,"Valparaiso, Chile",VAL,Carib,BRQ,Barque,57,1,,3,198,NA,FALSE
+9 Sep 51,"Valparaiso, Chile",VAL,Eugenia,BRG,Brig,68,3,,2,201,NA,FALSE
+21 Sep 51,"Valparaiso, Chile",VAL,Martha,BRQ,Barque,56,116,,2,208,NA,FALSE
+24 Sep 51,"Valparaiso, Chile",VAL,George Washington,BRQ,Barque,73,7,,2,209,NA,FALSE
+28 May 52,"Valparaiso, Chile",VAL,Potsdam,SHP,Ship,58,1,,3,209,NA,FALSE
+28 Sep 51,"Valparaiso, Chile",VAL,Capitol,SHP,Ship,75,5,,2,211,NA,FALSE
+30 Sep 51,"Valparaiso, Chile",VAL,GIl Bas,BRG,Brig,70,2,,2,212,NA,FALSE
+3 Oct 51,"Valparaiso, Chile",VAL,Ville de Tonneins,SHP,Ship,67,6,,2,214,NA,FALSE
+17 Oct 51,"Valparaiso, Chile",VAL,Queen,BRQ,Barque,70,4,,2,225,NA,FALSE
+17 Oct 51,"Valparaiso, Chile",VAL,Eureka,SHP,Ship,45,2,,2,225,NA,FALSE
+16 Oct 51,"Valparaiso, Chile",VAL,Superbe,SHP,Ship,62,16,,2,225,NA,FALSE
+18 Oct 51,"Valparaiso, Chile",VAL,Southampton,STM,Steamer,23,NA,"No passengers listed, but 7 officers [not included in total]",2,229,NA,TRUE
+21 Oct 51,"Valparaiso, Chile",VAL,Daniel Ross,BRQ,Barque,56,5,,2,230,NA,FALSE
+19 Oct 51,"Valparaiso, Chile",VAL,Orpheus,SHP,Ship,61,5,,2,230,NA,FALSE
+31 Dec 50,"Sydney, Australia",SYD,Balmoral,BRQ,Barque,70,20,,1,10,NA,FALSE
+17 Aug 50,"Sydney, Australia",SYD,Constant,BRQ,Barque,111,4,,2,18,NA,FALSE
+17 Aug 50,"Sydney, Australia",SYD,Rosetta Joseph,BRQ,Barque,79,8,,2,18,NA,FALSE
+20 Sep 50,"Sydney, Australia",SYD,Backus,BRQ,Barque,188,6,Journey time is correct (and long),2,40,NA,FALSE
+30 Jul 50,"Sydney, Australia",SYD,Dispatch,BRG,Brig,85,2,,1,49,NA,FALSE
+11 Dec 50,"Sydney, Australia",SYD,Eleanor Lancaster,BRQ,Barque,104,15,,2,79,NA,FALSE
+25 Mar 51,"Sydney, Australia",SYD,Louisa Baillie,SHP,Ship,108,23,,2,119,NA,FALSE
+7 Jun 52,"Sydney, Australia",SYD,Speed,BRQ,Barque,91,75,,1,161,NA,FALSE
+12 Feb 52,"Sydney, N.S.W",SYD,Walter Claxton,BRQ,Barque,67,39,,3,76,NA,FALSE
+4 Jan 51,"Sydney, N.S.W",SYD,Maria,BRQ,Barque,86,22,,2,90,NA,FALSE
+16 Apr 51,"Sydney, N.S.W",SYD,Henry Kelsey,BRQ,Barque,103,3,,2,126,NA,FALSE
+22 Feb 52,"Sydney, N.S.W.",SYD,Home,BRQ,Barque,99,39,,3,83,NA,FALSE
+26 Jan 51,"Sydney, N.S.W.",SYD,Samuel Churchman,BRG,Brig,87,4,,2,94,NA,FALSE
+23 May 51,"Sydney, N.S.W.",SYD,Cameo,BRG,Brig,112,28,,2,149,NA,FALSE
+21 Apr 52,"Sydney, N.S.W.",SYD,Picard,BRG,Brig,NA,4,,3,158,NA,FALSE
+23 Apr 52,"Sydney, N.S.W.",SYD,Whiton,BRQ,Barque,70,16,,3,159,NA,FALSE
+17 Aug 51,"Sydney, N.S.W.",SYD,Robert Bowe,SHP,Ship,93,9,,2,192,NA,FALSE
+21 Aug 51,"Sydney, N.S.W.",SYD,Edgar,SHP,Ship,83,142,,2,196,NA,FALSE
+27 May 52,"Sydney, New South Wales",SYD,Gulnare,BRG,Brig,90,55,,3,207,NA,FALSE
+28 Jul 50,"Sydney, NSW",SYD,Laura,BRQ,Barque,92,12,,2,5,NA,FALSE
+11 May 52,Hongkong [sic],HKG,Robert Small,SHP,Ship,53,379,Passenger total includes “375 unidentified in steerage* *(Believed to be Chinese)” [Asterisk is Rasmussen’s],3,190,NA,FALSE
+24 Sep 50,Panama,PAN,New Orleans,STM,Steamer,17,111,,2,43,NA,TRUE
+20 Jun 50,Panama,PAN,Tennessee,STM,Steamer,21,343,,2,1,NA,TRUE
+14 Nov 51,Panama,PAN,Unicorn,STM,Steamer,28,157,,3,5,NA,TRUE
+9 Jan 51,Panama,PAN,Antelope,STM,Steamer,21,81,,1,8,NA,TRUE
+17 Nov 51,Panama,PAN,Oregon,STM,Steamer,18,337,,3,9,NA,TRUE
+12 Aug 50,Panama,PAN,Cachelot,SHP,Ship,68,67,“Compelled to put into Sandwich Islands for water”,2,12,NA,FALSE
+18 Nov 51,Panama,PAN,Monumental City,PRO,Propeller,30,315,,3,12,NA,TRUE
+14 Aug 50,Panama,PAN,Lota,BRQ,Barque,63,13,,2,14,NA,FALSE
+14 Aug 50,Panama,PAN,Northerner,STM,Steamer,16,379,One report stated 19 days. Stopped three days at Acapulco. “Many passengers ailing from slight attacks of Panama Fever”,2,14,NA,TRUE
+23 Jun 50,Panama,PAN,California,STM,Steamer,22,273,,1,19,NA,TRUE
+20 Aug 50,Panama,PAN,Magdela,BRQ,Barque,80,123,,2,19,NA,FALSE
+19 Aug 50,Panama,PAN,Sarah,BRQ,Barque,75,199,,2,19,NA,FALSE
+21 Aug 50,Panama,PAN,Republic,STM,Steamer,25,286,,2,20,NA,TRUE
+23 Aug 50,Panama,PAN,California,STM,Steamer,19,202,40 additional passengers boarded at San Diego,2,23,1,TRUE
+23 Aug 50,Panama,PAN,Ecuador,STM,Steamer,34,92,,2,25,NA,TRUE
+3 Dec 51,Panama,PAN,California,STM,Steamer,17.5,320,"2 deaths on Nov 29, one from fever",3,25,NA,TRUE
+29 Aug 50,Panama,PAN,Sarah and Eliza,SHP,Ship,122,175,,2,27,NA,FALSE
+4 Aug 50,Panama,PAN,Circassian,BRQ,Barque,52,94,,1,28,NA,FALSE
+2 Dec 51,Panama,PAN,New Orleans,STM,Steamer,18,420,,3,28,NA,TRUE
+22 May 52,Panama,PAN,Clarissa Andrews,SHP,Ship,63,40,,1,30,NA,FALSE
+4 Sep 50,Panama,PAN,Tenessee,STM,Steamer,18,76,,2,30,NA,TRUE
+7 Sep 50,Panama,PAN,Sarah Sands,STM,Steamer,30,287,,2,31,NA,TRUE
+7 Sep 50,Panama,PAN,Hungarian,BRG,Brig,46,23,,2,34,NA,FALSE
+15 Sep 50,Panama,PAN,Isthmus,STM,Steamer,22,82,,2,35,NA,TRUE
+12 Dec 51,Panama,PAN,Carolina,STM,Steamer,27,269,Two deaths of ‘Isthmus fever’,3,35,NA,TRUE
+23 May 51,Panama,PAN,Columbus,STM,Steamer,24.5,223,,1,38,NA,TRUE
+18 Sep 50,Panama,PAN,Change,BRQ,Barque,66,138,,2,38,NA,FALSE
+14 Dec 51,Panama,PAN,Tennessee,STM,Steamer,15,554,,3,39,NA,TRUE
+6 Aug 50,Panama,PAN,Columbus,STM,Steamer,21,225,"“Upon arrival in San Francisco put into quarantine due to having touched at cholera port. A passenger, Mortimer J. Smith, succeeded in getting ashore before the quarantine lifted. Many steerage passengers came on board in Panama with the Isthmus fever”",1,40,NA,TRUE
+22 Sep 50,Panama,PAN,Panama,STM,Steamer,19.5,212,,2,40,NA,TRUE
+22 May 52,Panama,PAN,Constitution,STM,Steamer,42,172,>10 boarded at Acapulco. 2 deaths on board from dysentary,1,42,NA,TRUE
+22 Sep 50,Panama,PAN,B. L. Allen,SCH,Schooner,40,21,,2,42,NA,FALSE
+18 Dec 51,Panama,PAN,Columbus,STM,Steamer,21,253,,3,43,NA,TRUE
+20 Dec 51,Panama,PAN,Undine,BRQ,Barque,76,75,"8 deaths, unstated cause",3,46,NA,FALSE
+7 Oct 50,Panama,PAN,Carolina,STM,Steamer,20,171,Outbreak of asiatic cholera,2,48,NA,TRUE
+21 May 52,Panama,PAN,Dudley,BRG,Brig,68,110,,1,50,NA,FALSE
+12 Oct 50,Panama,PAN,Columbus,STM,Steamer,23,75,,2,53,NA,TRUE
+18 Oct 50,Panama,PAN,Oregon,STM,Steamer,17,137,,2,55,NA,TRUE
+28 Jan 52,Panama,PAN,J. C. Legrange,BRG,Brig,61,73,,3,56,NA,FALSE
+22 Oct 50,Panama,PAN,Northener,STM,Steamer,15.5,128,>10 boarded from San Diego,2,57,1,TRUE
+2 Feb 52,Panama,PAN,B. L. Allen,CLP,Clipper,40,61,,3,58,NA,FALSE
+25 Oct 50,Panama,PAN,Antelope,STM,Steamer,24,34,,2,59,NA,TRUE
+3 Feb 52,Panama,PAN,Panama,STM,Steamer,21,483,,3,60,NA,TRUE
+31 Oct 50,Panama,PAN,Republic,STM,Steamer,22,40,,2,61,NA,TRUE
+7 Nov 50,Panama,PAN,Tenessee,STM,Steamer,20,67,,2,63,NA,TRUE
+8 Nov 50,Panama,PAN,Isthmus,STM,Steamer,21,53,,2,64,NA,TRUE
+6 Feb 52,Panama,PAN,Republic,STM,Steamer,21,367,,3,67,NA,TRUE
+9 Jan 52,Panama,PAN,Golden Gate,STM,Steamer,15,828,“Included in the list of passengers are 70 women and 50 children”,1,68,NA,TRUE
+21 Nov 50,Panama,PAN,California,STM,Steamer,19.5,215,,2,70,NA,TRUE
+11 Feb 52,Panama,PAN,Oregon,STM,Steamer,14.5,483,,3,72,NA,TRUE
+21 May 52,Panama,PAN,Golden Gate,STM,Steamer,12,1050,“Among which are 60 females and 30 children”,1,73,NA,TRUE
+2 Dec 50,Panama,PAN,Jane,BRG,Brig,50,6,,2,75,NA,FALSE
+8 Dec 50,Panama,PAN,Carolina,STM,Steamer,20,45,,2,76,NA,TRUE
+6 Dec 50,Panama,PAN,Columbus,STM,Steamer,20,95,,2,76,NA,TRUE
+11 Dec 50,Panama,PAN,New Orleans,STM,Steamer,24,109,,2,78,NA,TRUE
+11 Dec 50,Panama,PAN,Rhode Island,SHP,Ship,76,1,,2,79,NA,FALSE
+21 Jan 51,Panama,PAN,Goliah,STM,Steamer,20,13,,1,83,NA,TRUE
+17 Dec 50,Panama,PAN,Sarah Sands,STM,Steamer,25,74,,2,83,NA,TRUE
+28 Jul 50,Panama,PAN,Gustave,BRQ,Barque,85,111,,1,84,NA,FALSE
+22 Dec 50,Panama,PAN,Chester,BRQ,Barque,83,2,,2,85,NA,FALSE
+23 Dec 50,Panama,PAN,Colonel Tayloe,BRG,Brig,71,8,“suffered severely from the effects of a hurricane”,2,86,NA,FALSE
+28 Dec 50,Panama,PAN,Constitution,STM,Steamer,23,166,,2,86,NA,TRUE
+29 Dec 50,Panama,PAN,Northerner,STM,Steamer,19,16,>10 boarded from San Diego,2,88,1,TRUE
+26 Feb 52,Panama,PAN,California,STM,Steamer,16,46,,3,88,NA,TRUE
+2 Jan 51,Panama,PAN,Panama,STM,Steamer,28,96,,2,89,NA,TRUE
+12 Jul 50,Panama,PAN,Isthmus,STM,Steamer,23,288,,1,91,NA,TRUE
+8 Jan 51,Panama,PAN,Tenessee,STM,Steamer,20,91,,2,91,NA,TRUE
+23 Jan 51,Panama,PAN,Republic,STM,Steamer,20,82,,2,93,NA,TRUE
+14 Jan 52,Panama,PAN,Isthmus,STM,Steamer,22,306,,1,94,NA,TRUE
+26 Feb 52,Panama,PAN,Golden Gate,STM,Steamer,14,875,,3,95,NA,TRUE
+28 Feb 52,Panama,PAN,Comet,SCH,Schooner,54,46,,3,98,NA,FALSE
+5 Feb 51,Panama,PAN,Isthmus,STM,Steamer,22,49,,2,100,NA,TRUE
+14 Aug 50,Panama,PAN,Kingston,,,60,82,,1,102,NA,FALSE
+4 Mar 52,Panama,PAN,Monumental City,STM,Steamer,45,NA,> 10 boarded at San Diego,3,102,1,TRUE
+19 Feb 51,Panama,PAN,B. L. Allen,SCH,Schooner,56,22,,2,104,NA,FALSE
+15 Feb 51,Panama,PAN,Commodore Preble,STM,Steamer,45,19,,2,104,NA,TRUE
+5 Mar 52,Panama,PAN,New Orleans,STM,Steamer,18,473,,3,105,NA,TRUE
+24 Feb 51,Panama,PAN,Columbia,STM,Steamer,21,133,,2,106,NA,TRUE
+15 May 52,Panama,PAN,Margaret,BRG,Brig,110,143,,1,107,NA,FALSE
+20 May 52,Panama,PAN,Maria,,,44,94,,1,107,NA,FALSE
+23 May 51,Panama,PAN,Marianna,,,46,53,,1,108,NA,FALSE
+27 Feb 51,Panama,PAN,Carolina,STM,Steamer,22,102,,2,108,NA,TRUE
+7 Mar 52,Panama,PAN,Cabargo,BRQ,Barque,79,121,,3,108,NA,FALSE
+4 Mar 51,Panama,PAN,Tenessee,STM,Steamer,17,141,One person died of “congestion of the brain”,2,110,NA,TRUE
+6 May 51,Panama,PAN,New Orleans,STM,Steamer,18,118,,2,112,NA,TRUE
+9 Mar 51,Panama,PAN,Antelope,STM,Steamer,21,68,,2,113,NA,TRUE
+14 Mar 52,Panama,PAN,Tennessee,STM,Steamer,17,573,,3,115,NA,TRUE
+20 Mar 51,Panama,PAN,Florida,BRQ,Barque,45,8,,2,116,NA,FALSE
+21 Mar 51,Panama,PAN,Panama,STM,Steamer,20,133,,2,116,NA,TRUE
+21 Mar 51,Panama,PAN,Columbus,STM,Steamer,20,136,,2,118,NA,TRUE
+2 Apr 51,Panama,PAN,Union,STM,Steamer,30,117,,2,119,NA,TRUE
+4 Apr 51,Panama,PAN,Trescott,SHP,Ship,36,3,,2,120,NA,FALSE
+9 Apr 51,Panama,PAN,Isthmus,STM,Steamer,24.5,85,,2,122,NA,TRUE
+10 Apr 51,Panama,PAN,Sarah Sands,STM,Steamer,33,114,>10 from Acapulco,2,123,1,TRUE
+19 Apr 51,Panama,PAN,Republic,STM,Steamer,19,274,,2,127,NA,TRUE
+4 Aug 50,Panama,PAN,Ocean,BRK,Bark,63,3,,1,128,NA,FALSE
+1 Apr 52,Panama,PAN,Panama,STM,Steamer,20,543,One death from dysentery. >10 boarded from wreck of North America at Acapulco,3,129,1,TRUE
+23 Apr 51,Panama,PAN,California,STM,Steamer,21.5,203,,2,131,NA,TRUE
+20 Jul 50,Panama,PAN,Oregon,STM,Steamer,19,309,,1,133,NA,TRUE
+20 Jan 51,Panama,PAN,Oregon,STM,Steamer,16,69,>10 boarded at San Diego and Monterey,1,135,1,TRUE
+3 May 51,Panama,PAN,New Orleans,STM,Steamer,18,156,,2,135,NA,TRUE
+1 Apr 52,Panama,PAN,Fremont,STM,Steamer,24,194,,3,135,NA,TRUE
+2 Apr 52,Panama,PAN,Aurora,SHP,Ship,70,5,,3,136,NA,FALSE
+4 May 51,Panama,PAN,Jane,STM,Steamer,58,40,,2,137,NA,TRUE
+5 May 51,Panama,PAN,Northerner,STM,Steamer,19,296,,2,137,NA,TRUE
+3 Apr 51,Panama,PAN,Oregon,STM,Steamer,16.5,249,,1,138,NA,TRUE
+5 Apr 52,Panama,PAN,Eliza Taylor,BRG,Brig,80,22,,3,138,NA,FALSE
+7 Apr 52,Panama,PAN,Oregon,STM,Steamer,15.5,504,>10 boarded at Acapulco from the wreck of the N America,3,139,1,TRUE
+20 May 51,Panama,PAN,Tennessee,STM,Steamer,19,377,,2,143,NA,TRUE
+6 Jul 50,Panama,PAN,Panama,STM,Steamer,18,287,,1,144,NA,TRUE
+14 Apr 52,Panama,PAN,Northerner,STM,Steamer,15,626,14 people boarded at San Diego,3,146,1,TRUE
+21 May 51,Panama,PAN,Ruth,BRG,Brig,63,13,,2,148,NA,FALSE
+29 May 51,Panama,PAN,Antelope,STM,Steamer,43,241,,2,150,NA,TRUE
+1 Jun 51,Panama,PAN,Panama,STM,Steamer,16,99,"“A good deal of sickness among the passengers during the voyage, principally fever and dysentery”",2,153,NA,TRUE
+15 Apr 52,Panama,PAN,Isthmus,STM,Steamer,30,354,19 boarded at Acapulco,3,153,1,TRUE
+6 Jun 51,Panama,PAN,Isthmus,STM,Steamer,22.5,200,,2,156,NA,TRUE
+21 May 52,Panama,PAN,Sir Charles Napier,SHP,Ship,90,211,"“Thirty-six passengers died on the passenge. When one week out of Panama the measles, dysentery and fever broke out. Disease continued for about 3 weeks. A succession of calms, common near the Equator, and the excessive heat may have been responsible for the toll”",1,158,NA,FALSE
+12 Jun 51,Panama,PAN,Gold Hunter,STM,Steamer,NA,163,One case of smallpox on board,2,158,NA,TRUE
+27 Apr 52,Panama,PAN,Ceres,BRG,Brig,63,96,,3,161,NA,FALSE
+13 Jun 51,Panama,PAN,E. Randall,BRG,Brig,80,40,,2,162,NA,FALSE
+19 Jun 51,Panama,PAN,Oregon,STM,Steamer,17,196,,2,163,NA,TRUE
+24 Jun 51,Panama,PAN,Republic,STM,Steamer,24,211,,2,166,NA,TRUE
+28 Apr 52,Panama,PAN,Winfield Scott,STM,Steamer,27,743,,3,166,NA,TRUE
+26 Jun 51,Panama,PAN,Union,STM,Steamer,26,193,,2,167,NA,TRUE
+3 Apr 51,Panama,PAN,Unidine,BRQ,Barque,41,19,,1,169,NA,FALSE
+1 Jul 51,Panama,PAN,Sarah Sands,STM,Steamer,28,44,,2,170,NA,TRUE
+2 Jul 51,Panama,PAN,Pacific,STM,Steamer,17,73,,2,171,NA,TRUE
+7 Jul 51,Panama,PAN,Northerner,STM,Steamer,20,321,,2,172,NA,TRUE
+28 Apr 52,Panama,PAN,Dorothea Ernestine,BRG,Brig,64,52,,3,172,NA,FALSE
+11 Jul 51,Panama,PAN,Independence,STM,Steamer,22,19,,2,174,NA,TRUE
+29 Apr 52,Panama,PAN,Blonde,BRQ,Barque,67,287,,3,175,NA,FALSE
+30 Apr 52,Panama,PAN,New Orleans,STM,Steamer,19,544,,3,175,NA,TRUE
+20 Jul 51,Panama,PAN,Tenessee,STM,Steamer,19.5,244,>10 boarded during intermediate stops,2,178,1,TRUE
+29 Jul 51,Panama,PAN,Fremont,STM,Steamer,27,68,,2,181,NA,TRUE
+3 Aug 51,Panama,PAN,California,STM,Steamer,16,120,,2,184,NA,TRUE
+6 Aug 51,Panama,PAN,Carolina,STM,Steamer,20,93,,2,185,NA,TRUE
+10 May 52,Panama,PAN,Tennessee,STM,Steamer,14,645,,3,185,NA,TRUE
+8 Aug 51,Panama,PAN,Constitution,STM,Steamer,24,159,,2,187,NA,TRUE
+19 Aug 51,Panama,PAN,Panama,STM,Steamer,18,243,,2,192,NA,TRUE
+20 Aug 51,Panama,PAN,Columbus,STM,Steamer,20,156,,2,194,NA,TRUE
+30 Aug 51,Panama,PAN,Pacific,STM,Steamer,16,116,,2,197,NA,TRUE
+24 May 52,Panama,PAN,Brutus,SHP,Ship,57,162,,3,198,NA,FALSE
+8 Sep 51,Panama,PAN,Northerner,STM,Steamer,22,303,,2,199,NA,TRUE
+18 Sep 51,Panama,PAN,Oregon,STM,Steamer,16.5,250,,2,204,NA,TRUE
+27 May 52,Panama,PAN,Panama,STM,Steamer,17,391,,3,204,NA,TRUE
+19 Sep 51,Panama,PAN,New Orleans,STM,Steamer,18,180,,2,206,NA,TRUE
+26 Sep 51,Panama,PAN,Isthmus,STM,Steamer,22,11,,2,210,NA,TRUE
+5 Oct 51,Panama,PAN,California,STM,Steamer,17.3,219,,2,214,NA,TRUE
+15 Jun 52,Panama,PAN,Winfield Scott,STM,Steamer,14,487,,3,214,NA,TRUE
+6 Oct 51,Panama,PAN,Republic,STM,Steamer,21,184,>10 from Acapulco,2,216,1,TRUE
+19 Jun 52,Panama,PAN,Northener,STM,Steamer,19,586,Dysentary on board,3,217,NA,TRUE
+17 Oct 51,Panama,PAN,Tenessee,STM,Steamer,15.5,358,,2,225,NA,TRUE
+27 Oct 51,Panama,PAN,Constitution,STM,Steamer,25,227,,2,232,NA,TRUE
+4 Nov 51,Panama,PAN,Panama,STM,Steamer,18,448,"“Since leaving Acapulco had a great deal of sickness on board- 7 deaths from fever, and a great many sick on board.’ Name of dead are listed; range of ages”",2,237,NA,TRUE
+1 Jan 52,Panama via way ports,PAN,Northerner,STM,Steamer,15,556,,1,125,NA,TRUE
+12 Jun 52,Oregon Territory,ORE,Success,BRQ,Barque,3.5,4,,3,214,NA,FALSE
+12 Dec 51,"Astoria, O. T.",ORE,Columbia,STM,Steamer,3,157,Passenger total includes “119 U.S. Troops”,3,37,NA,TRUE
+20 Feb 51,"Astoria, O. T.",ORE,Grecian,BRG,Brig,7,5,,2,104,NA,FALSE
+28 Feb 51,"Astoria, O. T.",ORE,Gold Hunter,STM,Steamer,2.5,32,,2,109,NA,TRUE
+19 Mar 51,"Astoria, O. T.",ORE,Merchantman,SCH,Schooner,10,5,,2,116,NA,FALSE
+11 Apr 51,"Astoria, O. T.",ORE,Columbia,STM,Steamer,2.5,4,,2,125,NA,TRUE
+17 Apr 51,"Astoria, O. T.",ORE,Goliah,STM,Steamer,2.5,23,,2,126,NA,TRUE
+1 May 51,"Astoria, O. T.",ORE,Columbia,STM,Steamer,2.5,3,,2,133,NA,TRUE
+4 Apr 52,"Astoria, O. T.",ORE,Vicennes,SLP,Sloop-o-War,4,0,16 ship officers listed [not in passenger total],3,136,NA,FALSE
+14 May 51,"Astoria, O. T.",ORE,Columbia,STM,Steamer,2.5,19,,2,142,NA,TRUE
+14 Apr 52,"Astoria, O. T.",ORE,Williamantic,SCH,Schooner,8,4,,3,152,NA,FALSE
+20 Apr 52,"Astoria, O. T.",ORE,Desdemona,BRQ,Barque,6,1,,3,157,NA,FALSE
+27 Aug 51,"Astoria, O. T.",ORE,Columbia,STM,Steamer,3,12,,2,196,NA,TRUE
+10 Sep 51,"Astoria, O. T.",ORE,Matthew Vassar,SCH,Schooner,4,5,,2,202,NA,FALSE
+15 Sep 51,"Astoria, O. T.",ORE,Columbia,STM,Steamer,2.5,15,,2,203,NA,TRUE
+27 Sep 51,"Astoria, O. T.",ORE,Columbia,STM,Steamer,3,38,,2,210,NA,TRUE
+11 Oct 51,"Astoria, O. T.",ORE,Grecian,BRG,Brig,14,5,,2,221,NA,FALSE
+13 Oct 51,"Astoria, O. T.",ORE,Columbia,STM,Steamer,2.5,42,,2,221,NA,TRUE
+30 Mar 51,"Astoria, O.T.",ORE,Columbia,STM,Steamer,2,8,,1,33,NA,TRUE
+23 Jul 50,"Astoria, Oregon",ORE,Carolina,STM,Steamer,2,12,,1,24,NA,TRUE
+26 Sep 50,"Astoria, Oregon",ORE,Emma,BRQ,Barque,8,1,,2,44,NA,FALSE
+9 Jun 52,"Astoria, Oregon",ORE,Fremont,STM,Steamer,2.5,12,,1,59,NA,TRUE
+28 Sep 50,"Astoria, Oregon",ORE,Sea Gull,PRO,Propeller,5,36,,2,60,NA,TRUE
+28 Sep 50,"Astoria, Oregon",ORE,Oregon,STM,Steamer,3,25,“Several of these passengers were residents of San Francisco and had been to Astoria on a pleasure trip.”,2,60,NA,TRUE
+2 Dec 50,"Astoria, Oregon",ORE,California,STM,Steamer,7,28,,2,75,NA,TRUE
+17 Dec 50,"Astoria, Oregon",ORE,Gold Hunter,STM,Steamer,3,25,,2,84,NA,TRUE
+8 Feb 51,"Astoria, Oregon",ORE,Gold Hunter,STM,Steamer,4,37,,2,101,NA,TRUE
+29 Jun 51,"Astoria, Oregon",ORE,Columbia,STM,Steamer,3,23,,2,169,NA,TRUE
+15 Feb 52,"Astoria, Oregon Terr.",ORE,Columbia,STM,Steamer,3,58,,3,77,NA,TRUE
+24 Feb 52,"Astoria, Oregon Terr.",ORE,George & Martha,BRQ,Barque,3,3,,3,85,NA,FALSE
+13 Aug 51,"Astoria, Oregon Terr.",ORE,Columbia,STM,Steamer,3,20,,2,190,NA,TRUE
+28 Dec 51,Columbia,ORE,Columbia,STM,Steamer,5,51,,3,50,NA,TRUE
+7 Aug 50,"Ft. Vancouver, Oregon",ORE,Carolina,STM,Steamer,2.5,22,,1,24,NA,TRUE
+29 Dec 51,"Gardiner, O. T.",ORE,Fawn,BRG,Brig,11,4,,3,52,NA,FALSE
+23 May 52,"Kowes River, O. T.",ORE,Nassau,SCH,Schooner,4,2,"And crew (unidentified) of the schooner “Lincoln”’ [number not given, not included in total]",1,117,NA,FALSE
+13 Jan 52,Oregon,ORE,Columbia,STM,Steamer,3,32,,1,32,NA,TRUE
+29 Sep 50,Oregon,ORE,Panama,STM,Steamer,2,24,,2,44,NA,TRUE
+22 May 52,Oregon,ORE,Emma Preston,BRG,Brig,6,4,,1,55,NA,FALSE
+23 May 52,Oregon,ORE,Fremont,STM,Steamer,3,28,,1,59,NA,TRUE
+9 Jun 52,Oregon,ORE,Vandalia,BRG,Brig,7,6,,1,169,NA,FALSE
+5 Oct 51,Oregon,ORE,Keoka,BRQ,Barque,10,3,,2,218,NA,FALSE
+1 Feb 51,Oregon (Astoria),ORE,Oregon,STM,Steamer,4,4,,2,98,NA,TRUE
+12 Nov 51,Oregon Territory,ORE,Columbia,STM,Steamer,3,75,,3,2,NA,TRUE
+13 Nov 51,Oregon Territory,ORE,Ocean Bird,BRQ,Barque,8,6,,3,5,NA,FALSE
+15 Nov 51,Oregon Territory,ORE,New World,BRQ,Barque,9,11,,3,7,NA,FALSE
+20 Nov 51,Oregon Territory,ORE,Matthew Vassar,SCH,Schooner,6,6,,3,19,NA,FALSE
+30 Nov 51,Oregon Territory,ORE,Columbia,STM,Steamer,3,74,,3,24,NA,TRUE
+9 Dec 51,Oregon Territory,ORE,Anna E. Maine,BRG,Brig,10,6,,3,34,NA,FALSE
+13 Dec 51,Oregon Territory,ORE,Quadratus,SCH,Schooner,16,4,,3,37,NA,FALSE
+17 Dec 51,Oregon Territory,ORE,Juliette,SCH,Schooner,7,4,,3,42,NA,FALSE
+5 Sep 50,Oregon Territory,ORE,California,STM,Steamer,3,26,,2,51,NA,TRUE
+28 Dec 51,Oregon Territory,ORE,Tarquina,BRG,Brig,13,4,,3,51,NA,FALSE
+28 Dec 51,Oregon Territory,ORE,Louisiana,BRQ,Barque,16,5,,3,51,NA,FALSE
+19 Jan 51,Oregon Territory,ORE,J. F. K. Mansfield,SCH,Schooner,8,1,,3,54,NA,FALSE
+15 Jan 51,Oregon Territory,ORE,Sea Gull,STM,Steamer,7,28,,3,54,NA,TRUE
+28 Jan 52,Oregon Territory,ORE,Columbia,STM,Steamer,NA,63,,3,56,NA,TRUE
+7 Feb 52,Oregon Territory,ORE,Grecian,BRG,Brig,7,4,,3,70,NA,FALSE
+7 Feb 52,Oregon Territory,ORE,Vesuvius,BRQ,Barque,9,1,,3,71,NA,FALSE
+17 Feb 52,Oregon Territory,ORE,Matthew Vassar,SCH,Schooner,6,1,,3,80,NA,FALSE
+20 Feb 52,Oregon Territory,ORE,Venezuela,BRG,Brig,7,3,,3,82,NA,FALSE
+20 Feb 52,Oregon Territory,ORE,New World,BRQ,Barque,7,1,,3,82,NA,FALSE
+26 Feb 52,Oregon Territory,ORE,Mary Melville,BRQ,Barque,4,5,,3,89,NA,FALSE
+20 Mar 52,Oregon Territory,ORE,Quickstep,STM,Steamer,5,22,,3,119,NA,TRUE
+22 Mar 52,Oregon Territory,ORE,Emma Preston,BRG,Brig,3,1,,3,120,NA,FALSE
+24 Mar 52,Oregon Territory,ORE,Sussex,BRG,Brig,8,1,,3,121,NA,FALSE
+28 Mar 52,Oregon Territory,ORE,Columbia,STM,Steamer,2.5,49,,3,127,NA,TRUE
+2 May 51,Oregon Territory,ORE,Ocean Bird,BRQ,Barque,7,10,,2,135,NA,FALSE
+14 Apr 52,Oregon Territory,ORE,Columbia,STM,Steamer,2.5,30,,3,152,NA,TRUE
+13 Jun 51,Oregon Territory,ORE,Sea Gull,STM,Steamer,5,43,,2,160,NA,TRUE
+30 Apr 52,Oregon Territory,ORE,Columbia,STM,Steamer,4,31,,3,179,NA,TRUE
+2 May 52,Oregon Territory,ORE,M. Vassar,SCH,Schooner,10,2,,3,181,NA,FALSE
+29 Jul 51,Oregon Territory,ORE,Columbia,STM,Steamer,NA,24,,2,182,NA,TRUE
+7 May 52,Oregon Territory,ORE,Grecian,BRG,Brig,4,4,,3,182,NA,FALSE
+12 May 52,Oregon Territory,ORE,Cyclops,BRG,Brig,5,3,,3,190,NA,FALSE
+23 Aug 51,Oregon Territory,ORE,Sea Gull,STM,Steamer,8,20,,2,196,NA,TRUE
+29 May 52,Oregon Territory,ORE,Mary Melville,BRQ,Barque,5,4,,3,209,NA,FALSE
+31 May 52,Oregon Territory,ORE,Levret,BRG,Brig,5,5,,3,211,NA,FALSE
+9 Jun 52,Oregon Territory,ORE,Tarquina,BRG,Brig,4,5,,3,213,NA,FALSE
+13 Oct 51,Oregon Territory,ORE,Tarquina,BRG,Brig,7,11,,2,222,NA,FALSE
+20 Oct 51,Oregon Territory,ORE,Mary Melville,BRQ,Barque,9,12,,2,230,NA,FALSE
+9 Nov 51,"Port Orford, O.T.",ORE,Sea Gull,STM,Steamer,4,30,"“And Captain Hasty with the crew of the steamer ‘Chesapeake’” [number not given, not included in total]",3,2,NA,TRUE
+27 Oct 51,"Port Orford, O.T.",ORE,Columbia,STM,Steamer,2.5,66,"And several unidentified Chinese’ [number not given, not included in total]",2,234,NA,TRUE
+26 Nov 50,"Portland, O. T.",ORE,Seguin,BRG,Brig,12,2,,2,73,NA,FALSE
+29 Feb 52,"Portland, O. T.",ORE,Columbia,STM,Steamer,2.5,45,,3,99,NA,TRUE
+15 Mar 51,"Portland, O. T.",ORE,Sea Gull,STM,Steamer,5,18,,2,115,NA,TRUE
+5 Apr 51,"Portland, O. T.",ORE,Sea Gull,STM,Steamer,4,40,,2,120,NA,TRUE
+21 Apr 52,"Portland, O. T.",ORE,J. B. Lunt,BRG,Brig,8,4,,3,158,NA,FALSE
+17 Sep 51,"Portland, O. T.",ORE,Sea Gull,PRO,Propeller,5,35,,2,204,NA,TRUE
+26 Jan 51,"Portland, O. T. ",ORE,Ocean Bird,BRQ,Barque,10,2,,2,94,NA,FALSE
+14 Mar 52,"Portland, O. T. ",ORE,Columbia,STM,Steamer,3,47,,3,118,NA,TRUE
+17 Jan 51,"Portland, Oregon",ORE,Sea Gull,STM,Steamer,5,27,,1,156,NA,TRUE
+14 May 52,"Umpqua River, O.T.",ORE,Oretoleon,SCH,Schooner,3,3,,3,194,NA,FALSE
+31 Aug 51,"Umpqua River, O.T.",ORE,Ortolien,SCH,Schooner,3,6,,2,198,NA,FALSE
+10 Oct 51,"Umpqua River, O.T.",ORE,Almeda,BRG,Brig,10,5,,2,220,NA,FALSE
+24 May 52,"Umpqua, O.T.",ORE,Fawn,BRG,Brig,3,4,,3,198,NA,FALSE
+7 Nov 51,New York,NYC,Rockland,SHP,Ship,150,9,,3,1,NA,FALSE
+15 Nov 51,New York,NYC,Telegraph,CLP,Clipper,125,1,,3,6,NA,FALSE
+30 Jul 50,New York,NYC,Anson,,,176,2,,1,7,NA,FALSE
+10 Aug 50,New York,NYC,Sea Gull,STM,Steamer,180,5,In coming up San Francisco got athwart the hawse of ship ‘Cheshire’,2,8,NA,TRUE
+18 Nov 51,New York,NYC,Typhon,SLP,Sloop-o-War,107,5,,3,10,NA,FALSE
+12 Aug 50,New York,NYC,Clarissa Andrews,SHP,Ship,181,1,,2,11,NA,FALSE
+18 Nov 51,New York,NYC,Eagle,CLP,Clipper,128,11,,3,11,NA,FALSE
+19 Nov 51,New York,NYC,Golden Gate,STM,Steamer,65,458,"Via Rio. 5 deaths after Panama, one from ‘Panama Fever’. Records date/time of all intermediate stops. First voyage for this steamer",3,15,NA,TRUE
+2 Dec 51,New York,NYC,Valparaiso,SHP,Ship,160,2,,3,27,NA,FALSE
+7 Aug 50,New York,NYC,Chesapeake,STM,Steamer,364,27,Condemned in Humboldt bay Nov 1851 (Rasmussen 3:1),1,27,NA,TRUE
+13 Jan 52,New York,NYC,Comet,CLP,Clipper,100,15,,1,32,NA,FALSE
+7 Sep 50,New York,NYC,Elizabeth,BRQ,Barque,178,12,,2,33,NA,FALSE
+6 Jun 50,New York,NYC,Columbus,STM,Steamer,114,347,“Vessel crowded beyond limits of comfort”,1,34,NA,TRUE
+1 Oct 50,New York,NYC,Como,BRQ,Barque,168,2,,2,46,NA,FALSE
+10 Oct 50,New York,NYC,Albania,SHP,Ship,190,3,,2,52,NA,FALSE
+20 Oct 50,New York,NYC,Jane Doden,BRQ,Barque,190,1,,2,57,NA,FALSE
+28 Jan 52,New York,NYC,Wild Pigeon,CLP,Clipper,103,2,,3,57,NA,FALSE
+5 Feb 52,New York,NYC,Golden Gate,CLP,Clipper,113,5,,3,63,NA,FALSE
+10 Nov 50,New York,NYC,Shakspeare [sic],SHP,Ship,272,8,,2,65,NA,FALSE
+18 Nov 50,New York,NYC,Coriolanus,SHP,Ship,218,2,,2,69,NA,FALSE
+23 Nov 50,New York,NYC,La Bella Francesa,SCH,Schooner,142,3,,2,72,NA,FALSE
+23 Nov 50,New York,NYC,Caroline Reed,SHP,Ship,142,9,,2,72,NA,FALSE
+29 Nov 50,New York,NYC,Mandarin,SHP,Ship,126,3,,2,73,NA,FALSE
+1 Dec 50,New York,NYC,Mendora,BRQ,Barque,263,6,,2,74,NA,FALSE
+12 Dec 50,New York,NYC,Haidee,SHP,Ship,187,22,,2,79,NA,FALSE
+11 Dec 50,New York,NYC,Rhode Island,SHP,Ship,245,1,,2,79,NA,FALSE
+18 Dec 50,New York,NYC,Venezuela,BRG,Brig,223,1,Vessel lost rudder on way to Valparaiso (!),2,84,NA,FALSE
+26 Jan 51,New York,NYC,Desdemona,SHP,Ship,196,10,,2,95,NA,FALSE
+26 Jan 51,New York,NYC,St Louis,SHP,Ship,162,8,,2,95,NA,FALSE
+27 Jan 51,New York,NYC,Alert,BRG,Brig,220,2,,2,96,NA,FALSE
+29 Jan 51,New York,NYC,Marcella,BRQ,Barque,210,8,,2,97,NA,FALSE
+29 Feb 52,New York,NYC,Lexington,STR,Storeship [sail],217,0,No passengers but 9 officers listed [not included in total],3,98,NA,FALSE
+6 Aug 50,New York,NYC,John Kendall,BRG,Brig,170,3,,1,99,NA,FALSE
+3 Feb 51,New York,NYC,Jamestown,SHP,Ship,128,8,,2,99,NA,FALSE
+22 Feb 51,New York,NYC,Mary,BRQ,Barque,200,2,,2,105,NA,FALSE
+22 Feb 51,New York,NYC,Ohio,SHP,Ship,212,2,,2,105,NA,FALSE
+12 Mar 51,New York,NYC,Helena,SHP,Ship,132,9,,2,114,NA,FALSE
+19 Mar 51,New York,NYC,Roscoe,SHP,Ship,160,22,,2,116,NA,FALSE
+11 Jul 50,New York,NYC,New World,STM,Steamer,152,229,"“Touched Rio de Janeiro, Brazil when Yellow Fever was raging. Lost 15 of the crew by the fever”",1,117,NA,TRUE
+10 Apr 51,New York,NYC,Lantio,SHP,Ship,120,4,,2,124,NA,FALSE
+10 Apr 51,New York,NYC,Mary & Adaline,SHP,Ship,195,3,,2,124,NA,FALSE
+11 Apr 51,New York,NYC,Robert Hooper,SHP,Ship,153,5,,2,125,NA,FALSE
+11 Apr 51,New York,NYC,Samuel Appleton,SHP,Ship,122,8,,2,125,NA,FALSE
+18 Apr 51,New York,NYC,Bothnia,SHP,Ship,147,20,,2,126,NA,FALSE
+25 Apr 51,New York,NYC,Audubon,SHP,Ship,150,11,,2,132,NA,FALSE
+5 May 51,New York,NYC,Uriel,SHP,Ship,156,11,,2,140,NA,FALSE
+18 May 51,New York,NYC,Maria,BRQ,Barque,144,2,,2,143,NA,FALSE
+13 Apr 52,New York,NYC,Invincible,CLP,Clipper,114,17,,3,146,NA,FALSE
+20 May 51,New York,NYC,Eclipse,CLP,Clipper,124,11,,2,147,NA,FALSE
+21 May 51,New York,NYC,Sea Nymph,CLP,Clipper,157,1,,2,147,NA,FALSE
+25 May 51,New York,NYC,Staghound,CLP,Clipper,113,7,,2,149,NA,FALSE
+30 May 51,New York,NYC,Gray Feather,SHP,Ship,138,2,,2,152,NA,FALSE
+30 Jul 50,New York,NYC,Saratoga,,,175,68,,1,155,NA,FALSE
+15 Apr 52,New York,NYC,Hurricane,CLP,Clipper,120,8,,3,155,NA,FALSE
+18 Apr 52,New York,NYC,Crescent,SHP,Ship,140,8,,3,156,NA,FALSE
+20 May 52,New York,NYC,Seaman’s Bride,CLP,Clipper,152,6,,1,157,NA,FALSE
+24 Jul 50,New York,NYC,Sea Witch,,,97,7,“Quickest trip on record to date…for sail or steam”,1,157,NA,FALSE
+8 Jun 51,New York,NYC,Daniel Sharp,SHP,Ship,150,8,,2,158,NA,FALSE
+8 Jun 51,New York,NYC,Elsinore,SHP,Ship,195,17,,2,158,NA,FALSE
+22 Apr 52,New York,NYC,Eclipse,CLP,Clipper,104,20,,3,158,NA,FALSE
+28 Apr 52,New York,NYC,Winfield Scott,STM,Steamer,93,743,,3,166,NA,TRUE
+1 Jul 51,New York,NYC,Washington Irving,SHP,Ship,209,27,,2,170,NA,FALSE
+30 Jul 50,New York,NYC,Winthrop,BRG,Brig,141,5,,1,171,NA,FALSE
+1 Jul 51,New York,NYC,Oregon,BRQ,Barque,160,5,,2,171,NA,FALSE
+7 Jul 51,New York,NYC,Guilford,BRQ,Barque,192,2,,2,173,NA,FALSE
+1 May 52,New York,NYC,John M. Mayo,SHP,Ship,138,5,,3,180,NA,FALSE
+30 Jul 51,New York,NYC,Architect,SHP,Ship,129,3,,2,182,NA,FALSE
+31 Jul 51,New York,NYC,Sea Bird,STM,Steamer,240,76,"Vessel ran ashore on San Martine Island, had to be repaired",2,182,NA,TRUE
+9 Aug 51,New York,NYC,Arthur,BRQ,Barque,200,4,,2,189,NA,FALSE
+11 Aug 51,New York,NYC,Witchcraft,SHP,Ship,127,3,,2,189,NA,FALSE
+31 Aug 51,New York,NYC,Flying Cloud,SHP,Ship,89,10,“89 days from New York — the shortest time ever made”,2,198,NA,FALSE
+16 Oct 51,New York,NYC,Joshua Bates,SHP,Ship,151,2,,2,225,NA,FALSE
+17 Oct 51,New York,NYC,Eureka,SHP,Ship,170,2,,2,226,NA,FALSE
+29 Oct 51,New York,NYC,Challenge,SHP,Ship,102,4,,2,235,NA,FALSE
+1 Aug 50,"New York, N.Y.",NYC,Adirondack,,,200,4,,1,2,NA,FALSE
+3 Aug 50,"New York, N.Y.",NYC,Alpha,BRK,Bark,169,29,,1,3,NA,FALSE
+5 Aug 50,"New York, N.Y.",NYC,Rose Standish,,,155,5,,2,7,NA,FALSE
+4 Sep 50,"New York, N.Y.",NYC,Detroit,BRG,Brig,270,2,Time backcalculated from the note “9 months from New York”,2,31,NA,FALSE
+7 Oct 50,"New York, N.Y.",NYC,Inca,SHP,Ship,183,7,,2,51,NA,FALSE
+1 Feb 52,"New York, N.Y.",NYC,Trade Wind,CLP,Clipper,121,1,,3,58,NA,FALSE
+17 Feb 52,"New York, N.Y.",NYC,Celestial,CLP,Clipper,106,3,,3,80,NA,FALSE
+21 Jan 51,"New York, N.Y.",NYC,Goliah,STM,Steamer,279,13,,1,83,NA,TRUE
+8 Jan 51,"New York, N.Y.",NYC,White Squall,,,124,1,,2,90,NA,FALSE
+20 May 52,"New York, N.Y.",NYC,Mechanic’s Own,,,150,28,,1,111,NA,FALSE
+10 Apr 51,"New York, N.Y.",NYC,Genessee,SHP,Ship,195,5,,2,124,NA,FALSE
+17 May 51,"New York, N.Y.",NYC,Sea Serpent,CLP,Clipper,125,6,,2,142,NA,FALSE
+6 Aug 50,"New York, N.Y.",NYC,Polka,BRQ,Barque,211,1,,1,147,NA,FALSE
+29 Jul 50,"New York, N.Y.",NYC,Powhatan,,,228,160,,1,147,NA,FALSE
+29 Jul 50,"New York, N.Y.",NYC,Providence,SCH,Schooner,279,6,,1,148,NA,FALSE
+24 Jun 50,"New York, N.Y.",NYC,Wisconsin,,,121,19,,1,171,NA,FALSE
+22 May 52,"New York, N.Y.",NYC,Wisconsin,SHP,Ship,118,8,,1,172,NA,FALSE
+18 Oct 51,"New York, N.Y.",NYC,St Thomas,SHP,Ship,156,10,,2,229,NA,FALSE
+12 Aug 50,"New York, New York",NYC,Falmouth,SCH,Schooner,146,3,"Rasmussen gives NYC as origin but states: “One source states the vessel was from Baltimore, Maryland”",2,11,NA,FALSE
+27 Aug 50,"New York, New York",NYC,Christina,SHP,Ship,148,103,,2,26,NA,FALSE
+17 Sep 50,"New York, New York",NYC,Sidi Hamlet,BRG,Brig,174,2,,2,36,NA,FALSE
+17 Sep 50,"New York, New York",NYC,Isaac Allerton,SHP,Ship,150,10,,2,36,NA,FALSE
+18 Sep 50,"New York, New York",NYC,Orleans,BRG,Brig,270,34,Time backcalculated from the note “9 months from New York”,2,38,NA,FALSE
+24 Sep 50,"New York, New York",NYC,New Orleans,STM,Steamer,210,111,“Via intermediate ports”,2,43,NA,TRUE
+30 Sep 50,"New York, New York",NYC,Primoguet,BRQ,Barque,283,11,“Via intermediate ports”,2,45,NA,FALSE
+24 Jul 50,"New York, New York",NYC,Kensington,,,169,2,,1,100,NA,FALSE
+12 Oct 50,"Sag Harbor, New York",NYC,Robert Bruce,SCH,Schooner,162,4,,2,53,NA,FALSE
+27 Dec 51,Hongkong [sic],HKG,Jackin,BRG,Brig,70,102,“100 unidentified Chinese in steerage”,3,49,NA,FALSE
+9 Jun 52,Hongkong [sic],HKG,Iowa,,,54,377,Passenger total includes “377 unidentified in steerage (steerage probably Chinese)”,1,89,NA,FALSE
+8 Feb 51,Hongkong [sic],HKG,Freyer,BRQ,Barque,57,4,,2,100,NA,FALSE
+31 Jul 50,"Hongkong [sic], China ",HKG,George Pollock,,,56,47,Total includes “43 unidentified Chinese”,2,6,NA,FALSE
+8 Jun 52,"Hongkong [sic], China ",HKG,Exchange,,,53,258,Passenger total includes “257 unidentified Chinese”,1,56,NA,FALSE
+19 Feb 52,"Hongkong [sic], China ",HKG,Brant,SHP,Ship,90,365,Passenger total includes “359 unidentified passengers*’ *Probably Chinese” [Asterisk is Rasmussen’s],3,81,NA,FALSE
+25 Feb 52,"Hongkong [sic], China ",HKG,Mazeppa,BRQ,Barque,95,39,"Passenger total includes “33 unidentified Chinamen""",3,88,NA,FALSE
+2 Mar 52,"Hongkong [sic], China ",HKG,William Watson,BRQ,Barque,60,163,Passengers included “158 unidentified Chinese”,3,101,NA,FALSE
+4 Aug 50,"Hongkong [sic], China ",HKG,Mary Ann Follet,,,63,50,Passenger total includes “49 unidentified Chinese in steerage”,1,110,NA,FALSE
+25 Mar 52,"Hongkong [sic], China ",HKG,Henbury,SHP,Ship,63,239,Passenger total includes “236 unidentified Chinamen”,3,122,NA,FALSE
+22 Apr 52,"Hongkong [sic], China ",HKG,Challenge,CLP,Clipper,33,553,"“Fastest ever trip from China coast to NW America”. Also: 553 passengers are “Chinese emigrants”, included in total",3,159,NA,FALSE
+16 May 52,"Hongkong [sic], China ",HKG,Witchcraft,CLP,Clipper,44,344,Passenger total includes “342 unidentified in Steerage (6 Chinamen died in passage)”,1,172,NA,FALSE
+15 Jul 51,"Hongkong [sic], China ",HKG,Catalpa,BRQ,Barque,60,1,,2,176,NA,FALSE
+11 Dec 50,"Honolulu, Sandwich Islands",HAI,Eleanor Lancaster,BRQ,Barque,27,15,,2,79,NA,FALSE
+23 Oct 50,"Atoi, S.I.",HAI,Maria,SCH,Schooner,18,3,,2,58,NA,FALSE
+15 Apr 51,"Atoi, S.I.",HAI,St Andrew,LCH,Loocha,28,2,,2,125,NA,FALSE
+1 May 51,"Atoi, S.I.",HAI,Spartacus,SCH,Schooner,25,18,,2,133,NA,FALSE
+5 Aug 50,"Atoy, S.I.",HAI,Penelope,SCH,Schooner,26,5,,2,6,NA,FALSE
+9 Sep 51,Hawaii,HAI,Reindeer,BRG,Brig,38,3,,2,201,NA,FALSE
+1 Jan 52,Honolulu,HAI,Golden Rule,SCH,Schooner,14,46,,1,83,NA,FALSE
+5 Jun 52,Honolulu,HAI,Maria,SCH,Schooner,16,25,,1,108,NA,FALSE
+4 Aug 50,Honolulu,HAI,Roe,SCH,Schooner,29,13,,1,150,NA,FALSE
+21 Apr 52,Honolulu,HAI,Picard,BRG,Brig,26,4,,3,158,NA,FALSE
+2 Jan 52,Honolulu,HAI,Wyandot,BRG,Brig,16,8,,1,172,NA,FALSE
+29 Sep 51,Honolulu,HAI,Catherine,SCH,Schooner,37,5,,2,211,NA,FALSE
+30 Jul 50,"Honolulu, S. I. ",HAI,Brothers,BRG,Brig,28,2,,2,5,NA,FALSE
+10 Aug 50,"Honolulu, S. I. ",HAI,Alice Tarlton,BRQ,Barque,35,3,,2,9,NA,FALSE
+18 Nov 51,"Honolulu, S. I. ",HAI,Aldebaran,SHP,Ship,22,1,,3,11,NA,FALSE
+29 Nov 51,"Honolulu, S. I. ",HAI,Monticello,SCH,Schooner,24,4,,3,24,NA,FALSE
+6 Dec 51,"Honolulu, S. I. ",HAI,Loo Choo,SCH,Schooner,15,2,,3,31,NA,FALSE
+19 Sep 50,"Honolulu, S. I. ",HAI,Connecticut,BRQ,Barque,21,9,,2,39,NA,FALSE
+27 Dec 51,"Honolulu, S. I. ",HAI,Baltimore,BRG,Brig,14,29,,3,49,NA,FALSE
+30 Nov 50,"Honolulu, S. I. ",HAI,Penelope,SCH,Schooner,23,8,,2,74,NA,FALSE
+18 Feb 52,"Honolulu, S. I. ",HAI,Constitution,STM,Steamer,13,18,,3,81,NA,TRUE
+2 Jan 51,"Honolulu, S. I. ",HAI,Susan Abigail,BRG,Brig,29,3,,2,89,NA,FALSE
+16 Mar 52,"Honolulu, S. I. ",HAI,Noble,BRG,Brig,18,7,,3,118,NA,FALSE
+22 Mar 52,"Honolulu, S. I. ",HAI,Maid of Julpha,BRG,Brig,26,12,,3,119,NA,FALSE
+26 Mar 52,"Honolulu, S. I. ",HAI,Baltimore,BRG,Brig,15,6,,3,123,NA,FALSE
+26 Mar 52,"Honolulu, S. I. ",HAI,Eagle,BRG,Brig,30,1,,3,123,NA,FALSE
+27 Mar 52,"Honolulu, S. I. ",HAI,Elizabeth Newell,BRG,Brig,22,2,,3,127,NA,FALSE
+2 May 51,"Honolulu, S. I. ",HAI,Vandalia,SLP,Sloop-o-War,29,2,Lists ship officers (15); not included in total,2,134,NA,FALSE
+3 Jun 51,"Honolulu, S. I. ",HAI,Velasco,SCH,Schooner,22,9,,2,155,NA,FALSE
+19 Apr 52,"Honolulu, S. I. ",HAI,Vandalia,SLP,Sloop-o-War,18,0,No passengers listed; 21 officers listed [not included in total],3,156,NA,FALSE
+21 Apr 52,"Honolulu, S. I. ",HAI,Zoe,BRG,Brig,20,21,,3,157,NA,FALSE
+1 Jul 51,"Honolulu, S. I. ",HAI,Joseph Butler,BRQ,Barque,24,2,,2,171,NA,FALSE
+14 Jul 51,"Honolulu, S. I. ",HAI,J. K. F. Mansfield,SCH,Schooner,23,7,,2,175,NA,FALSE
+1 May 52,"Honolulu, S. I. ",HAI,George Washington,SCH,Schooner,20,16,,3,180,NA,FALSE
+15 May 52,"Honolulu, S. I. ",HAI,Noble,SCH,Schooner,18,6,,3,195,NA,FALSE
+5 Oct 51,"Honolulu, S. I. ",HAI,Golden Rule,SCH,Schooner,19,5,,2,239,NA,FALSE
+20 Sep 50,"Honolulu, Sandwich Islands",HAI,Backus,BRQ,Barque,80,6,,2,40,NA,FALSE
+22 Feb 52,"Honolulu, Sandwich Islands",HAI,Home,BRQ,Barque,21,39,,3,83,NA,FALSE
+25 Feb 52,"Honolulu, Sandwich Islands",HAI,Mazeppa,BRQ,Barque,17,39,Passenger total includes “33 unidentified Chinamen”,3,88,NA,FALSE
+15 Jun 51,"Honolulu, Sandwich Islands",HAI,Deborah,BRG,Brig,24,6,,2,163,NA,FALSE
+17 Aug 51,"Honolulu, Sandwich Islands",HAI,Robert Bowe,SHP,Ship,29,9,,2,192,NA,FALSE
+21 Aug 51,"Honolulu, Sandwich Islands",HAI,Edgar,SHP,Ship,40,142,,2,196,NA,FALSE
+16 Oct 51,"Honolulu, Sandwich Islands",HAI,Orien,BRQ,Barque,33,11,,2,225,NA,FALSE
+2 Jan 51,"Karakokoa, S. I.",HAI,Avon,SCH,Schooner,26,3,,1,10,NA,FALSE
+16 May 52,"Kawaihe, S. I.",HAI,Curlew,SCH,Schooner,30,2,,1,48,NA,FALSE
+29 Nov 50,Lahaina,HAI,Oriental,BRG,Brig,20,2,,2,73,NA,FALSE
+10 Nov 51,"Lahaina, S. I. ",HAI,Oriental,BRG,Brig,17,5,,3,3,NA,FALSE
+21 Nov 51,"Lahaina, S. I. ",HAI,Koh-i-Noor,SCH,Schooner,16,10,,3,19,NA,FALSE
+25 Nov 51,"Lahaina, S. I. ",HAI,Mary W.,SCH,Schooner,18,6,,3,20,NA,FALSE
+15 May 52,"Lahaina, S. I. ",HAI,Edward L. Frost,SCH,Schooner,19,1,,1,52,NA,FALSE
+17 Feb 52,"Lahaina, S. I. ",HAI,George Washington,SCH,Schooner,20,13,,3,79,NA,FALSE
+17 Feb 52,"Lahaina, S. I. ",HAI,John Allyn,SCH,Schooner,26,8,,3,80,NA,FALSE
+31 Jul 51,"Lahaina, S. I. ",HAI,J. A. Jesuran,BRQ,Barque,29,3,,1,96,NA,FALSE
+10 Jan 52,"Lahaina, S. I. ",HAI,Laura Bevan,SCH,Schooner,16,2,,1,104,NA,FALSE
+4 Apr 52,"Lahaina, S. I. ",HAI,Laura Bevan,SCH,Schooner,14,2,,3,136,NA,FALSE
+24 May 52,"Lahaina, S. I. ",HAI,Manuku,SCH,Schooner,27,7,,3,197,NA,FALSE
+7 Jun 52,"Lahaina, S. I. ",HAI,Wilhelmina,BRG,Brig,25,2,,3,213,NA,FALSE
+25 Oct 51,"Lahaina, S. I. ",HAI,Arno,SCH,Schooner,25,2,,2,232,NA,FALSE
+12 Aug 50,"Lahaina, S.I.",HAI,Anglona,SCH,Schooner,19,2,,2,12,NA,FALSE
+15 Aug 50,"Lahaina, S.I.",HAI,Montgomery,BRQ,Barque,21,7,,2,17,NA,FALSE
+12 Dec 50,"Lahaina, S.I.",HAI,Fawn,BRG,Brig,20,2,,2,80,NA,FALSE
+2 Jan 51,"Lahaina, S.I.",HAI,Wilhelmina,BRG,Brig,26,1,,2,89,NA,FALSE
+2 Jan 51,"Lahaina, S.I.",HAI,Russell,BRQ,Barque,21,2,,2,89,NA,FALSE
+31 Jan 51,"Lahaina, S.I.",HAI,Golden Rule,SCH,Schooner,22,4,,2,97,NA,FALSE
+4 Feb 51,"Lahaina, S.I.",HAI,Almeida,BRQ,Barque,15,2,,2,100,NA,FALSE
+30 May 51,"Lahaina, S.I.",HAI,Almira,BRG,Brig,20,3,,2,152,NA,FALSE
+6 Jun 51,"Lahaina, S.I.",HAI,Gazelle,SCH,Schooner,20,1,,2,156,NA,FALSE
+15 Jul 51,"Lahaina, S.I.",HAI,Penelope,SCH,Schooner,24,5,,2,176,NA,FALSE
+3 Aug 51,"Lahaina, S.I.",HAI,Napae,SCH,Schooner,38,8,,2,184,NA,FALSE
+17 Oct 51,"Lahaina, S.I.",HAI,Robert Bruce,SCH,Schooner,26,2,,2,227,NA,FALSE
+23 Feb 52,"Lahaina, S.I. ",HAI,E.L. Frost,SCH,Schooner,18,7,,3,84,NA,FALSE
+7 Jun 52,"Lahaina, Sandwich Islands",HAI,Speed,BRQ,Barque,25,75,,1,161,NA,FALSE
+15 Nov 51,"Oahu, S. I.",HAI,Flavius,SHP,Ship,20,10,,3,7,NA,FALSE
+9 Jun 52,"Oahu, S. I.",HAI,Eagle,BRG,Brig,26,11,,1,51,NA,FALSE
+8 Sep 51,"Oahu, S. I.",HAI,Curlew,SCH,Schooner,43,5,,2,200,NA,FALSE
+25 Mar 51,Sandwich Islands,HAI,Louisa Baillie,SHP,Ship,26,23,,2,119,NA,FALSE
+28 May 52,"Waimea, S.I.",HAI,Baltimore,BRG,Brig,18,10,,3,209,NA,FALSE

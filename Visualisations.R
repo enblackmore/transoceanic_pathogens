@@ -228,6 +228,73 @@ figure_2 <- (panel_2a + legend_panel_2b + patchwork::plot_layout(widths=c(0.75, 
   patchwork::plot_annotation(tag_levels=list(c('A', '', 'B'))); figure_2
 
 
+######################################
+#Figure 3: San Francisco Port Arrivals
+######################################
+
+theme3  <- c( "#07f49e", "#42047e")
+
+#Figure 3b: journey summaries 
+data_SF <- read.csv("San_Francisco_arrivals.csv")
+
+Longitude_order <- c(1,7,5,2,6,8,3,4)
+data_SF$From_code <- factor(data_SF$From_code, levels=unique(data_SF$From_code)[Longitude_order],
+                            labels=c("Liverpool", "New York City", "Panama", "Valparaíso",
+                                     "Oregon", "Hawai'i", "Sydney", "Hong Kong"))
+
+#summarise data; this becomes supplementary table 2
+data_SF_summary <- plyr::ddply(data_SF,
+                                ~From_code+Steam, summarise,
+                                n=length(Voyage_days),
+                                median=median(Voyage_days, na.rm=TRUE),
+                                dmin=min(Voyage_days, na.rm=TRUE),
+                                dmax=max(Voyage_days, na.rm=TRUE),
+                                d1=quantile(Voyage_days, 0.1, na.rm=TRUE),
+                                d9=quantile(Voyage_days, 0.9, na.rm=TRUE),
+                                p_median=median(N_passengers, na.rm=TRUE),
+                                pmin=min(N_passengers, na.rm=TRUE),
+                                pmax=max(N_passengers, na.rm=TRUE),
+                                p1=quantile(N_passengers, 0.1, na.rm=TRUE),
+                                p9 = quantile(N_passengers, 0.9, na.rm=TRUE))
 
 
 
+panel_3a <- ggplot(data_SF) +
+  geom_jitter(mapping=aes(x=Voyage_days, y=From_code, col=Steam), height=0.1, alpha=0.3) +
+  theme_bw() +
+  labs(x="Journey Time (days)", y="Origin Port", col="Technology") +
+  guides(colour = guide_legend(override.aes = list(alpha = 1))) +
+  scale_x_continuous(breaks=seq(0, 250, by=50), limits = c(0,250)) +
+  scale_color_manual(values=theme3, labels=c("Steam", "Sail")) +
+  theme(axis.title.y=element_text(margin=margin(r=-10, unit='pt')),
+        axis.text.x=element_text(angle=45, vjust=1, hjust=1),
+        axis.title.x=element_text(size=10.2),
+        legend.position='none',
+        aspect.ratio=1.5/1)
+
+panel_3b <- ggplot(data_SF) + 
+  geom_jitter(mapping=aes(x=N_passengers, y=From_code, col=Steam), height=0.1, alpha=0.3) +
+  theme_bw() +
+  labs(x="Passengers", y="", col="Propulsion\ntype") +
+  guides(colour = guide_legend(override.aes = list(alpha = 1))) +
+  scale_color_manual(values=theme3, labels=c("Sail", "Steam")) +
+  theme(axis.text.y = element_blank(),
+        axis.title.x=element_text(margin=margin(t=10, unit='pt')),
+        legend.position="none",
+        aspect.ratio = 1.5/1) + scale_x_log10()
+
+panel_3c <- ggplot(data_SF) +
+  geom_bar(mapping=aes(x=From_code, fill=Steam), show.legend = FALSE) +
+  geom_point(mapping=aes(x=From_code, y=1, col=Steam), alpha=0) +
+  theme_bw() +
+  labs(x="Origin Port", y="Arrivals", col="") +
+  scale_fill_manual(values=theme3, labels=c("Steam", "Sail")) +
+  scale_color_manual(values=theme3, labels=c("Steam", "Sail"),
+                     guide=guide_legend(override.aes = list(alpha=1, size=4))) +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
+        axis.title.x = element_text(margin=margin(t=-5, unit='pt')),
+        axis.title.y=element_text(margin=margin(r=-5, b=-10, unit='pt')),
+        legend.position=c(0.75, 0.90),
+        legend.text = element_text(margin=margin(l=-4, unit='pt')),
+        legend.background=element_rect(fill=NA),
+        aspect.ratio = 1.25/1)
