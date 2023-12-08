@@ -678,3 +678,24 @@ check.generation.max <- function(output){
   print(table(output$analysis$Generations))
 }
 
+#(8) A function to label outbreaks by whether they...
+# i. are single-generation
+# ii. end before reaching herd immunity
+# iii. end after reaching herd immunity
+
+label.outbreaks <- function(df, N, r0){
+  df$label <- NA
+  df$label[which(df$Generations==1)] <- 1
+  df$label[which(df$Generations > 1 & df$Cases/N < max(1-(1/r0),0))] <- 2
+  df$label[which(df$Cases/N >= 1-(1/r0))] <- 3
+  df$label <- factor(df$label, levels=c(1, 2, 3),
+                     labels=c("Single-generation",
+                              "Below herd immunity",
+                              "At or above herd immunity"))
+  return(df)
+}
+
+#(9) get.r0: a function to calculate r0 from bdd, bfd, mui, q, and N
+get.r0 <- function(bdd, bfd, mui, q, N){
+  return(mui*bfd^(1-q)*(bdd*N)^q)
+}

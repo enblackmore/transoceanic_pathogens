@@ -50,18 +50,10 @@ check.generation.max(simulation_results_1)
 #add r0 column to analysis
 simulation_results_1$analysis$r0 <- simulation_results_1$analysis$bdd*mui_1*N_1
 
-#label simulations with:
-#(1) single-generation transmission
-#(2) transmission below herd immunity
-#(3) transmission at or above herd immunity
-
-simulation_results_1$analysis$label <- NA
-simulation_results_1$analysis$label[which(simulation_results_1$analysis$Generations==1)] <- 1
-simulation_results_1$analysis$label[which(simulation_results_1$analysis$Generations > 1 
-                                          & simulation_results_1$analysis$Cases/N_1 < max(1-(1/simulation_results_1$analysis$r0),0))] <- 2
-simulation_results_1$analysis$label[which(simulation_results_1$analysis$Cases/N_1 >= 1-(1/simulation_results_1$analysis$r0))] <- 3
-simulation_results_1$analysis$label <- factor(simulation_results_1$analysis$label, levels=c(1, 2, 3), 
-                                              labels=c("Single-generation", "Below herd immunity", "At or above herd immunity"))
+#label for plotting
+simulation_results_1$analysis <- label.outbreaks(df=simulation_results_1$analysis,
+                                                 N=N_1,
+                                                 r0=simulation_results_1$analysis$r0)
 
 
 ##########################################################
@@ -214,6 +206,15 @@ bfd_4 <- 0
 #variables
 re0_4 <- c(1, 2, 8)
 
+#simulation parameters
+runs_4 <- 4
+
+#run simulation with generation tracking, and
+#set generation_max=2, because we only need to distinguish 
+#between single-generation outbreaks and everything else
+generation_tracking_4 <- TRUE
+generation_max_4 <- 2 
+
 #we maintain constant re0 across different values of S
 #by setting q=1
 #and back-calculating bdd for each analysis:
@@ -235,8 +236,9 @@ simulation_results_4_re0_1 <- run.analysis2(
   bdd=bdd_4_re0_1,
   bfd=bfd_4,
   q=q_4,
-  runs=500,
-  generation_tracking = FALSE
+  runs=runs_4,
+  generation_tracking = generation_tracking_4,
+  generation_max = generation_max_4
 )
 
 simulation_results_4_re0_2 <- run.analysis2(
@@ -250,8 +252,9 @@ simulation_results_4_re0_2 <- run.analysis2(
   bdd=bdd_4_re0_2,
   bfd=bfd_4,
   q=q_4,
-  runs=500,
-  generation_tracking = FALSE
+  runs=runs_4,
+  generation_tracking = generation_tracking_4,
+  generation_max = generation_max_4
 )
 
 simulation_results_4_re0_8 <- run.analysis2(
@@ -265,8 +268,9 @@ simulation_results_4_re0_8 <- run.analysis2(
   bdd=bdd_4_re0_8,
   bfd=bfd_4,
   q=q_4,
-  runs=500,
-  generation_tracking = FALSE
+  runs=runs_4,
+  generation_tracking = generation_tracking_4,
+  generation_max = generation_max_4
 )
 
 #manually add re0 values
@@ -278,6 +282,13 @@ simulation_results_4_re0_8$analysis$re0 <- 8
 simulation_results_4 <- dplyr::full_join(simulation_results_4_re0_1$analysis,
                                          dplyr::full_join(simulation_results_4_re0_2$analysis,
                                                           simulation_results_4_re0_8$analysis))
+
+#manually add r0 values, to identify whether outbreaks reach herd immunity
+#r0 = n*re0 / s
+simulation_results_4$r0 <- N_4*simulation_results_4$re0 / simulation_results_4$S
+
+#label for plotting
+simulation_results_4 <- label.outbreaks(df=simulation_results_4, N=N_4, r0=simulation_results_4$r0)
 
 #############################################################
 #Simulation (5): introducing density and frequency dependence
@@ -337,9 +348,20 @@ simulation_results_5 <- run.analysis2(
   bdd=all_variables_5$bdd,
   bfd=all_variables_5$bfd,
   q=all_variables_5$q,
-  runs=500,
+  runs=5,
   generation_tracking=FALSE
 )
+
+#prepare for plotting
+simulation_results_5$analysis$Susceptible <- simulation_results_5$analysis$S / simulation_results_5$analysis$N
+simulation_results_5$analysis$r0 <- get.r0(bdd=simulation_results_5$analysis$bdd, 
+                                           bfd=simulation_results_5$analysis$bfd,
+                                           mui=mui_5,
+                                           q=simulation_results_5$analysis$q,
+                                           N=simulation_results_5$analysis$N)
+
+
+
 
 #############################################################
 #Simulation (6): cumulative introduction risk
