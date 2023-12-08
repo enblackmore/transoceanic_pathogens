@@ -48,7 +48,7 @@ simulation_results_1 <- run.analysis(
 check.generation.max(simulation_results_1)
 
 #add r0 column to analysis
-simulation_results_1$analysis$r0 <- simulation_results_1$analysis$bdd*mue_1*N_1
+simulation_results_1$analysis$r0 <- simulation_results_1$analysis$bdd*mui_1*N_1
 
 #label simulations with:
 #(1) single-generation transmission
@@ -146,7 +146,7 @@ simulation_results_3_influenza <- run.analysis(
   bdd=bdd_3_influenza,
   bfd=bfd_3,
   q=q_3,
-  runs=500,
+  runs=5,
   generation_tracking=FALSE)
 
 simulation_results_3_measles <- run.analysis(
@@ -160,7 +160,7 @@ simulation_results_3_measles <- run.analysis(
   bdd=bdd_3_measles,
   bfd=bfd_3,
   q=q_3,
-  runs=500,
+  runs=5,
   generation_tracking=FALSE)
 
 simulation_results_3_smallpox <- run.analysis(
@@ -174,7 +174,7 @@ simulation_results_3_smallpox <- run.analysis(
   bdd=bdd_3_smallpox,
   bfd=bfd_3,
   q=q_3,
-  runs=500,
+  runs=5,
   generation_tracking=FALSE)
 
 #add pathogen names manually
@@ -187,6 +187,13 @@ simulation_results_3 <- dplyr::full_join(simulation_results_3_smallpox$analysis,
                                          dplyr::full_join(simulation_results_3_measles$analysis, 
                                                           simulation_results_3_influenza$analysis))
 
+#rewrite bdd as r0 for plotting
+simulation_results_3$mui <- NA
+simulation_results_3$mui[which(simulation_results_3$Pathogen == "Influenza")] <- mui_3_influenza
+simulation_results_3$mui[which(simulation_results_3$Pathogen == "Measles")] <- mui_3_measles
+simulation_results_3$mui[which(simulation_results_3$Pathogen == "Smallpox")] <- mui_3_smallpox
+
+simulation_results_3$r0 <- simulation_results_3$bdd*simulation_results_3$mui*N_3
 
 ###################################################
 #Simulation (4): same r0 values as simulation 2
