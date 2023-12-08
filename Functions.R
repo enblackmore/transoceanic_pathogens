@@ -618,36 +618,45 @@ run.analysis2 <- function(
 #(7) introduction.risk.time:
 #a fuction to bootstrap introduction risk as a function of time
 
-introduction.risk.time <- function(df){
+introduction.risk.time <- function(df, resolution=1){
   #identify number variables in data
   variables_index <- c(1:ncol(df))[-which(colnames(df) %in% c("Duration", "Generations", "Cases"))]
+  
   variables_names <- colnames(df)[variables_index]
-  variables_combinations <- as.matrix(unique(df[,variables_index]))
+  
+  variables_combinations <- as.data.frame(unique(df[,variables_index]))
+  colnames(variables_combinations) <- variables_names
   
   #identify longest outbreak duration in dataset
   time_max <- round(max(df$Duration),0)
   
   #list of times to assess introduction risk
-  times <- seq(0, time_max, by=1)
+  times <- seq(0, time_max, by=resolution)
   
   #create output data frame to store results
-  output <- as.data.frame(matrix(nrow=(length(times)*ncol(variables_combinations)), ncol=(length(variables_index)+2)))
+  output <- as.data.frame(matrix(nrow=(length(times)*nrow(variables_combinations)),
+                                 ncol=(ncol(variables_combinations)+2)))
   colnames(output) <- c(variables_names, 'time', 'p_introduction')
   output$time <- times
-  output[,c(1:length(variables_index))] <-variables_combinations[,rep(c(1:ncol(variables_combinations)), each=length(times))]
+  
+  count <- 1
+  for(i in 1:nrow(variables_combinations)){
+    output[c(count:(count+length(times))), c(1:ncol(variables_combinations))] <- variables_combinations[i,]
+    count <- count+length(times)
+  }
   
   count <- 1
   end <- length(times)
-  for(i in 1:ncol(variables_combinations)){
+  for(i in 1:nrow(variables_combinations)){
     #isolate the rows in df whose variable columns match the combinations in variables_combinations[i,]
-    df_subset <- which(mapply(paste0, df[,variables_index]) == mapply(paste0(variables_combinations[,i]))) 
+    df_subset <- which(mapply(paste0, df[,variables_index]) == paste0(variables_combinations[i,])) 
     df_subset_duration <- na.omit(df$Duration[df_subset])
     for(j in 1:length(times)){
       output$p_introduction[count] <- (length(which(df_subset_duration > times[j]))/length(df_subset_duration)) 
       count <- count+1
     }
   }
-  return(output)
+  return(na.omit(output))
 }
 
 

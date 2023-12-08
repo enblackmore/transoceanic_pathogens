@@ -352,11 +352,7 @@ ki_6 <- 3
 q_6 <- 0.5
 bdd_6 <- 0.05
 
-#varying natural history parameters, by pathogen
-pathogens_6 <- c("Influeza")
 
-
-c(1.5, 15, 7)/mui
 #bdd depends on mue, which varies by pathogen;
 #calculate each separately
 mue_6_influenza <- 2
@@ -399,7 +395,7 @@ simulation_results_6_measles <- run.analysis2(
   bfd=bfd_6_measles,
   q=q_6,
   runs=5,
-  genration_tracking=FALSE)
+  generation_tracking=FALSE)
 
 
 simulation_results_6_smallpox <- run.analysis2(
