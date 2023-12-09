@@ -452,5 +452,5 @@ simulation_results_6 <- dplyr::full_join(simulation_results_6_influenza$analysis
                                                           simulation_results_6_smallpox$analysis))
 
 #bootstrap introduction risk as a function of pathogen, N and journey time
-introduction_risk_6 <- introduction.risk.time(df)
+introduction_risk_6 <- introduction.risk.time(simulation_results_6)
 
