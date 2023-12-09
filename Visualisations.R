@@ -236,6 +236,7 @@ theme3  <- c( "#07f49e", "#42047e")
 
 #Figure 3b: journey summaries 
 data_SF <- read.csv("San_Francisco_arrivals.csv")
+data_SF$
 
 Longitude_order <- c(1,7,5,2,6,8,3,4)
 data_SF$From_code <- factor(data_SF$From_code, levels=unique(data_SF$From_code)[Longitude_order],
@@ -303,3 +304,103 @@ panel_3c <- ggplot(data_SF) +
         legend.text = element_text(margin=margin(l=-4, unit='pt')),
         legend.background=element_rect(fill=NA),
         aspect.ratio = 1.25/1)
+
+####################################################
+#Figure 4: Introduction risk for real-life journeys
+####################################################
+
+#aesthetics
+theme4_color <- c("#CE1FFF", "#09f04a", "#710F0F", "#FFCA09",
+                  "#0038E0", "#FF0A3F", "#0cbcff")
+theme4_shape <- c(22,23,25, 8, 4,21,10,24)
+
+figure_4_contours <- ggplot(introduction_risk_6) +
+  geom_contour_filled(bins=6, mapping=aes(y=N, x=time, z=p_introduction), breaks=c(0, 0.01, 0.05, 0.1, 0.25, 0.5, 1)) + 
+  labs(x="Journey time (days)", y="Total population (N)", fill="Introduction Risk") + 
+  facet_wrap(vars(Pathogen)) +
+  theme_bw() +
+  scale_fill_manual(values=alpha(grey.colors(6, start=1, end=0.2), c(0,1,1,1,1,1))) +
+  xlim(0,200)
+
+#Panel 4a: overplotting San Francisco journey data
+#Adding journey time data
+#figure 4: overlay SF data
+
+#Reduce number of origins for easier plotting
+data_panel_4a <- dplyr::filter(data_SF, From_code != "Liverpool")
+
+#split voyage origins across facets for visual clarity
+data_panel_4a$Pathogen <- "Influenza"
+data_panel_4a$Pathogen[which(data_panel_4a$From_code %in% c("Hong Kong", "Sydney", "Hawai'i"))] <- "Measles"
+data_panel_4a$Pathogen[which(data_panel_4a$From_code %in% c("Panama", "New York City"))] <- "Smallpox"
+
+panel_4a <- figure_4_contours +
+  geom_point(data=data_panel_4a, mapping=aes(x=Voyage_days, y=N_passengers, pch=Steam, col=From_code), cex=2) +
+  guides(fill=guide_colorsteps(frame.colour="black", frame.linewidth=0.5, frame.linetype=1)) +
+  labs(col="Origin port", pch="Technology") + theme(legend.justification = 'top') +
+  scale_color_manual(values=theme4_color) +
+  scale_shape_manual(values=c(17,16), labels=c("Steam", "Sail")) +
+  scale_y_log10(limits=c(10,1500)); panel_4a
+
+#Panel 4b: overplotting selected historical voyages
+data_panel_4b <- read.csv("Selected_voyages.csv")
+
+#factor column 'Ship' so ships appear in chronological order
+data_panel_4b$Ship <- factor(Selected_voyages_data$Ship,
+                                     levels=Selected_voyages_data$Ship)
+
+panel_4b <- figure_4_contours +
+  geom_point(data=data_panel_4b, mapping=aes(x=t, y=N, pch=Ship), col="black", fill="white",  cex=3) + 
+  theme(legend.text = element_text(margin = margin(b=2, t=2, unit='pt')), legend.justification='top') +
+  guides(fill=guide_colorsteps(show.limits=TRUE, frame.colour="black", frame.linewidth=0.5, frame.linetype=1)) +
+  labs(col="Voyage") +
+  scale_shape_manual(values=theme4_shape) +
+  scale_y_log10(limits=c(10,1500)); panel_4b
+
+#Extract legends for figure rearrangement
+fig4a_col <- cowplot::get_legend(panel_4a + 
+                                   guides(fill='none', 
+                                     shape='none'
+                                     ))
+
+fig4a_shape <-  cowplot::get_legend(panel_4a +
+                                      guides(col='none',
+                                        fill='none'))
+
+fig4a_fill <- cowplot::get_legend(panel_4a + 
+                                    guides(col='none',
+                                      shape='none', 
+                                      fill=guide_colorsteps(show.limits=TRUE, 
+                                                                 frame.colour="black",
+                                                                 frame.linewidth=0.5,
+                                                                 frame.linetype=1,
+                                                                 title.position='top')) &
+                                    theme(legend.position = 'bottom',
+                                          legend.box = 'horizontal',
+                                          legend.box.margin=margin(t=-12, unit='pt'),
+                                          legend.key.width=unit(22, unit='pt'),
+                                          legend.text=element_text(size=unit(8, 'pt'))))
+
+fig4b_shape <-  cowplot::get_legend(panel_4b + guides(fill='none') +
+                             theme(legend.box.margin = margin(l=35, unit='pt'),
+                                   legend.text = element_text(margin = margin(b=2, t=2, unit='pt'))))
+
+
+layout_4 <- "
+AAAEC
+BBBF#
+D####
+"
+
+figure_4 <- patchwork::wrap_plots(
+  A = panel_4a + guides(shape='none', fill='none', col='none'),
+  B = panel_4b + guides(fill='none', shape='none') + scale_y_log10(limits=c(10,1500)),
+  C = fig4a_shape,
+  D = fig4a_fill,
+  E = fig4a_col,
+  'F' = fig4b_shape,
+  design = layout_4,
+  widths = c(1,1,1, 0.5, 0.25),
+  heights = c(1,1,0.25)
+) + patchwork::plot_annotation(tag_levels = list(c('A', 'B','', '', '', ''))); figure_4
+
