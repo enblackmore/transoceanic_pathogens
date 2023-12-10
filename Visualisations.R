@@ -4,6 +4,7 @@ library(ggplot2)
 ################################
 #Figure 1: Basic Model Dynamics
 ################################
+simulation_results_1 <- readRDS('simulation_results_1.RDS')
 
 #colour schemes
 theme1a <- c("#BFBBC9", "#4666FF", "#F2003C")
@@ -11,15 +12,15 @@ theme1b <- c("#100C08",  "#00CC99", "#FFDD1F")
 
 #extract quantiles from the data
 simulation_results_1_quantiles <- plyr::ddply(simulation_results_1$analysis, ~bdd+r0, summarise, 
-                      t05=quantile(Duration, 0.05),
-                      t5=quantile(Duration, 0.5),
-                      t95=quantile(Duration, 0.95),
-                      c05=quantile(Cases,0.05), 
-                      c5=quantile(Cases,0.5),
-                      c95=quantile(Cases,0.95),
-                      g05=quantile(Generations, 0.05),
-                      g5=quantile(Generations, 0.5),
-                      g95=quantile(Generations, 0.95))
+                                              t05=quantile(Duration, 0.05),
+                                              t5=quantile(Duration, 0.5),
+                                              t95=quantile(Duration, 0.95),
+                                              c05=quantile(Cases,0.05), 
+                                              c5=quantile(Cases,0.5),
+                                              c95=quantile(Cases,0.95),
+                                              g05=quantile(Generations, 0.05),
+                                              g5=quantile(Generations, 0.5),
+                                              g95=quantile(Generations, 0.95))
 
 #Panel 1a: duration by r0 and outbreak ending
 panel_1a <- ggplot(simulation_results_1$analysis) +
@@ -50,6 +51,8 @@ panel_1c <- ggplot(simulation_results_1$analysis) +
   theme_bw() + labs(y="Transmission\ngenerations", x=bquote(R[0])); panel_1c
 
 #Panel 1d: introduction risk by journey time and by r0
+simulation_results_2 <- readRDS('simulation_results_2.RDS')
+
 introduction_risk_2$r0 <- factor(introduction_risk_2$r0, levels=unique(introduction_risk_2$r0))
 panel_1d <- ggplot(introduction_risk_2) + geom_line(mapping=aes(x=time, y=p_introduction, col=r0), lwd=2) +
   labs(x="Journey time (days)", y="Introduction risk", col=bquote(R[0])) +
@@ -59,6 +62,7 @@ panel_1d <- ggplot(introduction_risk_2) + geom_line(mapping=aes(x=time, y=p_intr
 panel_1d
 
 #Panel 1e: outbreak duration by r0 and by pathogen
+simulation_results_3 <- readRDS('simulation_results_3.RDS')
 simulation_results_3$r0 <- factor(simulation_results_3$r0, levels= rev(r0_3))
 
 panel_1e <- ggplot(simulation_results_3, mapping=aes(x=Duration, y=Pathogen, col=r0, group=r0)) +
@@ -82,26 +86,26 @@ AC
 "
 
 figure_1_top <- patchwork::wrap_plots(
-                      A = panel_1a + 
-                        theme(legend.title=element_text(size=9, hjust=1, vjust=1), 
-                              legend.position = c(0.99, 0.995), 
-                              legend.direction='vertical',
-                              legend.justification=c(1,1), 
-                              legend.text.align = 0,
-                              legend.key.size=unit(14, 'pt'),
-                              legend.text=element_text(size=7.5, margin=margin(t=3, b=3, unit='pt'))) +
-                        guides(colour = guide_legend(override.aes = list(alpha = 1))) +
-                        scale_color_manual(values=theme1a, labels=c("Single-generation", "Below herd\nimmunity",
-                                                                    "At or above\nherd immunity")),
-                      B = panel_1b + 
-                        theme(axis.title.y = element_text(size=9, hjust=0.25, margin=margin(r=-5, unit='pt')), legend.position="none") +
-                        scale_color_manual(values=theme1a),
-                      C = panel_1c + 
-                        theme(axis.title.y = element_text(size=9, hjust=0.25, margin=margin(r=-5, unit='pt'))) +
-                        scale_color_manual(values=theme1a) +
-                        theme(legend.position="none"),
-                      design = layout_1_top,
-                      widths=c(0.7, 0.3)); figure_1_top
+  A = panel_1a + 
+    theme(legend.title=element_text(size=9, hjust=1, vjust=1), 
+          legend.position = c(0.99, 0.995), 
+          legend.direction='vertical',
+          legend.justification=c(1,1), 
+          legend.text.align = 0,
+          legend.key.size=unit(14, 'pt'),
+          legend.text=element_text(size=7.5, margin=margin(t=3, b=3, unit='pt'))) +
+    guides(colour = guide_legend(override.aes = list(alpha = 1))) +
+    scale_color_manual(values=theme1a, labels=c("Single-generation", "Below herd\nimmunity",
+                                                "At or above\nherd immunity")),
+  B = panel_1b + 
+    theme(axis.title.y = element_text(size=9, hjust=0.25, margin=margin(r=-5, unit='pt')), legend.position="none") +
+    scale_color_manual(values=theme1a),
+  C = panel_1c + 
+    theme(axis.title.y = element_text(size=9, hjust=0.25, margin=margin(r=-5, unit='pt'))) +
+    scale_color_manual(values=theme1a) +
+    theme(legend.position="none"),
+  design = layout_1_top,
+  widths=c(0.7, 0.3)); figure_1_top
 
 layout_1_bottom <- "
 DE
@@ -121,6 +125,7 @@ figure_1 <- figure_1_top / figure_1_bottom +
 ################################################################
 #Figure 2: Incorporating Population Size and Susceptibility
 ################################################################
+simulation_results_4 <- readRDS('simulation_results_4.RDS')
 
 #Figure 2a:
 #varying S, with constant re0
@@ -167,6 +172,7 @@ panel_2a <- ggplot(simulation_results_4) +
 
 #Figure 2b:
 #median outbreak duration by N, S/N, and density-dependence
+simulation_results_5 <- readRDS('simulation_results_5.RDS')
 
 #get median outbreak durations
 simulation_results_5_median <- plyr::ddply(simulation_results_5$analysis, ~N+Susceptible+bdd+bfd+q+r0, summarise,
@@ -219,24 +225,25 @@ panel_2b <- ggplot(simulation_results_5_median) +
 #Figure 2 assembly
 
 legend_panel_2b <- cowplot::get_legend(panel_2b + theme(legend.justification = c(1,0.5), 
-                                           legend.box.margin = margin(b=-10, r=25, unit='pt')))
+                                                        legend.box.margin = margin(b=-10, r=25, unit='pt')))
 
 figure_2 <- (panel_2a + legend_panel_2b + patchwork::plot_layout(widths=c(0.75, 0.25))) / 
   patchwork::wrap_elements(full=panel_2b + guides(col='none')) + 
   patchwork::plot_layout(heights=c(0.6,3.2), guides=
-                'collect') +
+                           'collect') +
   patchwork::plot_annotation(tag_levels=list(c('A', '', 'B'))); figure_2
 
 
-######################################
-#Figure 3: San Francisco Port Arrivals
-######################################
+#################################################
+#Table S2, Figure 3: San Francisco Port Arrivals
+#################################################
 
 theme3  <- c( "#07f49e", "#42047e")
 
-#Figure 3b: journey summaries 
+#Table S2: San Francisco port arrival statistics
+
+#read and summarise arrivals data
 data_SF <- read.csv("San_Francisco_arrivals.csv")
-data_SF$
 
 Longitude_order <- c(1,7,5,2,6,8,3,4)
 data_SF$From_code <- factor(data_SF$From_code, levels=unique(data_SF$From_code)[Longitude_order],
@@ -245,18 +252,48 @@ data_SF$From_code <- factor(data_SF$From_code, levels=unique(data_SF$From_code)[
 
 #summarise data; this becomes supplementary table 2
 data_SF_summary <- plyr::ddply(data_SF,
-                                ~From_code+Steam, summarise,
-                                n=length(Voyage_days),
-                                median=median(Voyage_days, na.rm=TRUE),
-                                dmin=min(Voyage_days, na.rm=TRUE),
-                                dmax=max(Voyage_days, na.rm=TRUE),
-                                d1=quantile(Voyage_days, 0.1, na.rm=TRUE),
-                                d9=quantile(Voyage_days, 0.9, na.rm=TRUE),
-                                p_median=median(N_passengers, na.rm=TRUE),
-                                pmin=min(N_passengers, na.rm=TRUE),
-                                pmax=max(N_passengers, na.rm=TRUE),
-                                p1=quantile(N_passengers, 0.1, na.rm=TRUE),
-                                p9 = quantile(N_passengers, 0.9, na.rm=TRUE))
+                               ~From_code+Steam, plyr::summarise,
+                               n=length(Voyage_days),
+                               median=median(Voyage_days, na.rm=TRUE),
+                               dmin=min(Voyage_days, na.rm=TRUE),
+                               dmax=max(Voyage_days, na.rm=TRUE),
+                               d1=quantile(Voyage_days, 0.1, na.rm=TRUE),
+                               d9=quantile(Voyage_days, 0.9, na.rm=TRUE),
+                               p_median=median(N_passengers, na.rm=TRUE),
+                               pmin=min(N_passengers, na.rm=TRUE),
+                               pmax=max(N_passengers, na.rm=TRUE),
+                               p1=quantile(N_passengers, 0.1, na.rm=TRUE),
+                               p9 = quantile(N_passengers, 0.9, na.rm=TRUE))
+
+
+#Map 1: median journey time to San Francisco
+map_data <- read_csv('figure_3_map_data.csv')
+pacific_centered_map <- ggplot2::map_data("world", wrap=c(0,360))
+
+
+map1 <- ggplot(pacific_centered_map, aes(x = long, y = lat, group = group)) +
+  geom_polygon(col='#B1B1AA', fill='#B1B1AA') + 
+  theme_bw() + 
+  coord_cartesian(xlim=c(120,330)) + 
+  labs(x="", y="") +
+  theme(panel.grid = element_blank(), 
+        panel.background = element_rect(fill='#F0F8FF'),
+        axis.text=element_blank(), 
+        axis.ticks = element_blank(),
+        aspect.ratio = 4/5.25)
+
+#geom_curve does not allow curvature and angle as a mapped aesthetics
+#so pass through a 'for' loop
+for(i in (1:nrow(figure_3_map_data))[-5]){
+  map1 <- map1 + geom_curve(data=figure_3_map_data[i,], mapping=aes(x=x, y=y, xend=xend, yend=yend),
+                            curvature=figure_3_map_data$curvature[i], 
+                            angle=figure_3_map_data$angle[i], ncp=10)
+}
+
+#add points and labels
+map1 <- map1 + geom_point(data=figure_3_map_data, mapping=aes(x=x, y=y), col='#28464B') +
+  geom_label(data=figure_3_map_data[-5,], mapping=aes(x=labelx, y=labely, label=labelname), col='#28464B',
+             cex=2.5, hjust=0, fill='#FEFEFA'); map1
 
 
 #Panel 3a: journey time by origin port
@@ -267,7 +304,7 @@ panel_3a <- ggplot(data_SF) +
   labs(x="Journey Time (days)", y="Origin Port", col="Technology") +
   guides(colour = guide_legend(override.aes = list(alpha = 1))) +
   scale_x_continuous(breaks=seq(0, 250, by=50), limits = c(0,250)) +
-  scale_color_manual(values=theme3, labels=c("Steam", "Sail")) +
+  scale_color_manual(values=rev(theme3), labels=c("Sail", "Steam")) +
   theme(axis.title.y=element_text(margin=margin(r=-10, unit='pt')),
         axis.text.x=element_text(angle=45, vjust=1, hjust=1),
         axis.title.x=element_text(size=10.2),
@@ -287,27 +324,34 @@ panel_3b <- ggplot(data_SF) +
         legend.position="none",
         aspect.ratio = 1.5/1) + scale_x_log10()
 
-#panel 3c: number of journeys by origin port
+#Panel 3c: number of journeys by origin port
 
 panel_3c <- ggplot(data_SF) +
   geom_bar(mapping=aes(x=From_code, fill=Steam), show.legend = FALSE) +
   geom_point(mapping=aes(x=From_code, y=1, col=Steam), alpha=0) +
   theme_bw() +
   labs(x="Origin Port", y="Arrivals", col="") +
-  scale_fill_manual(values=theme3, labels=c("Steam", "Sail")) +
-  scale_color_manual(values=theme3, labels=c("Steam", "Sail"),
+  scale_fill_manual(values=rev(theme3), labels=c("Sail", "Steam")) +
+  scale_color_manual(values=rev(theme3), labels=c("Sail", "Steam"),
                      guide=guide_legend(override.aes = list(alpha=1, size=4))) +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
         axis.title.x = element_text(margin=margin(t=-5, unit='pt')),
-        axis.title.y=element_text(margin=margin(r=-5, b=-10, unit='pt')),
+        axis.title.y=element_text(margin=margin(r=0, b=-10, unit='pt')),
         legend.position=c(0.75, 0.90),
         legend.text = element_text(margin=margin(l=-4, unit='pt')),
         legend.background=element_rect(fill=NA),
         aspect.ratio = 1.25/1)
 
+#Combine map1 and panel 3a, 3b, 3c:
+patchwork::wrap_elements(full=map1) + panel_3a + panel_3b + panel_3c +
+  patchwork::plot_layout(widths=c(3,1,1,1)) +
+  patchwork::plot_annotation(tag_levels='A')
+
+
 ####################################################
 #Figure 4: Introduction risk for real-life journeys
 ####################################################
+simulation_results_6 <- readRDS('simulation_results_6.RDS')
 
 #aesthetics
 theme4_color <- c("#CE1FFF", "#09f04a", "#710F0F", "#FFCA09",
@@ -325,6 +369,7 @@ figure_4_contours <- ggplot(introduction_risk_6) +
 #Panel 4a: overplotting San Francisco journey data
 #Adding journey time data
 #figure 4: overlay SF data
+introduction_risk_6 <- readRDS('introduction_risk_6.RDS')
 
 #Reduce number of origins for easier plotting
 data_panel_4a <- dplyr::filter(data_SF, From_code != "Liverpool")
@@ -334,8 +379,19 @@ data_panel_4a$Pathogen <- "Influenza"
 data_panel_4a$Pathogen[which(data_panel_4a$From_code %in% c("Hong Kong", "Sydney", "Hawai'i"))] <- "Measles"
 data_panel_4a$Pathogen[which(data_panel_4a$From_code %in% c("Panama", "New York City"))] <- "Smallpox"
 
+#create a data frame of ships for which numerical estimates are given in table 1
+#to overplot crosses
+numerical_estimates_4a <- tibble::tibble(x=data_panel_4a$Voyage_days[SF_selected_ships_simulation_7],
+                                         y=data_panel_4a$N_passengers[SF_selected_ships_simulation_7],
+                                         From_code=data_panel_4a$From_code[SF_selected_ships_simulation_7],)
+numerical_estimates_4a$Pathogen <- "Influenza"
+numerical_estimates_4a$Pathogen[which(numerical_estimates_4a$From_code %in% c("Hong Kong", "Sydney", "Hawai'i"))] <- "Measles"
+numerical_estimates_4a$Pathogen[which(numerical_estimates_4a$From_code %in% c("Panama", "New York City"))] <- "Smallpox"
+
+
 panel_4a <- figure_4_contours +
   geom_point(data=data_panel_4a, mapping=aes(x=Voyage_days, y=N_passengers, pch=Steam, col=From_code), cex=2) +
+  geom_point(data=numerical_estimates_4a, mapping=aes(x=x, y=y), col='black', pch=4, cex=3) +
   guides(fill=guide_colorsteps(frame.colour="black", frame.linewidth=0.5, frame.linetype=1)) +
   labs(col="Origin port", pch="Technology") + theme(legend.justification = 'top') +
   scale_color_manual(values=theme4_color) +
@@ -347,7 +403,7 @@ data_panel_4b <- read.csv("Selected_voyages.csv")
 
 #factor column 'Ship' so ships appear in chronological order
 data_panel_4b$Ship <- factor(Selected_voyages_data$Ship,
-                                     levels=Selected_voyages_data$Ship)
+                             levels=Selected_voyages_data$Ship)
 
 panel_4b <- figure_4_contours +
   geom_point(data=data_panel_4b, mapping=aes(x=t, y=N, pch=Ship), col="black", fill="white",  cex=3) + 
@@ -360,17 +416,17 @@ panel_4b <- figure_4_contours +
 #Extract legends for figure rearrangement
 fig4a_col <- cowplot::get_legend(panel_4a + 
                                    guides(fill='none', 
-                                     shape='none'
-                                     ))
+                                          shape='none'
+                                   ))
 
 fig4a_shape <-  cowplot::get_legend(panel_4a +
                                       guides(col='none',
-                                        fill='none'))
+                                             fill='none'))
 
 fig4a_fill <- cowplot::get_legend(panel_4a + 
                                     guides(col='none',
-                                      shape='none', 
-                                      fill=guide_colorsteps(show.limits=TRUE, 
+                                           shape='none', 
+                                           fill=guide_colorsteps(show.limits=TRUE, 
                                                                  frame.colour="black",
                                                                  frame.linewidth=0.5,
                                                                  frame.linetype=1,
@@ -382,8 +438,8 @@ fig4a_fill <- cowplot::get_legend(panel_4a +
                                           legend.text=element_text(size=unit(8, 'pt'))))
 
 fig4b_shape <-  cowplot::get_legend(panel_4b + guides(fill='none') +
-                             theme(legend.box.margin = margin(l=35, unit='pt'),
-                                   legend.text = element_text(margin = margin(b=2, t=2, unit='pt'))))
+                                      theme(legend.box.margin = margin(l=35, unit='pt'),
+                                            legend.text = element_text(margin = margin(b=2, t=2, unit='pt'))))
 
 
 layout_4 <- "

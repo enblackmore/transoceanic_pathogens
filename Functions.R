@@ -732,7 +732,7 @@ check.generation.max <- function(output){
   print(table(output$analysis$Generations))
 }
 
-#(8) A function to label outbreaks by whether they...
+#(9) A function to label outbreaks by whether they...
 # i. are single-generation
 # ii. end before reaching herd immunity
 # iii. end after reaching herd immunity
@@ -749,7 +749,7 @@ label.outbreaks <- function(df, N, r0){
   return(df)
 }
 
-#(9) get.r0: a function to calculate r0 from bdd, bfd, mui, q, and N
+#(10) get.r0: a function to calculate r0 from bdd, bfd, mui, q, and N
 get.r0 <- function(bdd, bfd, mui, q, N){
   return(mui*bfd^(1-q)*(bdd*N)^q)
 }

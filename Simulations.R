@@ -484,7 +484,8 @@ bfd_7_smallpox <- 7/mui_7_smallpox
 
 #7a: selected San Francisco ships
 SF_data <- read.csv('San_Francisco_arrivals.csv')
-Data_7a <- SF_data[c(428, 377, 25, 64, 163, 151, 323, 353, 525, 502, 130, 125, 474),]
+SF_selected_ships_simulation_7 <- c(428, 377, 25, 64, 163, 151, 323, 353, 525, 502, 130, 125, 474)
+Data_7a <- SF_data[SF_selected_ships_simulation_7,]
 
 Names_7a <- Data_7a$Ship_name
 N_7a <- Data_7a$N_passengers
@@ -547,8 +548,70 @@ simulation_results_7a <- tidyr::pivot_wider(simulation_results_7a,
                                             names_from = pathogen,
                                             values_from = p_introduction)
 
+#7b: selected historical ships
 
+Data_7b <- read.csv('Selected_voyages.csv')
 
+Names_7b <- Data_7b$Ship
+N_7b <- Data_7b$N
+Journey_time_7b <- Data_7b$t
+
+simulation_results_7b_influenza <- run.analysis.ship(
+  Ship_name = Names_7b,
+  Journey_time = Journey_time_7b,
+  N_ship = N_7b,
+  p_susceptible = S_proportion_7,
+  mue = mue_7_influenza,
+  mui = mui_7_influenza,
+  ke = ke_7,
+  ki = ki_7, 
+  q = q_7, 
+  bdd = bdd_7,
+  bfd = bfd_7_influenza,
+  runs = 10
+)
+
+simulation_results_7b_measles <- run.analysis.ship(
+  Ship_name = Names_7b,
+  Journey_time = Journey_time_7b,
+  N_ship = N_7b,
+  p_susceptible = S_proportion_7,
+  mue = mue_7_measles,
+  mui = mui_7_measles,
+  ke = ke_7,
+  ki = ki_7, 
+  q = q_7, 
+  bdd = bdd_7,
+  bfd = bfd_7_measles,
+  runs = 10
+)
+
+simulation_results_7b_smallpox <- run.analysis.ship(
+  Ship_name = Names_7b,
+  Journey_time = Journey_time_7b,
+  N_ship = N_7b,
+  p_susceptible = S_proportion_7,
+  mue = mue_7_smallpox,
+  mui = mui_7_smallpox,
+  ke = ke_7,
+  ki = ki_7, 
+  q = q_7, 
+  bdd = bdd_7,
+  bfd = bfd_7_smallpox,
+  runs = 10
+)
+
+simulation_results_7b_influenza$ship_risk$pathogen <- "Influenza"
+simulation_results_7b_measles$ship_risk$pathogen <- "Measles"
+simulation_results_7b_smallpox$ship_risk$pathogen <- "Smallpox"
+
+simulation_results_7b <- dplyr::full_join(simulation_results_7b_influenza$ship_risk,
+                                          dplyr::full_join(simulation_results_7b_measles$ship_risk,
+                                                           simulation_results_7b_smallpox$ship_risk))
+
+simulation_results_7b <- tidyr::pivot_wider(simulation_results_7b, 
+                                            names_from = pathogen,
+                                            values_from = p_introduction)
 
 
 
