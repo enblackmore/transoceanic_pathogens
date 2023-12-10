@@ -659,6 +659,60 @@ introduction.risk.time <- function(df, resolution=1){
   return(na.omit(output))
 }
 
+##(8) run.analysis.ship:
+#a function to simulate outnreaks of a given pathogen on ships of different sizes,
+#and then bootstrap introduction risk for a given ship journey time
+
+run.analysis.ship <- function(Ship_name, 
+                              Journey_time,
+                              N_ship,
+                              p_susceptible,
+                              e0=1,
+                              mue=5,
+                              mui=5,
+                              ke=3,
+                              ki=3,
+                              q=1,
+                              bdd=1/1000,
+                              bfd=0,
+                              runs){
+  
+  if(length(unique(N_ship))<length(N_ship)){
+    return(print("Function cannot handle duplicate N_ship values; perform separately for identical values of N_ship"))
+  }
+  
+  #calculate S
+  S_ship <- round(N_ship*p_susceptible,0)
+  while(any(S_ship > N_ship-e0)){
+    S_ship[which(S_ship>N_ship-e0)] <- S_ship[which(S>N_ship-e0)]-1
+  }
+  
+  #run analysis
+  analysis <- run.analysis2(N=N_ship,
+                            S=S_ship,
+                            e0=e0,
+                            mue=mue,
+                            mui=mui,
+                            ke=ke,
+                            ki=ki,
+                            q=q,
+                            bdd=bdd,
+                            bfd=bfd,
+                            runs=runs)
+  
+  #add ship names and journey times to run.analysis2 output
+  analysis$analysis$Ship_name <- rep(Ship_name, times=runs)
+  analysis$analysis$Journey_time <- rep(Journey_time, times=runs)
+  
+  #make output table
+  output <- tibble::tibble("Ship_name"=Ship_name, "Journey_time"=Journey_time, "p_introduction"=NA)
+  for(i in 1:nrow(output)){
+    subset <- dplyr::filter(analysis$analysis, Ship_name==output$Ship_name & Journey_time==output$Journey_time)
+    output$p_introduction[i] <- length(which(subset$Duration >= output$Journey_time[i]))/nrow(subset)
+  }
+  
+  return(list(analysis=analysis, ship_risk=output))
+}
 
 #(7) check.generation.max(): a function to check whether the value of generation_max is appropriate for a given simulation
 
