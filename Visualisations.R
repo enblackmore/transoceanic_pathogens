@@ -334,8 +334,19 @@ data_panel_4a$Pathogen <- "Influenza"
 data_panel_4a$Pathogen[which(data_panel_4a$From_code %in% c("Hong Kong", "Sydney", "Hawai'i"))] <- "Measles"
 data_panel_4a$Pathogen[which(data_panel_4a$From_code %in% c("Panama", "New York City"))] <- "Smallpox"
 
+#create a data frame of ships for which numerical estimates are given in table 1
+#to overplot crosses
+numerical_estimates_4a <- tibble::tibble(x=data_panel_4a$Voyage_days[SF_selected_ships_simulation_7],
+                                         y=data_panel_4a$N_passengers[SF_selected_ships_simulation_7],
+                                         From_code=data_panel_4a$From_code[SF_selected_ships_simulation_7],)
+numerical_estimates_4a$Pathogen <- "Influenza"
+numerical_estimates_4a$Pathogen[which(numerical_estimates_4a$From_code %in% c("Hong Kong", "Sydney", "Hawai'i"))] <- "Measles"
+numerical_estimates_4a$Pathogen[which(numerical_estimates_4a$From_code %in% c("Panama", "New York City"))] <- "Smallpox"
+
+
 panel_4a <- figure_4_contours +
   geom_point(data=data_panel_4a, mapping=aes(x=Voyage_days, y=N_passengers, pch=Steam, col=From_code), cex=2) +
+  geom_point(data=numerical_estimates_4a, mapping=aes(x=x, y=y), col='black', pch=4, cex=3) +
   guides(fill=guide_colorsteps(frame.colour="black", frame.linewidth=0.5, frame.linetype=1)) +
   labs(col="Origin port", pch="Technology") + theme(legend.justification = 'top') +
   scale_color_manual(values=theme4_color) +
