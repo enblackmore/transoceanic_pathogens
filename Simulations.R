@@ -1,5 +1,5 @@
 #Simulations and Analysis
-
+source("Functions.R")
 set.seed(1492)
 
 ################################
@@ -20,7 +20,7 @@ mue_1 <- mui_1 <- 5
 ke_1 <- ki_1 <- 3
 
 #varying parameters
-r0_1 <- 10^seq(-1, 2, by=0.01)
+r0_1 <- 10^seq(-1, 2, by=0.05)
 
 #since the modeul function requires bdd, bfd, and q
 #we set q=1 and bdd=r0 / (mue*N) 
@@ -29,7 +29,7 @@ bdd_1 <- r0_1/(mue_1*N_1)
 q_1 <- 1
 bfd_1 <- 0
 
-simulation_results_1 <- run.analysis(
+simulation_results_1 <-run.analysis(
   N=N_1,
   S=S_1,
   e0=e0_1,
@@ -40,7 +40,7 @@ simulation_results_1 <- run.analysis(
   bdd=bdd_1,
   bfd=bfd_1,
   q=q_1,
-  runs=5,
+  runs=100,
   generation_tracking = TRUE,
   generation_max=20)
 
@@ -54,6 +54,8 @@ simulation_results_1$analysis$r0 <- simulation_results_1$analysis$bdd*mui_1*N_1
 simulation_results_1$analysis <- label.outbreaks(df=simulation_results_1$analysis,
                                                  N=N_1,
                                                  r0=simulation_results_1$analysis$r0)
+
+saveRDS(simulation_results_1, file = "simulation_results_1.RDS")
 
 
 ##########################################################
@@ -86,14 +88,16 @@ simulation_results_2 <- run.analysis(
   bdd=bdd_2,
   bfd=bfd_2,
   q=q_2,
-  runs=15,
+  runs=1500,
   generation_tracking = FALSE)
+saveRDS(simulation_results_2, file = "simulation_results_2.RDS")
 
 #bootstrap cumulative introduction risk:
 introduction_risk_2 <- introduction.risk.time(simulation_results_2$analysis)
 
 #rewrite bdd as r0 for plotting
 introduction_risk_2$r0 <- introduction_risk_2$bdd*mue_2*N_2
+saveRDS(introduction_risk_2, file = "introduction_risk_2.RDS")
 
 ###################################################
 #Simulation (3): same r0 values as simulation 2
@@ -138,7 +142,7 @@ simulation_results_3_influenza <- run.analysis(
   bdd=bdd_3_influenza,
   bfd=bfd_3,
   q=q_3,
-  runs=5,
+  runs=500,
   generation_tracking=FALSE)
 
 simulation_results_3_measles <- run.analysis(
@@ -152,7 +156,7 @@ simulation_results_3_measles <- run.analysis(
   bdd=bdd_3_measles,
   bfd=bfd_3,
   q=q_3,
-  runs=5,
+  runs=500,
   generation_tracking=FALSE)
 
 simulation_results_3_smallpox <- run.analysis(
@@ -166,7 +170,7 @@ simulation_results_3_smallpox <- run.analysis(
   bdd=bdd_3_smallpox,
   bfd=bfd_3,
   q=q_3,
-  runs=5,
+  runs=500,
   generation_tracking=FALSE)
 
 #add pathogen names manually
@@ -184,8 +188,9 @@ simulation_results_3$mui <- NA
 simulation_results_3$mui[which(simulation_results_3$Pathogen == "Influenza")] <- mui_3_influenza
 simulation_results_3$mui[which(simulation_results_3$Pathogen == "Measles")] <- mui_3_measles
 simulation_results_3$mui[which(simulation_results_3$Pathogen == "Smallpox")] <- mui_3_smallpox
-
 simulation_results_3$r0 <- simulation_results_3$bdd*simulation_results_3$mui*N_3
+simulation_results_3$r0 <- factor(simulation_results_3$r0, levels= rev(r0_3))
+saveRDS(simulation_results_3, file = "simulation_results_3.RDS")
 
 ###################################################
 #Simulation (4): same r0 values as simulation 2
@@ -207,7 +212,7 @@ bfd_4 <- 0
 re0_4 <- c(1, 2, 8)
 
 #simulation parameters
-runs_4 <- 4
+runs_4 <- 500
 
 #run simulation with generation tracking, and
 #set generation_max=2, because we only need to distinguish 
@@ -282,13 +287,17 @@ simulation_results_4_re0_8$analysis$re0 <- 8
 simulation_results_4 <- dplyr::full_join(simulation_results_4_re0_1$analysis,
                                          dplyr::full_join(simulation_results_4_re0_2$analysis,
                                                           simulation_results_4_re0_8$analysis))
-
 #manually add r0 values, to identify whether outbreaks reach herd immunity
 #r0 = n*re0 / s
-simulation_results_4$r0 <- N_4*simulation_results_4$re0 / simulation_results_4$S
+simulation_results_4$r0 <- N_4*as.numeric(simulation_results_4$re0) / simulation_results_4$S
 
 #label for plotting
 simulation_results_4 <- label.outbreaks(df=simulation_results_4, N=N_4, r0=simulation_results_4$r0)
+
+#save output
+saveRDS(simulation_results_4, file = "simulation_results_4.RDS")
+
+
 
 #############################################################
 #Simulation (5): introducing density and frequency dependence
@@ -348,7 +357,7 @@ simulation_results_5 <- run.analysis2(
   bdd=all_variables_5$bdd,
   bfd=all_variables_5$bfd,
   q=all_variables_5$q,
-  runs=5,
+  runs=100,
   generation_tracking=FALSE
 )
 
@@ -361,6 +370,7 @@ simulation_results_5$analysis$r0 <- get.r0(bdd=simulation_results_5$analysis$bdd
                                            N=simulation_results_5$analysis$N)
 
 
+saveRDS(simulation_results_5, file = "simulation_results_5.RDS")
 
 
 #############################################################
@@ -408,7 +418,7 @@ simulation_results_6_influenza <- run.analysis2(
   bdd=bdd_6,
   bfd=bfd_6_influenza,
   q=q_6,
-  runs=5,
+  runs=250,
   generation_tracking =FALSE)
 
 simulation_results_6_measles <- run.analysis2(
@@ -422,7 +432,7 @@ simulation_results_6_measles <- run.analysis2(
   bdd=bdd_6,
   bfd=bfd_6_measles,
   q=q_6,
-  runs=5,
+  runs=250,
   generation_tracking=FALSE)
 
 
@@ -437,7 +447,7 @@ simulation_results_6_smallpox <- run.analysis2(
   bdd=bdd_6,
   bfd=bfd_6_smallpox,
   q=q_6,
-  runs=5,
+  runs=250,
   generation_tracking=FALSE)
 
 #add pathogen indicators manually
@@ -449,9 +459,12 @@ simulation_results_6_smallpox$analysis$Pathogen <- "Smallpox"
 simulation_results_6 <- dplyr::full_join(simulation_results_6_influenza$analysis,
                                          dplyr::full_join(simulation_results_6_measles$analysis,
                                                           simulation_results_6_smallpox$analysis))
+saveRDS(simulation_results_6, file = "simulation_results_6.RDS")
+
 
 #bootstrap introduction risk as a function of pathogen, N and journey time
 introduction_risk_6 <- introduction.risk.time(simulation_results_6)
+saveRDS(introduction_risk_6, file="introduction_risk_6.RDS")
 
 #############################################################
 #Simulation (7): numerical introduction risk estimates
@@ -503,7 +516,7 @@ simulation_results_7a_influenza <- run.analysis.ship(
   q = q_7, 
   bdd = bdd_7,
   bfd = bfd_7_influenza,
-  runs = 10
+  runs = 1000
 )
 
 simulation_results_7a_measles <- run.analysis.ship(
@@ -518,7 +531,7 @@ simulation_results_7a_measles <- run.analysis.ship(
   q = q_7, 
   bdd = bdd_7,
   bfd = bfd_7_measles,
-  runs = 10
+  runs = 1000
 )
 
 simulation_results_7a_smallpox <- run.analysis.ship(
@@ -533,7 +546,7 @@ simulation_results_7a_smallpox <- run.analysis.ship(
   q = q_7, 
   bdd = bdd_7,
   bfd = bfd_7_smallpox,
-  runs = 10
+  runs = 1000
 )
 
 simulation_results_7a_influenza$ship_risk$pathogen <- "Influenza"
@@ -547,6 +560,7 @@ simulation_results_7a <- dplyr::full_join(simulation_results_7a_influenza$ship_r
 simulation_results_7a <- tidyr::pivot_wider(simulation_results_7a, 
                                             names_from = pathogen,
                                             values_from = p_introduction)
+saveRDS(simulation_results_7a, file = "simulation_results_7a.RDS")
 
 #7b: selected historical ships
 
@@ -568,7 +582,7 @@ simulation_results_7b_influenza <- run.analysis.ship(
   q = q_7, 
   bdd = bdd_7,
   bfd = bfd_7_influenza,
-  runs = 10
+  runs = 1000
 )
 
 simulation_results_7b_measles <- run.analysis.ship(
@@ -583,7 +597,7 @@ simulation_results_7b_measles <- run.analysis.ship(
   q = q_7, 
   bdd = bdd_7,
   bfd = bfd_7_measles,
-  runs = 10
+  runs = 1000
 )
 
 simulation_results_7b_smallpox <- run.analysis.ship(
@@ -598,7 +612,7 @@ simulation_results_7b_smallpox <- run.analysis.ship(
   q = q_7, 
   bdd = bdd_7,
   bfd = bfd_7_smallpox,
-  runs = 10
+  runs = 1000
 )
 
 simulation_results_7b_influenza$ship_risk$pathogen <- "Influenza"
@@ -612,6 +626,4 @@ simulation_results_7b <- dplyr::full_join(simulation_results_7b_influenza$ship_r
 simulation_results_7b <- tidyr::pivot_wider(simulation_results_7b, 
                                             names_from = pathogen,
                                             values_from = p_introduction)
-
-
-
+saveRDS(simulation_results_7b, file = "simulation_results_7b.RDS")

@@ -624,8 +624,7 @@ introduction.risk.time <- function(df, resolution=1){
   
   variables_names <- colnames(df)[variables_index]
   
-  variables_combinations <- as.data.frame(unique(df[,variables_index]))
-  colnames(variables_combinations) <- variables_names
+  variables_combinations <- unique.data.frame(df[,variables_index])
   
   #identify longest outbreak duration in dataset
   time_max <- round(max(df$Duration),0)
@@ -647,9 +646,10 @@ introduction.risk.time <- function(df, resolution=1){
   
   count <- 1
   end <- length(times)
+  
   for(i in 1:nrow(variables_combinations)){
     #isolate the rows in df whose variable columns match the combinations in variables_combinations[i,]
-    df_subset <- which(mapply(paste0, df[,variables_index]) == paste0(variables_combinations[i,])) 
+    which(mapply(paste0, df[,variables_index])[1,] == variables_combinations[i,])
     df_subset_duration <- na.omit(df$Duration[df_subset])
     for(j in 1:length(times)){
       output$p_introduction[count] <- (length(which(df_subset_duration > times[j]))/length(df_subset_duration)) 
@@ -741,7 +741,7 @@ label.outbreaks <- function(df, N, r0){
   df$label <- NA
   df$label[which(df$Generations==1)] <- 1
   df$label[which(df$Generations > 1 & df$Cases/N < max(1-(1/r0),0))] <- 2
-  df$label[which(df$Cases/N >= 1-(1/r0))] <- 3
+  df$label[which(df$Generations > 1 & df$Cases/N >= 1-(1/r0))] <- 3
   df$label <- factor(df$label, levels=c(1, 2, 3),
                      labels=c("Single-generation",
                               "Below herd immunity",

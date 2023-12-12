@@ -11,7 +11,7 @@ theme1a <- c("#BFBBC9", "#4666FF", "#F2003C")
 theme1b <- c("#100C08",  "#00CC99", "#FFDD1F")
 
 #extract quantiles from the data
-simulation_results_1_quantiles <- plyr::ddply(simulation_results_1$analysis, ~bdd+r0, summarise, 
+simulation_results_1_quantiles <- plyr::ddply(simulation_results_1$analysis, ~bdd+r0, plyr::summarise, 
                                               t05=quantile(Duration, 0.05),
                                               t5=quantile(Duration, 0.5),
                                               t95=quantile(Duration, 0.95),
@@ -51,7 +51,7 @@ panel_1c <- ggplot(simulation_results_1$analysis) +
   theme_bw() + labs(y="Transmission\ngenerations", x=bquote(R[0])); panel_1c
 
 #Panel 1d: introduction risk by journey time and by r0
-simulation_results_2 <- readRDS('simulation_results_2.RDS')
+introduction_risk_2 <- readRDS('introduction_risk_2.RDS')
 
 introduction_risk_2$r0 <- factor(introduction_risk_2$r0, levels=unique(introduction_risk_2$r0))
 panel_1d <- ggplot(introduction_risk_2) + geom_line(mapping=aes(x=time, y=p_introduction, col=r0), lwd=2) +
@@ -63,7 +63,6 @@ panel_1d
 
 #Panel 1e: outbreak duration by r0 and by pathogen
 simulation_results_3 <- readRDS('simulation_results_3.RDS')
-simulation_results_3$r0 <- factor(simulation_results_3$r0, levels= rev(r0_3))
 
 panel_1e <- ggplot(simulation_results_3, mapping=aes(x=Duration, y=Pathogen, col=r0, group=r0)) +
   geom_point(size=2, alpha=0.05, position=position_jitterdodge(jitter.width = 0.05, dodge.width=0.6)) +
@@ -135,8 +134,8 @@ theme2a <- c("#BFBBC9", "#4666FF", "#F2003C")
 theme2b <- c("#4C4C47", "#848FA5", "#F4B886", "#8FCB9B")
 
 #get quantiles for plotting
-simulation_results_4_quantiles <- plyr::ddply(simulation_results_4, ~re0+S, summarise, 
-                                              t5=median(Duration),
+simulation_results_4_quantiles <- plyr::ddply(simulation_results_4, ~re0+S, plyr::summarise,
+                                              t5=quantile(Duration, 0.5),
                                               t05=quantile(Duration, 0.05), 
                                               t95=quantile(Duration, 0.95))
 
@@ -175,7 +174,7 @@ panel_2a <- ggplot(simulation_results_4) +
 simulation_results_5 <- readRDS('simulation_results_5.RDS')
 
 #get median outbreak durations
-simulation_results_5_median <- plyr::ddply(simulation_results_5$analysis, ~N+Susceptible+bdd+bfd+q+r0, summarise,
+simulation_results_5_median <- plyr::ddply(simulation_results_5$analysis, ~N+Susceptible+bdd+bfd+q+r0, plyr::summarise,
                                            median_duration = median(Duration))
 
 #add label for plotting
