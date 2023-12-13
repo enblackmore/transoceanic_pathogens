@@ -1,0 +1,391 @@
+source(functions.R)
+set.seed(1492)
+
+#############################################################
+#Figure 4: cumulative introduction risk
+#varying pathogens and ship size (N)
+#############################################################
+
+### SIMULATION ###
+
+S_proportion_4 <- 0.05
+e0_4 <- 1
+
+N_4 <- round(10^seq(1,3.2,by=0.01),0)
+S_4 <- round(S_proportion_4*N_4,0)
+any(N_4 < S_4 + e0_4) #sanity check
+
+ke_4 <- 3
+ki_4 <- 3
+
+q_4 <- 0.5
+bdd_4 <- 0.05
+
+
+#bdd depends on mue, which varies by pathogen;
+#calculate each separately
+mue_4_influenza <- 2
+mui_4_influenza <- 3
+bfd_4_influenza <- 1.5/mui_4_influenza
+
+mue_4_measles <- 12
+mui_4_measles <- 8
+bfd_4_measles <- 15/mui_4_measles
+
+mue_4_smallpox <- 12
+mui_4_smallpox <- 17.5
+bfd_4_smallpox <- 7/mui_4_smallpox
+
+pathogens_4 <- c("Influenza", "Measles", "Smallpox")
+
+simulation_results_4_influenza <- run.analysis2(
+  N=N_4,
+  S=S_4,
+  e0=e0_4,
+  ke=ke_4,
+  ki=ki_4,
+  mue=mue_4_influenza,
+  mui=mui_4_influenza,
+  bdd=bdd_4,
+  bfd=bfd_4_influenza,
+  q=q_4,
+  runs=250,
+  generation_tracking =FALSE)
+
+simulation_results_4_measles <- run.analysis2(
+  N=N_4,
+  S=S_4,
+  e0=e0_4,
+  ke=ke_4,
+  ki=ki_4,
+  mue=mue_4_measles,
+  mui=mui_4_measles,
+  bdd=bdd_4,
+  bfd=bfd_4_measles,
+  q=q_4,
+  runs=250,
+  generation_tracking=FALSE)
+
+
+simulation_results_4_smallpox <- run.analysis2(
+  N=N_4,
+  S=S_4,
+  e0=e0_4,
+  ke=ke_4,
+  ki=ki_4,
+  mue=mue_4_smallpox,
+  mui=mui_4_smallpox,
+  bdd=bdd_4,
+  bfd=bfd_4_smallpox,
+  q=q_4,
+  runs=250,
+  generation_tracking=FALSE)
+
+#add pathogen indicators manually
+simulation_results_4_influenza$analysis$Pathogen <- "Influenza"
+simulation_results_4_measles$analysis$Pathogen <- "Measles"
+simulation_results_4_smallpox$analysis$Pathogen <- "Smallpox"
+
+#Combine analysis in a data frame
+simulation_results_4 <- dplyr::full_join(simulation_results_4_influenza$analysis,
+                                         dplyr::full_join(simulation_results_4_measles$analysis,
+                                                          simulation_results_4_smallpox$analysis))
+saveRDS(simulation_results_4, file = "simulation_results_4.RDS")
+
+#bootstrap introduction risk as a function of pathogen, N and journey time
+#identify longest outbreak duration in dataset
+time_max <- round(max(simulation_results_4$Duration),0)
+
+#list of times to assess introduction risk
+times <- seq(1, time_max, by=1)
+
+#create output data frame to store results
+introduction_risk_4 <- expand.grid(pathogens_4, N_4, times, NA)
+colnames(introduction_risk_4) <- c("Pathogen", "N", 'time', 'p_introduction')
+
+for(i in 1:nrow(introduction_risk_4)){
+  subset <- dplyr::filter(simulation_results_4, 
+                          N==introduction_risk_4$N[i] & Pathogen==introduction_risk_4$Pathogen[i])
+  introduction_risk_4$p_introduction[i] <- length(which(subset$Duration > introduction_risk_4$time[i]))/nrow(subset)
+  print(i/nrow(introduction_risk_4))
+}
+
+saveRDS(introduction_risk_4, file="introduction_risk_4.RDS")
+
+
+### PANEL 4A and 4B VISUALISATION ###
+
+#aesthetics
+theme4_color <- c("#CE1FFF", "#09f04a", "#710F0F", "#FFCA09",
+                  "#0038E0", "#FF0A3F", "#0cbcff")
+theme4_shape <- c(22,23,25, 8, 4,21,10,24)
+
+figure_4_contours <- ggplot(introduction_risk_4) +
+  geom_contour_filled(bins=6, mapping=aes(y=N, x=time, z=p_introduction), breaks=c(0, 0.01, 0.05, 0.1, 0.25, 0.5, 1)) + 
+  labs(x="Journey time (days)", y="Total population (N)", fill="Introduction Risk") + 
+  facet_wrap(vars(Pathogen)) +
+  theme_bw() +
+  scale_fill_manual(values=alpha(grey.colors(6, start=1, end=0.2), c(0,1,1,1,1,1))) +
+  xlim(0,200)
+
+#Panel 4a: overplotting San Francisco journey data
+#Adding journey time data
+#figure 4: overlay SF data
+introduction_risk_4 <- readRDS('introduction_risk_4.RDS')
+
+#Reduce number of origins for easier plotting
+data_panel_4a <- dplyr::filter(data_SF, From_code != "Liverpool")
+
+#split voyage origins across facets for visual clarity
+data_panel_4a$Pathogen <- "Influenza"
+data_panel_4a$Pathogen[which(data_panel_4a$From_code %in% c("Hong Kong", "Sydney", "Hawai'i"))] <- "Measles"
+data_panel_4a$Pathogen[which(data_panel_4a$From_code %in% c("Panama", "New York City"))] <- "Smallpox"
+
+#create a data frame of ships for which numerical estimates are given in table 1
+#to overplot crosses
+numerical_estimates_4a <- tibble::tibble(x=data_panel_4a$Voyage_days[SF_selected_ships_simulation_tables],
+                                         y=data_panel_4a$N_passengers[SF_selected_ships_simulation_tables],
+                                         From_code=data_panel_4a$From_code[SF_selected_ships_simulation_tables],)
+numerical_estimates_4a$Pathogen <- "Influenza"
+numerical_estimates_4a$Pathogen[which(numerical_estimates_4a$From_code %in% c("Hong Kong", "Sydney", "Hawai'i"))] <- "Measles"
+numerical_estimates_4a$Pathogen[which(numerical_estimates_4a$From_code %in% c("Panama", "New York City"))] <- "Smallpox"
+
+
+panel_4a <- figure_4_contours +
+  geom_point(data=data_panel_4a, mapping=aes(x=Voyage_days, y=N_passengers, pch=Steam, col=From_code), cex=2) +
+  geom_point(data=numerical_estimates_4a, mapping=aes(x=x, y=y), col='black', pch=4, cex=3) +
+  guides(fill=guide_colorsteps(frame.colour="black", frame.linewidth=0.5, frame.linetype=1)) +
+  labs(col="Origin port", pch="Technology") + theme(legend.justification = 'top') +
+  scale_color_manual(values=theme4_color) +
+  scale_shape_manual(values=c(17,16), labels=c("Steam", "Sail")) +
+  scale_y_log10(limits=c(10,1500)); panel_4a
+
+#Panel 4b: overplotting selected historical voyages
+data_panel_4b <- read.csv("Selected_voyages.csv")
+
+#factor column 'Ship' so ships appear in chronological order
+data_panel_4b$Ship <- factor(Selected_voyages_data$Ship,
+                             levels=Selected_voyages_data$Ship)
+
+panel_4b <- figure_4_contours +
+  geom_point(data=data_panel_4b, mapping=aes(x=t, y=N, pch=Ship), col="black", fill="white",  cex=3) + 
+  theme(legend.text = element_text(margin = margin(b=2, t=2, unit='pt')), legend.justification='top') +
+  guides(fill=guide_colorsteps(show.limits=TRUE, frame.colour="black", frame.linewidth=0.5, frame.linetype=1)) +
+  labs(col="Voyage") +
+  scale_shape_manual(values=theme4_shape) +
+  scale_y_log10(limits=c(10,1500)); panel_4b
+
+### FIGURE ASSEMBLY ###
+
+#Extract legends for figure rearrangement
+fig4a_col <- cowplot::get_legend(panel_4a + 
+                                   guides(fill='none', 
+                                          shape='none'
+                                   ))
+
+fig4a_shape <-  cowplot::get_legend(panel_4a +
+                                      guides(col='none',
+                                             fill='none'))
+
+fig4a_fill <- cowplot::get_legend(panel_4a + 
+                                    guides(col='none',
+                                           shape='none', 
+                                           fill=guide_colorsteps(show.limits=TRUE, 
+                                                                 frame.colour="black",
+                                                                 frame.linewidth=0.5,
+                                                                 frame.linetype=1,
+                                                                 title.position='top')) &
+                                    theme(legend.position = 'bottom',
+                                          legend.box = 'horizontal',
+                                          legend.box.margin=margin(t=-12, unit='pt'),
+                                          legend.key.width=unit(22, unit='pt'),
+                                          legend.text=element_text(size=unit(8, 'pt'))))
+
+fig4b_shape <-  cowplot::get_legend(panel_4b + guides(fill='none') +
+                                      theme(legend.box.margin = margin(l=35, unit='pt'),
+                                            legend.text = element_text(margin = margin(b=2, t=2, unit='pt'))))
+
+
+layout_4 <- "
+AAAEC
+BBBF#
+D####
+"
+
+
+figure_4 <- patchwork::wrap_plots(
+  A = panel_4a + guides(shape='none', fill='none', col='none'),
+  B = panel_4b + guides(fill='none', shape='none') + scale_y_log10(limits=c(10,1500)),
+  C = fig4a_shape,
+  D = fig4a_fill,
+  E = fig4a_col,
+  'F' = fig4b_shape,
+  design = layout_4,
+  widths = c(1,1,1, 0.5, 0.25),
+  heights = c(1,1,0.25)
+) + patchwork::plot_annotation(tag_levels = list(c('A', 'B','', '', '', ''))); figure_4
+
+
+
+
+#############################################################
+#Tables 1 and 2: numerical introduction risk estimates
+#for selected ships used in figure 4
+#corresponds with Tables 1 and 2
+#############################################################
+
+S_proportion_tables <- 0.05
+e0_tables <- 1
+
+ke_tables <- 3
+ki_tables <- 3
+
+q_tables <- 0.5
+bdd_tables <- 0.05
+
+#bdd depends on mue, which varies by pathogen;
+#calculate each separately
+mue_tables_influenza <- 2
+mui_tables_influenza <- 3
+bfd_tables_influenza <- 1.5/mui_tables_influenza
+
+mue_tables_measles <- 12
+mui_tables_measles <- 8
+bfd_tables_measles <- 15/mui_tables_measles
+
+mue_tables_smallpox <- 12
+mui_tables_smallpox <- 17.5
+bfd_tables_smallpox <- 7/mui_tables_smallpox
+
+#7a: selected San Francisco ships
+SF_data <- read.csv('San_Francisco_arrivals.csv')
+SF_selected_ships_simulation_tables <- c(428, 377, 25, 64, 163, 151, 323, 353, 525, 502, 130, 125, 474)
+Data_table1 <- SF_data[SF_selected_ships_simulation_tables,]
+
+Names_table1 <- Data_table1$Ship_name
+N_table1 <- Data_table1$N_passengers
+Journey_time_table1 <- Data_table1$Voyage_days
+
+simulation_results_table1_influenza <- run.analysis.ship(
+  Ship_name = Names_table1,
+  Journey_time = Journey_time_table1,
+  N_ship = N_table1,
+  p_susceptible = S_proportion_tables,
+  mue = mue_tables_influenza,
+  mui = mui_tables_influenza,
+  ke = ke_tables,
+  ki = ki_tables, 
+  q = q_tables, 
+  bdd = bdd_tables,
+  bfd = bfd_tables_influenza,
+  runs = 1000
+)
+
+simulation_results_table1_measles <- run.analysis.ship(
+  Ship_name = Names_table1,
+  Journey_time = Journey_time_table1,
+  N_ship = N_table1,
+  p_susceptible = S_proportion_tables,
+  mue = mue_tables_measles,
+  mui = mui_tables_measles,
+  ke = ke_tables,
+  ki = ki_tables, 
+  q = q_tables, 
+  bdd = bdd_tables,
+  bfd = bfd_tables_measles,
+  runs = 1000
+)
+
+simulation_results_table1_smallpox <- run.analysis.ship(
+  Ship_name = Names_table1,
+  Journey_time = Journey_time_table1,
+  N_ship = N_table1,
+  p_susceptible = S_proportion_tables,
+  mue = mue_tables_smallpox,
+  mui = mui_tables_smallpox,
+  ke = ke_tables,
+  ki = ki_tables, 
+  q = q_tables, 
+  bdd = bdd_tables,
+  bfd = bfd_tables_smallpox,
+  runs = 1000
+)
+
+simulation_results_table1_influenza$ship_risk$pathogen <- "Influenza"
+simulation_results_table1_measles$ship_risk$pathogen <- "Measles"
+simulation_results_table1_smallpox$ship_risk$pathogen <- "Smallpox"
+
+simulation_results_table1 <- dplyr::full_join(simulation_results_table1_influenza$ship_risk,
+                                          dplyr::full_join(simulation_results_table1_measles$ship_risk,
+                                                           simulation_results_table1_smallpox$ship_risk))
+
+simulation_results_table1 <- tidyr::pivot_wider(simulation_results_table1, 
+                                            names_from = pathogen,
+                                            values_from = p_introduction)
+saveRDS(simulation_results_table1, file = "simulation_results_table1.RDS")
+
+#7b: selected historical ships
+
+Data_table2 <- read.csv('Selected_voyages.csv')
+
+Names_table2 <- Data_table2$Ship
+N_table2 <- Data_table2$N
+Journey_time_table2 <- Data_table2$t
+
+simulation_results_table2_influenza <- run.analysis.ship(
+  Ship_name = Names_table2,
+  Journey_time = Journey_time_table2,
+  N_ship = N_table2,
+  p_susceptible = S_proportion_tables,
+  mue = mue_tables_influenza,
+  mui = mui_tables_influenza,
+  ke = ke_tables,
+  ki = ki_tables, 
+  q = q_tables, 
+  bdd = bdd_tables,
+  bfd = bfd_tables_influenza,
+  runs = 1000
+)
+
+simulation_results_table2_measles <- run.analysis.ship(
+  Ship_name = Names_table2,
+  Journey_time = Journey_time_table2,
+  N_ship = N_table2,
+  p_susceptible = S_proportion_tables,
+  mue = mue_tables_measles,
+  mui = mui_tables_measles,
+  ke = ke_tables,
+  ki = ki_tables, 
+  q = q_tables, 
+  bdd = bdd_tables,
+  bfd = bfd_tables_measles,
+  runs = 1000
+)
+
+simulation_results_table2_smallpox <- run.analysis.ship(
+  Ship_name = Names_table2,
+  Journey_time = Journey_time_table2,
+  N_ship = N_table2,
+  p_susceptible = S_proportion_tables,
+  mue = mue_tables_smallpox,
+  mui = mui_tables_smallpox,
+  ke = ke_tables,
+  ki = ki_tables, 
+  q = q_tables, 
+  bdd = bdd_tables,
+  bfd = bfd_tables_smallpox,
+  runs = 1000
+)
+
+simulation_results_table2_influenza$ship_risk$pathogen <- "Influenza"
+simulation_results_table2_measles$ship_risk$pathogen <- "Measles"
+simulation_results_table2_smallpox$ship_risk$pathogen <- "Smallpox"
+
+simulation_results_table2 <- dplyr::full_join(simulation_results_table2_influenza$ship_risk,
+                                          dplyr::full_join(simulation_results_table2_measles$ship_risk,
+                                                           simulation_results_table2_smallpox$ship_risk))
+
+simulation_results_table2 <- tidyr::pivot_wider(simulation_results_table2, 
+                                            names_from = pathogen,
+                                            values_from = p_introduction)
+saveRDS(simulation_results_table2, file = "simulation_results_table2.RDS")

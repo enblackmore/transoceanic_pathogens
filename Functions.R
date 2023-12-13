@@ -453,7 +453,7 @@ analyse.runs <- function(list){
 
 run.analysis <- function(
     N=c(100, 200, 500), 
-    S=50, 
+    S=50,
     e0=1,
     bdd=1/1000,
     bfd=0,
@@ -615,51 +615,8 @@ run.analysis2 <- function(
   return(list(raw = results_raw, analysis=results_analysis))
 }
 
-#(7) introduction.risk.time:
-#a fuction to bootstrap introduction risk as a function of time
 
-introduction.risk.time <- function(df, resolution=1){
-  #identify number variables in data
-  variables_index <- c(1:ncol(df))[-which(colnames(df) %in% c("Duration", "Generations", "Cases"))]
-  
-  variables_names <- colnames(df)[variables_index]
-  
-  variables_combinations <- unique.data.frame(df[,variables_index])
-  
-  #identify longest outbreak duration in dataset
-  time_max <- round(max(df$Duration),0)
-  
-  #list of times to assess introduction risk
-  times <- seq(0, time_max, by=resolution)
-  
-  #create output data frame to store results
-  output <- as.data.frame(matrix(nrow=(length(times)*nrow(variables_combinations)),
-                                 ncol=(ncol(variables_combinations)+2)))
-  colnames(output) <- c(variables_names, 'time', 'p_introduction')
-  output$time <- times
-  
-  count <- 1
-  for(i in 1:nrow(variables_combinations)){
-    output[c(count:(count+length(times))), c(1:ncol(variables_combinations))] <- variables_combinations[i,]
-    count <- count+length(times)
-  }
-  
-  count <- 1
-  end <- length(times)
-  
-  for(i in 1:nrow(variables_combinations)){
-    #isolate the rows in df whose variable columns match the combinations in variables_combinations[i,]
-    which(mapply(paste0, df[,variables_index])[1,] == variables_combinations[i,])
-    df_subset_duration <- na.omit(df$Duration[df_subset])
-    for(j in 1:length(times)){
-      output$p_introduction[count] <- (length(which(df_subset_duration > times[j]))/length(df_subset_duration)) 
-      count <- count+1
-    }
-  }
-  return(na.omit(output))
-}
-
-##(8) run.analysis.ship:
+##(7) run.analysis.ship:
 #a function to simulate outnreaks of a given pathogen on ships of different sizes,
 #and then bootstrap introduction risk for a given ship journey time
 
@@ -714,7 +671,7 @@ run.analysis.ship <- function(Ship_name,
   return(list(analysis=analysis, ship_risk=output))
 }
 
-#(7) check.generation.max(): a function to check whether the value of generation_max is appropriate for a given simulation
+#(8) check.generation.max(): a function to check whether the value of generation_max is appropriate for a given simulation
 
 check.generation.max <- function(output){
   #(1) extract generation_max from raw data
@@ -741,7 +698,7 @@ label.outbreaks <- function(df, N, r0){
   df$label <- NA
   df$label[which(df$Generations==1)] <- 1
   df$label[which(df$Generations > 1 & df$Cases/N < max(1-(1/r0),0))] <- 2
-  df$label[which(df$Generations > 1 & df$Cases/N >= 1-(1/r0))] <- 3
+  df$label[which(df$r0 > 1 & df$Cases/N >= 1-(1/r0))] <- 3
   df$label <- factor(df$label, levels=c(1, 2, 3),
                      labels=c("Single-generation",
                               "Below herd immunity",
