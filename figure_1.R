@@ -1,4 +1,5 @@
-source(functions.R)
+source('functions.R')
+library(ggplot2)
 set.seed(1492)
 
 ################################
@@ -39,7 +40,7 @@ simulation_results_1abc <-run.analysis(
   bdd=bdd_1abc,
   bfd=bfd_1abc,
   q=q_1abc,
-  runs=250,
+  runs=400,
   generation_tracking = TRUE,
   generation_max=20)
 

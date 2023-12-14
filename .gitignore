@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+.simulation_results_5.RDS
+.simulation_results_1.RDS
