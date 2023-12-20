@@ -32,7 +32,7 @@
 #the function generation_test() (below) tests whether generation_max is appropriate for a given simulation
 #by checking how often cases appear in generation compartments close to generation_max 
 
-build.model<- function(
+build_model<- function(
     N=500, 
     S=100, 
     e0=1,
@@ -50,29 +50,41 @@ build.model<- function(
   
   #Shape of the Erlang distributions for mue and mui must be an integer
   if(as.integer(ke) != ke){
-    return(print("Error: ke must be specified as integer"))
+    return(
+      print("Error: ke must be specified as integer")
+      )
   }
   if(as.integer(ki) != ki){
-    return(print("Error: ki must be specified as integer"))
+    return(
+      print("Error: ki must be specified as integer")
+      )
   }
   
   #Number of generations to track must be an integer
   if(generation_tracking==TRUE & as.integer(generation_max) != generation_max){
-    return(print("Error: generation tracking must be specified as integer"))
+    return(
+      print("Error: generation tracking must be specified as integer")
+      )
   }
   
   #Total people in S and e0 can't be greater than N
   if(S+e0>N){
-    return(print("S+e0 greater than N"))
+    return(
+      print("Error: S+e0 greater than N")
+      )
   }
   
   #q must be between 1 and 0
   if(q < 0 | q > 1){
-    return("error: q must be a value between 1 and 0")
+    return(
+      print("Error: q must be a value between 1 and 0")
+    )
   }
   
   if(generation_tracking==TRUE & generation_max<2){
-    return(print("error: generation_max must be an integer of at least 2"))
+    return(
+      print("Error: generation_max must be an integer of at least 2")
+      )
   }
   
   #(2) Rewrite some parameters
@@ -97,8 +109,15 @@ build.model<- function(
     
     #3A.2: write appropriate names for all compartments
     
-    names_E <- paste(rep("E", times=ke), letters[1:ke], sep="") 
-    names_I <- paste(rep("I", times=ki), letters[1:ki], sep="") 
+    names_E <- paste(
+      rep("E", times=ke), 
+      letters[1:ke], 
+      sep="") 
+    
+    names_I <- paste(
+      rep("I", times=ki),
+      letters[1:ki], 
+      sep="") 
     
     #add states S and R for a full vector of state names
     names_SEIR <- c("S", names_E, names_I, "R") 
@@ -163,20 +182,29 @@ build.model<- function(
     #dgEe/dt = gammae*gEe for all g generations and all e substates of E
     #dgIi/dt = gammae*gIi for all g generations and all i substates of I
     
-    progression_equations <- paste(c(paste(rep("E", times=ke), letters[1:ke], sep=""),
-                                     paste(rep("I", times=ki), letters[1:ki], sep="")), sep="")
+    progression_equations <- paste(
+      c(paste(rep("E", times=ke), letters[1:ke], sep=""),
+        paste(rep("I", times=ki), letters[1:ki], sep="")), 
+      sep="")
     
     
     #add rate parameters 
-    progression_equations <- paste(c(rep("gammae*", times=ke), rep("gammai*", times=ki-1)),
-                                   progression_equations, sep="")
+    progression_equations <- paste(
+      c(rep("gammae*", times=ke), 
+        rep("gammai*", times=ki-1)),
+      progression_equations,
+      sep="")
     
     
     #write the sum of the infectious compartments
     sum_infectious_compartments <- paste(names_I, collapse="+")
     
     #add S and beta
-    transmission_equations <- paste("beta*S*(", sum_infectious_compartments, ")", sep="")
+    transmission_equations <- paste(
+      "beta*S*(",
+      sum_infectious_compartments,
+      ")",
+      sep="")
     
     #combine all state transition equations in propensity vector, a
     a <- c(transmission_equations, progression_equations)
@@ -197,11 +225,21 @@ build.model<- function(
   #3B.2: write appropriate names for all compartments
   
   #general names for E and I compartments without generation indicators: Ea, Eb,....,Eke; Ia, Ib,...,Iki
-  names_E_per_generation <- paste(rep("E", times=ke), letters[1:ke], sep="") 
-  names_I_per_generation <- paste(rep("I", times=ki), letters[1:ki], sep="") 
+  names_E_per_generation <- paste(
+    rep("E", times=ke),
+    letters[1:ke], 
+    sep="") 
+  
+  names_I_per_generation <- paste(
+    rep("I", times=ki),
+    letters[1:ki],
+    sep="") 
   
   #names for E and I compartments with generation indicators: 1Ea,...,1Eke, 2Ea,...,2Eke....
-  names_EI <- paste(rep(c(1:generation_max), each=n_EI_per_generation), c(names_E_per_generation,names_I_per_generation), sep="") 
+  names_EI <- paste(
+    rep(c(1:generation_max), each=n_EI_per_generation),
+    c(names_E_per_generation,names_I_per_generation), 
+    sep="") 
   
   #add states S and R for a full vector of state names
   names_SEIR <- c("S", names_EI, "R") 
@@ -296,9 +334,16 @@ build.model<- function(
   #dgEe/dt = gammae*gEe for all g generations and all e substates of E
   #dgIi/dt = gammae*gIi for all g generations and all i substates of I
   
-  progression_equations <- paste(rep(1:generation_max, each=n_EI_per_generation),
-                                 c(paste(rep("E", times=ke), letters[1:ke], sep=""),
-                                   paste(rep("I", times=ki), letters[1:ki], sep="")), sep="")
+  progression_equations <- paste(
+    rep(1:generation_max, each=n_EI_per_generation),
+    c(paste(
+        rep("E", times=ke),
+        letters[1:ke], sep=""),
+      paste(
+        rep("I", times=ki),
+        letters[1:ki], sep="")
+      ),
+    sep="")
   
   
   #extract the recovery states, gIki, in a separate recovery vector to be included after all progression equations
@@ -309,9 +354,9 @@ build.model<- function(
   progression_equations <- setdiff(progression_equations, recovery_equations)
   
   #add rate parameters to progression and recovery equations (gammae for state E, gammai for state I)
-  progression_equations <- paste(c(rep(c(rep("gammae*", times=ke), rep("gammai*", times=ki-1)), 
-                                       times=generation_max)),
-                                 progression_equations, sep="")
+  progression_equations <- paste(
+    c(rep(c(rep("gammae*", times=ke), rep("gammai*", times=ki-1)), times=generation_max)),
+    progression_equations, sep="")
   recovery_equations <- paste("gammai*", recovery_equations, sep="")
   
   #5B.2: write transmission equations
@@ -345,7 +390,7 @@ build.model<- function(
 #(2) A function to run a Gillespie Algorithm using the vectors and transmission matrix above
 #Using any given 
 
-run.model <- function(model){
+run_model <- function(model){
   #first, randomly assign e0 exposed individual across the ke exposed states
   #ke and e0 are stored in model[[6]] and model[[5]] respectively
   model[[1]][2:(model[[6]]+1)] <- tabulate(sample(c(1:model[[6]]), length(model[[5]]), replace=TRUE), nbins=model[[6]])
@@ -366,7 +411,7 @@ run.model <- function(model){
 
 #(3) A function to run n series of Gillespie Algorithm simulations
 
-run.simulations <- function(
+run_simulations <- function(
     N=500,
     S=100, 
     e0=1,
@@ -382,7 +427,7 @@ run.simulations <- function(
     runs=100){
   
   #Build necessary model components
-  model <- build.model(N=N,
+  model <- build_model(N=N,
                        S=S,
                        e0=e0,
                        bdd=bdd,
@@ -399,7 +444,7 @@ run.simulations <- function(
   simulation_outputs <- as.list(numeric(runs))
   
   for(ii in 1:runs){
-    simulation_outputs[[ii]] <- run.model(model)
+    simulation_outputs[[ii]] <- run_model(model)
   }
   
   return(as.list(simulation_outputs))
@@ -408,14 +453,14 @@ run.simulations <- function(
 #(4) Three functions for analysing simulation runs
 #(and one to check for appropriate generation_max)
 
-#return.end: takes a simulation run (returned as a state by time matrix)
+#return_end: takes a simulation run (returned as a state by time matrix)
 #and extracts the end time (last value in the time column)
-return.end <- function(run){
+return_end <- function(run){
   return(run[nrow(run),1])
 }
 
-#return.gen: a function to track the number of transmission generations 
-return.gen <- function(run){
+#return_gen: a function to track the number of transmission generations 
+return_gen <- function(run){
   #use colSums to identify all state columns with at least one infection,
   #and extract only the numbers from their names
   #since generation indicators are the only numbers in state names
@@ -426,32 +471,32 @@ return.gen <- function(run){
   return(max(generations_with_infection))
 }
 
-#return.cases: a function to return the total number of cases in an outbreak
-return.cases <- function(run){
+#return_cases: a function to return the total number of cases in an outbreak
+return_cases <- function(run){
   #total cases is the number in R at the end minus the number in R at the beginning
   return(run[nrow(run),ncol(run)]-run[1,ncol(run)])
 }
 
 
-#(5) analyse.runs: a function to create summary report from a list of runs
-analyse.runs <- function(list){
+#(5) analyse_runs: a function to create summary report from a list of runs
+analyse_runs <- function(list){
   #make an output matrix
   summary <- matrix(0, nrow=(length(list)), ncol=3)
   colnames(summary) <- c("Duration", "Generations",
                          "Cases")
   
   #use lapply to analyse each run
-  summary[,1] <- unlist(lapply(list, return.end))
-  summary[,2] <- unlist(lapply(list, return.gen))
-  summary[,3] <- unlist(lapply(list, return.cases))
+  summary[,1] <- unlist(lapply(list, return_end))
+  summary[,2] <- unlist(lapply(list, return_gen))
+  summary[,3] <- unlist(lapply(list, return_cases))
   return(summary)
 }
 
-#(6) run.analysis: a function which takes some inputs as vectors 
+#(6) run_analysis: a function which takes some inputs as vectors 
 #and runs an equal number of simulations for each
 
 
-run.analysis <- function(
+run_analysis <- function(
     N=c(100, 200, 500), 
     S=50,
     e0=1,
@@ -491,8 +536,8 @@ run.analysis <- function(
   list_names <- paste(list_names, vector_names[n_vectors],"=", vector_combinations[,n_vectors])
   names(results_raw) <- list_names
   
-  #build an appropriately sized and named matrix to store  results of analyse.runs
-  results_analysis <- matrix(nrow=(runs*n_combinations), ncol=(n_vectors + 3)) #+3 for the output of analyse.runs
+  #build an appropriately sized and named matrix to store  results of analyse_runs
+  results_analysis <- matrix(nrow=(runs*n_combinations), ncol=(n_vectors + 3)) #+3 for the output of analyse_runs
   colnames(results_analysis) <- c(vector_names, "Duration", "Generations", "Cases")
   results_analysis <- as.data.frame(results_analysis)
   for(i in 1:ncol(vector_combinations)){
@@ -507,7 +552,7 @@ run.analysis <- function(
     combination_inputs <- inputs
     combination_inputs[vector_indices] <- vector_combinations[i,]
     combination_inputs <- unlist(combination_inputs)
-    results_raw[[i]] <- run.simulations(N=combination_inputs[1],
+    results_raw[[i]] <- run_simulations(N=combination_inputs[1],
                                         S=combination_inputs[2],
                                         e0=combination_inputs[3],
                                         bdd=combination_inputs[4],
@@ -520,7 +565,7 @@ run.analysis <- function(
                                         runs=runs,
                                         generation_max=generation_max,
                                         generation_tracking=generation_tracking)
-    results_analysis[c(start:end),c((n_vectors+1):(n_vectors+3))] <- analyse.runs(results_raw[[i]])
+    results_analysis[c(start:end),c((n_vectors+1):(n_vectors+3))] <- analyse_runs(results_raw[[i]])
     print(paste((end*100)/nrow(results_analysis), '%', sep=""))
     start <- start+runs
     end <- end+runs 
@@ -530,10 +575,10 @@ run.analysis <- function(
   return(list(raw = results_raw, analysis=results_analysis))
 }
 
-#run.analysis 2: an adapted version of run.analysis 
+#run_analysis 2: an adapted version of run_analysis 
 #for cases where we need to co-vary variables
 
-run.analysis2 <- function(
+run_analysis2 <- function(
     N=c(100, 200, 500), 
     S=c(50, 100, 250), 
     e0=1,
@@ -576,8 +621,8 @@ run.analysis2 <- function(
   list_names <- paste(list_names, vector_names[n_vectors],"=", vector_combinations[,n_vectors])
   names(results_raw) <- list_names
   
-  #build an appropriately sized and named matrix to store  results of analyse.runs
-  results_analysis <- matrix(nrow=(runs*n_combinations), ncol=(n_vectors + 3)) #+3 for the output of analyse.runs
+  #build an appropriately sized and named matrix to store  results of analyse_runs
+  results_analysis <- matrix(nrow=(runs*n_combinations), ncol=(n_vectors + 3)) #+3 for the output of analyse_runs
   colnames(results_analysis) <- c(vector_names, "Duration", "Generations", "Cases")
   results_analysis <- as.data.frame(results_analysis)
   for(i in 1:ncol(vector_combinations)){
@@ -592,7 +637,7 @@ run.analysis2 <- function(
     combination_inputs <- inputs
     combination_inputs[vector_indices] <- vector_combinations[i,]
     combination_inputs <- unlist(combination_inputs)
-    results_raw[[i]] <- run.simulations(N=combination_inputs[1],
+    results_raw[[i]] <- run_simulations(N=combination_inputs[1],
                                         S=combination_inputs[2],
                                         e0=combination_inputs[3],
                                         bdd=combination_inputs[4],
@@ -605,7 +650,7 @@ run.analysis2 <- function(
                                         runs=runs,
                                         generation_max=generation_max,
                                         generation_tracking=generation_tracking)
-    results_analysis[c(start:end),c((n_vectors+1):(n_vectors+3))] <- analyse.runs(results_raw[[i]])
+    results_analysis[c(start:end),c((n_vectors+1):(n_vectors+3))] <- analyse_runs(results_raw[[i]])
     print(paste((end*100)/nrow(results_analysis), '%', sep=""))
     start <- start+runs
     end <- end+runs 
@@ -616,11 +661,11 @@ run.analysis2 <- function(
 }
 
 
-##(7) run.analysis.ship:
+##(7) run_analysis_ship:
 #a function to simulate outnreaks of a given pathogen on ships of different sizes,
 #and then bootstrap introduction risk for a given ship journey time
 
-run.analysis.ship <- function(Ship_name, 
+run_analysis_ship <- function(Ship_name, 
                               Journey_time,
                               N_ship,
                               p_susceptible,
@@ -645,7 +690,7 @@ run.analysis.ship <- function(Ship_name,
   }
   
   #run analysis
-  analysis <- run.analysis2(N=N_ship,
+  analysis <- run_analysis2(N=N_ship,
                             S=S_ship,
                             e0=e0,
                             mue=mue,
@@ -657,23 +702,24 @@ run.analysis.ship <- function(Ship_name,
                             bfd=bfd,
                             runs=runs)
   
-  #add ship names and journey times to run.analysis2 output
+  #add ship names and journey times to run_analysis2 output
   analysis$analysis$Ship_name <- rep(Ship_name, times=runs)
   analysis$analysis$Journey_time <- rep(Journey_time, times=runs)
+  analysis$analysis$N_ship <- rep(N_ship, times=runs)
   
   #make output table
-  output <- tibble::tibble("Ship_name"=Ship_name, "Journey_time"=Journey_time, "p_introduction"=NA)
+  output <- tibble::tibble("Ship_name"=Ship_name, "Journey_time"=Journey_time, "N_ship"=N_ship, "p_introduction"=NA)
   for(i in 1:nrow(output)){
-    subset <- dplyr::filter(analysis$analysis, Ship_name==output$Ship_name & Journey_time==output$Journey_time)
+    subset <- dplyr::filter(analysis$analysis, Ship_name==output$Ship_name[i] & Journey_time==output$Journey_time[i] & N_ship==output$N_ship[i])
     output$p_introduction[i] <- length(which(subset$Duration >= output$Journey_time[i]))/nrow(subset)
   }
   
   return(list(analysis=analysis, ship_risk=output))
 }
 
-#(8) check.generation.max(): a function to check whether the value of generation_max is appropriate for a given simulation
+#(8) check_generation_max(): a function to check whether the value of generation_max is appropriate for a given simulation
 
-check.generation.max <- function(output){
+check_generation_max <- function(output){
   #(1) extract generation_max from raw data
   generation_max <- max(
     na.omit(
@@ -694,7 +740,7 @@ check.generation.max <- function(output){
 # ii. end before reaching herd immunity
 # iii. end after reaching herd immunity
 
-label.outbreaks <- function(df, N, r0){
+label_outbreaks <- function(df, N, r0){
   df$label <- NA
   df$label[which(df$Generations==1)] <- 1
   df$label[which(df$Generations > 1 & df$Cases/N < max(1-(1/r0),0))] <- 2
@@ -706,7 +752,7 @@ label.outbreaks <- function(df, N, r0){
   return(df)
 }
 
-#(10) get.r0: a function to calculate r0 from bdd, bfd, mui, q, and N
-get.r0 <- function(bdd, bfd, mui, q, N){
+#(10) get_r0: a function to calculate r0 from bdd, bfd, mui, q, and N
+get_r0 <- function(bdd, bfd, mui, q, N){
   return(mui*bfd^(1-q)*(bdd*N)^q)
 }

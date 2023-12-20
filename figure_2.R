@@ -46,7 +46,7 @@ bdd_2a_re0_1 <- re0_2a[1]/(mui_2a*S_2a)
 bdd_2a_re0_2 <- re0_2a[2]/(mui_2a*S_2a)
 bdd_2a_re0_8 <- re0_2a[3]/(mui_2a*S_2a)
 
-simulation_results_2a_re0_1 <- run.analysis2(
+simulation_results_2a_re0_1 <- run_analysis2(
   N=N_2a,
   S=S_2a,
   e0=e0_2a,
@@ -62,7 +62,7 @@ simulation_results_2a_re0_1 <- run.analysis2(
   generation_max = generation_max_2a
 )
 
-simulation_results_2a_re0_2 <- run.analysis2(
+simulation_results_2a_re0_2 <- run_analysis2(
   N=N_2a,
   S=S_2a,
   e0=e0_2a,
@@ -78,7 +78,7 @@ simulation_results_2a_re0_2 <- run.analysis2(
   generation_max = generation_max_2a
 )
 
-simulation_results_2a_re0_8 <- run.analysis2(
+simulation_results_2a_re0_8 <- run_analysis2(
   N=N_2a,
   S=S_2a,
   e0=e0_2a,
@@ -203,7 +203,7 @@ input_2b_q1$S <- round(input_2b_q1$N * input_2b_q1$pp, 0)
 runs_2b <- 200
 
 #run analysis
-simulation_results_2b_q0 <- run.analysis2(
+simulation_results_2b_q0 <- run_analysis2(
   N=input_2b_q0$N,
   S=input_2b_q0$S,
   e0=e0_2b,
@@ -222,7 +222,7 @@ simulation_2b_q0_analysis$label <- factor(simulation_2b_q0_analysis$bfd,
                                          levels=unique(input_2b_q0$bfd),
                                          labels=c(1:3))
 
-simulation_results_2b_q05 <- run.analysis2(
+simulation_results_2b_q05 <- run_analysis2(
   N=input_2b_q05$N,
   S=input_2b_q05$S,
   e0=e0_2b,
@@ -241,7 +241,7 @@ simulation_2b_q05_analysis$label <- factor(simulation_2b_q05_analysis$bdd,
                                           levels=unique(input_2b_q05$bdd),
                                           labels=c(4:6))
 
-simulation_results_2b_q1 <- run.analysis2(
+simulation_results_2b_q1 <- run_analysis2(
   N=input_2b_q1$N,
   S=input_2b_q1$S,
   e0=e0_2b,

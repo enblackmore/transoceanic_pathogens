@@ -1,4 +1,4 @@
-source(functions.R)
+source('functions.R')
 set.seed(1492)
 
 #############################################################
@@ -38,7 +38,7 @@ bfd_4_smallpox <- 7/mui_4_smallpox
 
 pathogens_4 <- c("Influenza", "Measles", "Smallpox")
 
-simulation_results_4_influenza <- run.analysis2(
+simulation_results_4_influenza <- run_analysis2(
   N=N_4,
   S=S_4,
   e0=e0_4,
@@ -52,7 +52,7 @@ simulation_results_4_influenza <- run.analysis2(
   runs=250,
   generation_tracking =FALSE)
 
-simulation_results_4_measles <- run.analysis2(
+simulation_results_4_measles <- run_analysis2(
   N=N_4,
   S=S_4,
   e0=e0_4,
@@ -67,7 +67,7 @@ simulation_results_4_measles <- run.analysis2(
   generation_tracking=FALSE)
 
 
-simulation_results_4_smallpox <- run.analysis2(
+simulation_results_4_smallpox <- run_analysis2(
   N=N_4,
   S=S_4,
   e0=e0_4,
@@ -87,8 +87,8 @@ simulation_results_4_measles$analysis$Pathogen <- "Measles"
 simulation_results_4_smallpox$analysis$Pathogen <- "Smallpox"
 
 #Combine analysis in a data frame
-simulation_results_4 <- dplyr::full_join(simulation_results_4_influenza$analysis,
-                                         dplyr::full_join(simulation_results_4_measles$analysis,
+simulation_results_4 <- dplyr::bind_rows(simulation_results_4_influenza$analysis,
+                                         dplyr::bind_rows(simulation_results_4_measles$analysis,
                                                           simulation_results_4_smallpox$analysis))
 saveRDS(simulation_results_4, file = "simulation_results_4.RDS")
 
@@ -97,7 +97,7 @@ saveRDS(simulation_results_4, file = "simulation_results_4.RDS")
 time_max <- round(max(simulation_results_4$Duration),0)
 
 #list of times to assess introduction risk
-times <- seq(1, time_max, by=1)
+times <- seq(0, time_max, by=1)
 
 #create output data frame to store results
 introduction_risk_4 <- expand.grid(pathogens_4, N_4, times, NA)
@@ -116,7 +116,7 @@ saveRDS(introduction_risk_4, file="introduction_risk_4.RDS")
 ### PANEL 4A and 4B VISUALISATION ###
 
 #aesthetics
-theme4_color <- c("#CE1FFF", "#09f04a", "#710F0F", "#FFCA09",
+theme4_color <- c("#CE1FFF","#710F0F", "#09f04a", "#FFCA09",
                   "#0038E0", "#FF0A3F", "#0cbcff")
 theme4_shape <- c(22,23,25, 8, 4,21,10,24)
 
@@ -131,10 +131,13 @@ figure_4_contours <- ggplot(introduction_risk_4) +
 #Panel 4a: overplotting San Francisco journey data
 #Adding journey time data
 #figure 4: overlay SF data
-introduction_risk_4 <- readRDS('introduction_risk_4.RDS')
+
+data_SF <- read.csv('San_Francisco_arrivals.csv')
 
 #Reduce number of origins for easier plotting
-data_panel_4a <- dplyr::filter(data_SF, From_code != "Liverpool")
+data_panel_4a <- dplyr::filter(data_SF, From_code != "LVP")
+data_panel_4a$From_code <- factor(data_panel_4a$From_code, levels=c("NYC", "VAL", "PAN", "ORE", "HAI", "SYD", "HKG"),
+                                  labels=c("New York City", "Valparaíso", "Panama", "Oregon", "Hawai'i", "Sydney", "Hong Kong"))
 
 #split voyage origins across facets for visual clarity
 data_panel_4a$Pathogen <- "Influenza"
@@ -143,9 +146,11 @@ data_panel_4a$Pathogen[which(data_panel_4a$From_code %in% c("Panama", "New York 
 
 #create a data frame of ships for which numerical estimates are given in table 1
 #to overplot crosses
-numerical_estimates_4a <- tibble::tibble(x=data_panel_4a$Voyage_days[SF_selected_ships_simulation_tables],
-                                         y=data_panel_4a$N_passengers[SF_selected_ships_simulation_tables],
-                                         From_code=data_panel_4a$From_code[SF_selected_ships_simulation_tables],)
+numerical_estimates_4a <- tibble::tibble(x=Data_table1$Voyage_days,
+                                         y=Data_table1$N_passengers,
+                                         From_code=Data_table1$From_code)
+numerical_estimates_4a$From_code <- factor(numerical_estimates_4a$From_code, levels=c("NYC", "VAL", "PAN", "ORE", "HAI", "SYD", "HKG"),
+                                  labels=c("New York City", "Valparaíso", "Panama", "Oregon", "Hawai'i", "Sydney", "Hong Kong"))
 numerical_estimates_4a$Pathogen <- "Influenza"
 numerical_estimates_4a$Pathogen[which(numerical_estimates_4a$From_code %in% c("Hong Kong", "Sydney", "Hawai'i"))] <- "Measles"
 numerical_estimates_4a$Pathogen[which(numerical_estimates_4a$From_code %in% c("Panama", "New York City"))] <- "Smallpox"
@@ -157,7 +162,7 @@ panel_4a <- figure_4_contours +
   guides(fill=guide_colorsteps(frame.colour="black", frame.linewidth=0.5, frame.linetype=1)) +
   labs(col="Origin port", pch="Technology") + theme(legend.justification = 'top') +
   scale_color_manual(values=theme4_color) +
-  scale_shape_manual(values=c(17,16), labels=c("Steam", "Sail")) +
+  scale_shape_manual(values=c(16,17), labels=c("Sail", "Steam")) +
   scale_y_log10(limits=c(10,1500)); panel_4a
 
 #Panel 4b: overplotting selected historical voyages
@@ -259,133 +264,160 @@ bfd_tables_smallpox <- 7/mui_tables_smallpox
 
 #7a: selected San Francisco ships
 SF_data <- read.csv('San_Francisco_arrivals.csv')
-SF_selected_ships_simulation_tables <- c(428, 377, 25, 64, 163, 151, 323, 353, 525, 502, 130, 125, 474)
-Data_table1 <- SF_data[SF_selected_ships_simulation_tables,]
+SF_selected_ships_simulation_tables <- c(448, 397, 25, 64, 168, 218, 341, 373, 545, 522, 132, 136, 494, 492)
+Data_table1 <- SF_data[SF_selected_ships_simulation_tables,c(3,4,7,8,13)]
+Data_table1$S <- round(S_proportion_tables*Data_table1$N_passengers, 0)
 
-Names_table1 <- Data_table1$Ship_name
-N_table1 <- Data_table1$N_passengers
-Journey_time_table1 <- Data_table1$Voyage_days
 
-simulation_results_table1_influenza <- run.analysis.ship(
-  Ship_name = Names_table1,
-  Journey_time = Journey_time_table1,
-  N_ship = N_table1,
-  p_susceptible = S_proportion_tables,
-  mue = mue_tables_influenza,
-  mui = mui_tables_influenza,
-  ke = ke_tables,
-  ki = ki_tables, 
-  q = q_tables, 
-  bdd = bdd_tables,
-  bfd = bfd_tables_influenza,
-  runs = 1000
+simulation_results_table1_influenza <- run_analysis2(
+  N=Data_table1$N_passengers,
+  S=Data_table1$S,
+  e0=1,
+  bdd=bdd_tables,
+  bfd=bfd_tables_influenza,
+  mue=mue_tables_influenza,
+  mui=mui_tables_influenza,
+  ke=ke_tables,
+  ki=ki_tables,
+  q=q_tables,
+  generation_tracking = FALSE,
+  runs=5000
 )
 
-simulation_results_table1_measles <- run.analysis.ship(
-  Ship_name = Names_table1,
-  Journey_time = Journey_time_table1,
-  N_ship = N_table1,
-  p_susceptible = S_proportion_tables,
-  mue = mue_tables_measles,
-  mui = mui_tables_measles,
-  ke = ke_tables,
-  ki = ki_tables, 
-  q = q_tables, 
-  bdd = bdd_tables,
-  bfd = bfd_tables_measles,
-  runs = 1000
+Data_table1$risk_influenza <- NA
+for(i in 1:nrow(Data_table1)){
+  subset <- dplyr::filter(simulation_results_table1_influenza$analysis,
+                N==Data_table1$N_passengers[i])
+  Data_table1$risk_influenza[i] <- length(which(subset$Duration >= Data_table1$Voyage_days[i])) / nrow(subset)
+}
+  
+simulation_results_table1_measles <- run_analysis2(
+  N=Data_table1$N_passengers,
+  S=Data_table1$S,
+  e0=1,
+  bdd=bdd_tables,
+  bfd=bfd_tables_measles,
+  mue=mue_tables_measles,
+  mui=mui_tables_measles,
+  ke=ke_tables,
+  ki=ki_tables,
+  q=q_tables,
+  generation_tracking = FALSE,
+  runs=5000
 )
 
-simulation_results_table1_smallpox <- run.analysis.ship(
-  Ship_name = Names_table1,
-  Journey_time = Journey_time_table1,
-  N_ship = N_table1,
-  p_susceptible = S_proportion_tables,
-  mue = mue_tables_smallpox,
-  mui = mui_tables_smallpox,
-  ke = ke_tables,
-  ki = ki_tables, 
-  q = q_tables, 
-  bdd = bdd_tables,
-  bfd = bfd_tables_smallpox,
-  runs = 1000
+Data_table1$risk_measles <- NA
+for(i in 1:nrow(Data_table1)){
+  subset <- dplyr::filter(simulation_results_table1_measles$analysis,
+                          N==Data_table1$N_passengers[i])
+  Data_table1$risk_measles[i] <- length(which(subset$Duration >= Data_table1$Voyage_days[i])) / nrow(subset)
+}
+
+simulation_results_table1_smallpox <- run_analysis2(
+  N=Data_table1$N_passengers,
+  S=Data_table1$S,
+  e0=1,
+  bdd=bdd_tables,
+  bfd=bfd_tables_smallpox,
+  mue=mue_tables_smallpox,
+  mui=mui_tables_smallpox,
+  ke=ke_tables,
+  ki=ki_tables,
+  q=q_tables,
+  generation_tracking = FALSE,
+  runs=5000
 )
 
-simulation_results_table1_influenza$ship_risk$pathogen <- "Influenza"
-simulation_results_table1_measles$ship_risk$pathogen <- "Measles"
-simulation_results_table1_smallpox$ship_risk$pathogen <- "Smallpox"
+Data_table1$risk_smallpox <- NA
+for(i in 1:nrow(Data_table1)){
+  subset <- dplyr::filter(simulation_results_table1_smallpox$analysis,
+                          N==Data_table1$N_passengers[i])
+  Data_table1$risk_smallpox[i] <- length(which(subset$Duration >= Data_table1$Voyage_days[i])) / nrow(subset)
+}
 
-simulation_results_table1 <- dplyr::full_join(simulation_results_table1_influenza$ship_risk,
-                                          dplyr::full_join(simulation_results_table1_measles$ship_risk,
-                                                           simulation_results_table1_smallpox$ship_risk))
 
-simulation_results_table1 <- tidyr::pivot_wider(simulation_results_table1, 
-                                            names_from = pathogen,
-                                            values_from = p_introduction)
-saveRDS(simulation_results_table1, file = "simulation_results_table1.RDS")
+
+saveRDS(Data_table1, file = "Results_table1.RDS")
 
 #7b: selected historical ships
 
 Data_table2 <- read.csv('Selected_voyages.csv')
 
-Names_table2 <- Data_table2$Ship
-N_table2 <- Data_table2$N
-Journey_time_table2 <- Data_table2$t
+Data_table2$S <- round(Data_table2$N*S_proportion_tables, 0)
 
-simulation_results_table2_influenza <- run.analysis.ship(
-  Ship_name = Names_table2,
-  Journey_time = Journey_time_table2,
-  N_ship = N_table2,
-  p_susceptible = S_proportion_tables,
-  mue = mue_tables_influenza,
-  mui = mui_tables_influenza,
-  ke = ke_tables,
-  ki = ki_tables, 
-  q = q_tables, 
-  bdd = bdd_tables,
-  bfd = bfd_tables_influenza,
-  runs = 1000
+simulation_results_table2_influenza <- run_analysis2(
+  N=Data_table2$N,
+  S=Data_table2$S,
+  e0=1,
+  bdd=bdd_tables,
+  bfd=bfd_tables_influenza,
+  mue=mue_tables_influenza,
+  mui=mui_tables_influenza,
+  ke=ke_tables,
+  ki=ki_tables,
+  q=q_tables,
+  generation_tracking = FALSE,
+  runs=5000
 )
 
-simulation_results_table2_measles <- run.analysis.ship(
-  Ship_name = Names_table2,
-  Journey_time = Journey_time_table2,
-  N_ship = N_table2,
-  p_susceptible = S_proportion_tables,
-  mue = mue_tables_measles,
-  mui = mui_tables_measles,
-  ke = ke_tables,
-  ki = ki_tables, 
-  q = q_tables, 
-  bdd = bdd_tables,
-  bfd = bfd_tables_measles,
-  runs = 1000
+Data_table2$risk_influenza <- NA
+for(i in 1:nrow(Data_table2)){
+  subset <- dplyr::filter(simulation_results_table2_influenza$analysis,
+                          N==Data_table2$N[i])
+  Data_table2$risk_influenza[i] <- length(which(subset$Duration >= Data_table2$t[i])) / nrow(subset)
+}
+
+simulation_results_table2_measles <- run_analysis2(
+  N=Data_table2$N,
+  S=Data_table2$S,
+  e0=1,
+  bdd=bdd_tables,
+  bfd=bfd_tables_measles,
+  mue=mue_tables_measles,
+  mui=mui_tables_measles,
+  ke=ke_tables,
+  ki=ki_tables,
+  q=q_tables,
+  generation_tracking = FALSE,
+  runs=5000
 )
 
-simulation_results_table2_smallpox <- run.analysis.ship(
-  Ship_name = Names_table2,
-  Journey_time = Journey_time_table2,
-  N_ship = N_table2,
-  p_susceptible = S_proportion_tables,
-  mue = mue_tables_smallpox,
-  mui = mui_tables_smallpox,
-  ke = ke_tables,
-  ki = ki_tables, 
-  q = q_tables, 
-  bdd = bdd_tables,
-  bfd = bfd_tables_smallpox,
-  runs = 1000
+Data_table2$risk_measles <- NA
+for(i in 1:nrow(Data_table2)){
+  subset <- dplyr::filter(simulation_results_table2_measles$analysis,
+                          N==Data_table2$N[i])
+  Data_table2$risk_measles[i] <- length(which(subset$Duration >= Data_table2$t[i])) / nrow(subset)
+}
+
+simulation_results_table2_smallpox <- run_analysis2(
+  N=Data_table2$N,
+  S=Data_table2$S,
+  e0=1,
+  bdd=bdd_tables,
+  bfd=bfd_tables_smallpox,
+  mue=mue_tables_smallpox,
+  mui=mui_tables_smallpox,
+  ke=ke_tables,
+  ki=ki_tables,
+  q=q_tables,
+  generation_tracking = FALSE,
+  runs=5000
 )
 
-simulation_results_table2_influenza$ship_risk$pathogen <- "Influenza"
-simulation_results_table2_measles$ship_risk$pathogen <- "Measles"
-simulation_results_table2_smallpox$ship_risk$pathogen <- "Smallpox"
+Data_table2$risk_smallpox <- NA
+for(i in 1:nrow(Data_table2)){
+  subset <- dplyr::filter(simulation_results_table2_smallpox$analysis,
+                          N==Data_table2$N[i])
+  Data_table2$risk_smallpox[i] <- length(which(subset$Duration >= Data_table2$t[i])) / nrow(subset)
+}
 
-simulation_results_table2 <- dplyr::full_join(simulation_results_table2_influenza$ship_risk,
-                                          dplyr::full_join(simulation_results_table2_measles$ship_risk,
-                                                           simulation_results_table2_smallpox$ship_risk))
 
-simulation_results_table2 <- tidyr::pivot_wider(simulation_results_table2, 
-                                            names_from = pathogen,
-                                            values_from = p_introduction)
-saveRDS(simulation_results_table2, file = "simulation_results_table2.RDS")
+
+
+
+
+
+
+
+
+saveRDS(Data_table2, file = "Results_table2.RDS")

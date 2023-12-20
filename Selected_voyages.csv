@@ -1,17 +1,17 @@
-"","Ship","t","N"
-"1","Santa Maria
-(Columbus, 1492)",35,42
-"2","Matthew
-(Cabot, 1497)",54,18
-"3","Sea Venture
-(Emigrant Ship, 1609-1610)",66,100
-"4","Mayflower
-(Emigrant Ship, 1620)",53,150
-"5","Empress of China
-(Trade Ship, 1784)",190,34
-"6","Diana
-(Slave Trade, 1778)",41,448
-"7","America
+"","X","Ship","t","N"
+"1",1,"Santa Maria
+(Columbus, 1492)",35,41
+"2",2,"Matthew
+(Cabot, 1497)",54,20
+"3",3,"Sea Venture
+(Emigrant Ship, 1609-1610)",53,150
+"4",4,"Mayflower
+(Emigrant Ship, 1620)",66,127
+"5",5,"Empress of China
+(Trade Ship, 1784)",184,34
+"6",6,"Diana
+(Slave Trade, 1778)",41,413
+"7",7,"America
 (Convict Transport, 1832)",180,175
-"8","HMAT Boonah
+"8",8,"HMAT Boonah
 (WW1 Transport, 1918)",17,1095
