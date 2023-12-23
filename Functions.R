@@ -528,13 +528,7 @@ run_analysis <- function(
   colnames(vector_combinations) <- vector_names
   
   #build an appropriately sized and named list to store raw model output
-  results_raw <- vector(mode='list', length=n_combinations)
-  list_names <- character(n_vectors)
-  for(i in 1:(n_vectors-1)){
-    list_names <- paste(list_names, vector_names[i],"=", vector_combinations[,i], "; ", sep="")
-  }
-  list_names <- paste(list_names, vector_names[n_vectors],"=", vector_combinations[,n_vectors])
-  names(results_raw) <- list_names
+  results_raw <- vector(mode='list')
   
   #build an appropriately sized and named matrix to store  results of analyse_runs
   results_analysis <- matrix(nrow=(runs*n_combinations), ncol=(n_vectors + 3)) #+3 for the output of analyse_runs
@@ -552,7 +546,7 @@ run_analysis <- function(
     combination_inputs <- inputs
     combination_inputs[vector_indices] <- vector_combinations[i,]
     combination_inputs <- unlist(combination_inputs)
-    results_raw[[i]] <- run_simulations(N=combination_inputs[1],
+    results_raw <- run_simulations(N=combination_inputs[1],
                                         S=combination_inputs[2],
                                         e0=combination_inputs[3],
                                         bdd=combination_inputs[4],
@@ -565,14 +559,14 @@ run_analysis <- function(
                                         runs=runs,
                                         generation_max=generation_max,
                                         generation_tracking=generation_tracking)
-    results_analysis[c(start:end),c((n_vectors+1):(n_vectors+3))] <- analyse_runs(results_raw[[i]])
+    results_analysis[c(start:end),c((n_vectors+1):(n_vectors+3))] <- analyse_runs(results_raw)
     print(paste((end*100)/nrow(results_analysis), '%', sep=""))
     start <- start+runs
     end <- end+runs 
   }
   
-  #return both raw and analysed results as a list
-  return(list(raw = results_raw, analysis=results_analysis))
+  #return analysed results
+  return(results_analysis)
 }
 
 #run_analysis 2: an adapted version of run_analysis 
@@ -613,13 +607,7 @@ run_analysis2 <- function(
   colnames(vector_combinations) <- vector_names
   
   #build an appropriately sized and named list to store raw model output
-  results_raw <- vector(mode='list', length=n_combinations)
-  list_names <- character(n_vectors)
-  for(i in 1:(n_vectors-1)){
-    list_names <- paste(list_names, vector_names[i],"=", vector_combinations[,i], "; ", sep="")
-  }
-  list_names <- paste(list_names, vector_names[n_vectors],"=", vector_combinations[,n_vectors])
-  names(results_raw) <- list_names
+  results_raw <- vector(mode='list')
   
   #build an appropriately sized and named matrix to store  results of analyse_runs
   results_analysis <- matrix(nrow=(runs*n_combinations), ncol=(n_vectors + 3)) #+3 for the output of analyse_runs
@@ -637,7 +625,7 @@ run_analysis2 <- function(
     combination_inputs <- inputs
     combination_inputs[vector_indices] <- vector_combinations[i,]
     combination_inputs <- unlist(combination_inputs)
-    results_raw[[i]] <- run_simulations(N=combination_inputs[1],
+    results_raw <- run_simulations(N=combination_inputs[1],
                                         S=combination_inputs[2],
                                         e0=combination_inputs[3],
                                         bdd=combination_inputs[4],
@@ -650,89 +638,75 @@ run_analysis2 <- function(
                                         runs=runs,
                                         generation_max=generation_max,
                                         generation_tracking=generation_tracking)
-    results_analysis[c(start:end),c((n_vectors+1):(n_vectors+3))] <- analyse_runs(results_raw[[i]])
+    results_analysis[c(start:end),c((n_vectors+1):(n_vectors+3))] <- analyse_runs(results_raw)
     print(paste((end*100)/nrow(results_analysis), '%', sep=""))
     start <- start+runs
     end <- end+runs 
   }
   
   #return both raw and analysed results as a list
-  return(list(raw = results_raw, analysis=results_analysis))
+  return(results_analysis)
 }
 
 
-##(7) run_analysis_ship:
-#a function to simulate outnreaks of a given pathogen on ships of different sizes,
-#and then bootstrap introduction risk for a given ship journey time
+##(7) get_ship_risk:
+#a which takes a table of voyages (with voyage time, N, and S)
+#returns risk of introduction for a given pathogen
+#for each row
+#and adds this result to the table
 
-run_analysis_ship <- function(Ship_name, 
-                              Journey_time,
-                              N_ship,
-                              p_susceptible,
-                              e0=1,
-                              mue=5,
-                              mui=5,
-                              ke=3,
-                              ki=3,
-                              q=1,
-                              bdd=1/1000,
-                              bfd=0,
-                              runs){
+get_ship_risk <- function(
+    t,
+    N, 
+    S,
+    e0=1,
+    bdd,
+    bfd,
+    mue,
+    mui,
+    ke,
+    ki,
+    q,
+    generation_tracking,
+    runs) {
   
-  if(length(unique(N_ship))<length(N_ship)){
-    return(print("Function cannot handle duplicate N_ship values; perform separately for identical values of N_ship"))
+  if(identical(length(N), length(t), length(S))==FALSE){
+    return('error: N, t, S must have an identical number of entries')
   }
   
-  #calculate S
-  S_ship <- round(N_ship*p_susceptible,0)
-  while(any(S_ship > N_ship-e0)){
-    S_ship[which(S_ship>N_ship-e0)] <- S_ship[which(S>N_ship-e0)]-1
+  sim <- run_analysis2(
+    N=N,
+    S=S,
+    e0=e0,
+    bdd=bdd,
+    bfd=bfd,
+    mue=mue,
+    mui=mui,
+    ke=ke,
+    ki=ki,
+    q=q,
+    generation_tracking = FALSE,
+    runs=runs
+  )
+  
+  output <- numeric(length(N))
+  for(i in 1:length(N)){
+    nn <- N[i]
+    subset <- dplyr::filter(sim, N==nn)
+    output[i] <- length(which(subset$Duration >= t[i])) / nrow(subset)
   }
-  
-  #run analysis
-  analysis <- run_analysis2(N=N_ship,
-                            S=S_ship,
-                            e0=e0,
-                            mue=mue,
-                            mui=mui,
-                            ke=ke,
-                            ki=ki,
-                            q=q,
-                            bdd=bdd,
-                            bfd=bfd,
-                            runs=runs)
-  
-  #add ship names and journey times to run_analysis2 output
-  analysis$analysis$Ship_name <- rep(Ship_name, times=runs)
-  analysis$analysis$Journey_time <- rep(Journey_time, times=runs)
-  analysis$analysis$N_ship <- rep(N_ship, times=runs)
-  
-  #make output table
-  output <- tibble::tibble("Ship_name"=Ship_name, "Journey_time"=Journey_time, "N_ship"=N_ship, "p_introduction"=NA)
-  for(i in 1:nrow(output)){
-    subset <- dplyr::filter(analysis$analysis, Ship_name==output$Ship_name[i] & Journey_time==output$Journey_time[i] & N_ship==output$N_ship[i])
-    output$p_introduction[i] <- length(which(subset$Duration >= output$Journey_time[i]))/nrow(subset)
-  }
-  
-  return(list(analysis=analysis, ship_risk=output))
+  return(output)
 }
 
-#(8) check_generation_max(): a function to check whether the value of generation_max is appropriate for a given simulation
+
+
+
+#(8) check_generation_max(): a function to check 
+#whether generation_max is appropriate for a given simulation
 
 check_generation_max <- function(output){
-  #(1) extract generation_max from raw data
-  generation_max <- max(
-    na.omit(
-      as.numeric(
-        stringr::str_extract(
-          colnames(output$raw[[1]][[1]]),
-          "[[:digit:]]+")
-      )
-    )
-  )
-  print(paste("Generations tracked:", generation_max), quote=FALSE)
   print(paste("Generation distribution in simulation"), quote=FALSE)
-  print(table(output$analysis$Generations))
+  print(table(output$Generations))
 }
 
 #(9) A function to label outbreaks by whether they...
@@ -740,11 +714,22 @@ check_generation_max <- function(output){
 # ii. end before reaching herd immunity
 # iii. end after reaching herd immunity
 
-label_outbreaks <- function(df, N, r0){
+label_outbreaks <- function(df, N){
   df$label <- NA
-  df$label[which(df$Generations==1)] <- 1
-  df$label[which(df$Generations > 1 & df$Cases/N < max(1-(1/r0),0))] <- 2
-  df$label[which(df$r0 > 1 & df$Cases/N >= 1-(1/r0))] <- 3
+  for(i in 1:nrow(df)){
+    if(df$Generations[i]==1){
+      df$label[i] <- 1
+    }
+    if(df$Generations[i] > 1 & 1-(df$S[i]-df$Cases[i]+1)/N < max(1-(1/df$r0[i]),0)){
+      df$label[i] <- 2
+    }
+    if(df$Generations[i] > 1 & 1 >= df$r0[i]){
+      df$label[i] <- 2
+    }
+    if(df$Generations[i] > 1 & 1-(df$S[i]-df$Cases[i]+1)/N >= max(1-(1/df$r0[i]),0) & df$r0[i]>1){
+      df$label[i] <- 3
+    }
+  }
   df$label <- factor(df$label, levels=c(1, 2, 3),
                      labels=c("Single-generation",
                               "Below herd immunity",

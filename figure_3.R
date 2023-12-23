@@ -1,9 +1,7 @@
-source(functions.R)
-set.seed(1492)
 
-#################################################
-#Figure 3, Table S2: San Francisco Port Arrivals
-#################################################
+####################################################
+## Figure 3, Table S2: San Francisco Port Arrivals #
+####################################################
 
 theme3  <- c( "#07f49e", "#42047e")
 
@@ -12,7 +10,7 @@ theme3  <- c( "#07f49e", "#42047e")
 #######################################################
 
 #read and summarise arrivals data
-data_SF <- read.csv("San_Francisco_arrivals.csv")
+data_SF <- read.csv("data/San_Francisco_arrivals.csv")
 
 Longitude_order <- c(1,7,5,2,6,8,3,4)
 data_SF$From_code <- factor(data_SF$From_code, levels=unique(data_SF$From_code)[Longitude_order],
@@ -39,7 +37,7 @@ data_SF_summary <- plyr::ddply(data_SF,
 ########################################
 
 #Map 1: median journey time to San Francisco
-map_data <- read_csv('figure_3_map_data.csv')
+figure_3_map_data <- read_csv('data/figure_3_map_data.csv')
 pacific_centered_map <- ggplot2::map_data("world", wrap=c(0,360))
 
 
@@ -70,6 +68,7 @@ map1 <- map1 + geom_point(data=figure_3_map_data, mapping=aes(x=x, y=y), col='#2
 ########################################
 ### Panel 3a: journey time by origin ###
 ########################################
+data_SF$Steam <- factor(data_SF$Steam, levels=c(TRUE, FALSE), labels=c("Steam", "Sail"))
 
 panel_3a <- ggplot(data_SF) +
   geom_jitter(mapping=aes(x=Voyage_days, y=From_code, col=Steam), height=0.1, alpha=0.3) +
@@ -108,8 +107,8 @@ panel_3c <- ggplot(data_SF) +
   geom_point(mapping=aes(x=From_code, y=1, col=Steam), alpha=0) +
   theme_bw() +
   labs(x="Origin Port", y="Arrivals", col="") +
-  scale_fill_manual(values=rev(theme3), labels=c("Sail", "Steam")) +
-  scale_color_manual(values=rev(theme3), labels=c("Sail", "Steam"),
+  scale_fill_manual(values=theme3) +
+  scale_color_manual(values=theme3,
                      guide=guide_legend(override.aes = list(alpha=1, size=4))) +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
         axis.title.x = element_text(margin=margin(t=-5, unit='pt')),
@@ -123,7 +122,11 @@ panel_3c <- ggplot(data_SF) +
 ### Figure 3 assembly ###
 #########################
 
-#Combine map1 and panel 3a, 3b, 3c:
+
+pdf(file = "figures/figure_3.pdf", 
+    width = 13.75, # The width of the plot in inches
+    height = 4.75) # The height of the plot in inches
 patchwork::wrap_elements(full=map1) + panel_3a + panel_3b + panel_3c +
   patchwork::plot_layout(widths=c(3,1,1,1)) +
   patchwork::plot_annotation(tag_levels='A')
+dev.off()

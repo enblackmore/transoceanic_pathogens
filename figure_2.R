@@ -1,19 +1,18 @@
 #Figure 2: Incorporating POpulation Size and Susceptibility
-source(functions.R)
+source('functions.R')
 set.seed(1492)
 
 #colour schemes
 theme2a <- c("#BFBBC9", "#4666FF", "#F2003C")
 theme2b <- c("#4C4C47", "#848FA5", "#F4B886", "#8FCB9B")
 
-###################################################
-#Panel 2a: same r0 values as simulation 2
-#constant re0, with varying S
-#across three re0 values
-#corresponds with figure 2a
-###################################################
+##############################################
+## Panel 2a: same r0 values as simulation 2 ##
+## constant re0, with varying S             ##
+## across three re0 values                  ##
+##############################################
 
-#### PANEL 2a SIMULATION ###
+#### 2a simulation ###
 
 #constants
 N_2a <- 1001
@@ -95,25 +94,25 @@ simulation_results_2a_re0_8 <- run_analysis2(
 )
 
 #manually add re0 values
-simulation_results_2a_re0_1$analysis$re0 <- 1
-simulation_results_2a_re0_2$analysis$re0 <- 2
-simulation_results_2a_re0_8$analysis$re0 <- 8
+simulation_results_2a_re0_1$re0 <- 1
+simulation_results_2a_re0_2$re0 <- 2
+simulation_results_2a_re0_8$re0 <- 8
 
 #combine analyses in a single data frame
-simulation_results_2a <- dplyr::full_join(simulation_results_2a_re0_1$analysis,
-                                         dplyr::full_join(simulation_results_2a_re0_2$analysis,
-                                                          simulation_results_2a_re0_8$analysis))
+simulation_results_2a <- dplyr::bind_rows(simulation_results_2a_re0_1,
+                                         dplyr::bind_rows(simulation_results_2a_re0_2,
+                                                          simulation_results_2a_re0_8))
 #manually add r0 values, to identify whether outbreaks reach herd immunity
 #r0 = n*re0 / s
 simulation_results_2a$r0 <- N_2a*as.numeric(simulation_results_2a$re0) / simulation_results_2a$S
 
 #label for plotting
-simulation_results_2a <- label.outbreaks(df=simulation_results_2a, N=N_2a, r0=simulation_results_2a$r0)
+simulation_results_2a <- label_outbreaks(df=simulation_results_2a, N=N_2a)
 
 #save output
-saveRDS(simulation_results_2a, file = "simulation_results_2a.RDS")
+saveRDS(simulation_results_2a, file = "simulation_results/simulation_results_2a.RDS")
 
-### PANEL 2a VISUALISATION ###
+### 2a visualisation ###
 
 #get quantiles for plotting
 simulation_results_2a_quantiles <- plyr::ddply(simulation_results_2a, ~re0+S, plyr::summarise,
@@ -123,7 +122,7 @@ simulation_results_2a_quantiles <- plyr::ddply(simulation_results_2a, ~re0+S, pl
 
 #discretise re0
 simulation_results_2a_quantiles$re0 <- factor(simulation_results_2a_quantiles$re0, 
-                                             levels=unique(simulation_results_4_quantiles$re0))
+                                             levels=unique(simulation_results_2a_quantiles$re0))
 simulation_results_2a$re0 <- factor(simulation_results_2a$re0, 
                                    levels=unique(simulation_results_2a$re0))
 
@@ -151,17 +150,17 @@ panel_2a <- ggplot(simulation_results_2a) +
        y="Outbreak\nduration (days)",
        col="Outbreak\nsize"); panel_2a
 
-#############################################################
-#Panel (2b): introducing density and frequency dependence
-#varying S/N
-#for three values of q
-#for three values of bfd (q=0)
-#for three values of bdd (q=1)
-#and for three values of bdd with constant bfd (q=0.5)
-#corresponds with figure 2b
-#############################################################
+##############################################################
+## Panel (2b): introducing density and frequency dependence ##
+## varying S/N                                              ##
+## for three values of q                                    ##
+## for three values of bfd (q=0)                            ##
+## for three values of bdd (q=1)                            ##
+## and for three values of bdd with constant bfd (q=0.5)    ##
+## corresponds with figure 2b                               ##
+##############################################################
 
-### PANEL 2b SIMULATION ###
+### 2b simulation ###
 
 #fixed values
 e0_2b <- 1
@@ -173,6 +172,7 @@ ki_2b <- 3
 #variables
 N_2b <- c(50, 100, 200, 500)
 proportion_S_2b <- 10^seq(-2, -0.05, by=0.05)
+S_2b <- round(N_2b*proportion_S_2b, 0)
 
 #case 1: q=0
 q_2b_q0 <- 0
@@ -186,7 +186,7 @@ any(input_2b_q0$S > input_2b_q0$N - e0_2b)
 #case 2: q=0.5
 q_2b_q05 <- 0.5
 bfd_2b_q05 <- 1
-bdd_2b_q05 <- c(0.05, 0.1, 0.2)
+bdd_2b_q05 <- c(0.01, 0.02, 0.04)
 
 input_2b_q05 <- expand.grid(N=N_2b, pp=proportion_S_2b, bdd=bdd_2b_q05)
 input_2b_q05$S <- round(input_2b_q05$N * input_2b_q05$pp, 0)
@@ -194,7 +194,7 @@ input_2b_q05$S <- round(input_2b_q05$N * input_2b_q05$pp, 0)
 #case 3: q=1
 q_2b_q1 <- 1
 bfd_2b_q1 <- 0
-bdd_2b_q1 <- c(0.05, 0.1, 0.2)
+bdd_2b_q1 <- c(0.01, 0.02, 0.04)
 
 input_2b_q1 <- expand.grid(N=N_2b, pp=proportion_S_2b, bdd=bdd_2b_q1)
 input_2b_q1$S <- round(input_2b_q1$N * input_2b_q1$pp, 0)
@@ -202,7 +202,7 @@ input_2b_q1$S <- round(input_2b_q1$N * input_2b_q1$pp, 0)
 #simulation parameters
 runs_2b <- 200
 
-#run analysis
+#run simulation
 simulation_results_2b_q0 <- run_analysis2(
   N=input_2b_q0$N,
   S=input_2b_q0$S,
@@ -217,10 +217,11 @@ simulation_results_2b_q0 <- run_analysis2(
   runs=runs_2b,
   generation_tracking=FALSE
 )
-simulation_2b_q0_analysis <- as.data.frame(simulation_results_2b_q0$analysis)
-simulation_2b_q0_analysis$label <- factor(simulation_2b_q0_analysis$bfd, 
+simulation_results_2b_q0 <- as.data.frame(simulation_results_2b_q0)
+simulation_results_2b_q0$label <- factor(simulation_results_2b_q0$bfd, 
                                          levels=unique(input_2b_q0$bfd),
                                          labels=c(1:3))
+simulation_results_2b_q0$r0 <- simulation_results_2b_q0$bfd * mui_2b
 
 simulation_results_2b_q05 <- run_analysis2(
   N=input_2b_q05$N,
@@ -236,10 +237,11 @@ simulation_results_2b_q05 <- run_analysis2(
   runs=runs_2b,
   generation_tracking=FALSE
 )
-simulation_2b_q05_analysis <- as.data.frame(simulation_results_2b_q05$analysis)
-simulation_2b_q05_analysis$label <- factor(simulation_2b_q05_analysis$bdd, 
+simulation_results_2b_q05<- as.data.frame(simulation_results_2b_q05)
+simulation_results_2b_q05$label <- factor(simulation_results_2b_q05$bdd, 
                                           levels=unique(input_2b_q05$bdd),
                                           labels=c(4:6))
+simulation_results_2b_q05$r0 <- mui_2b*sqrt(bfd_2b_q05)*sqrt(simulation_results_2b_q05$N*simulation_results_2b_q05$bdd)
 
 simulation_results_2b_q1 <- run_analysis2(
   N=input_2b_q1$N,
@@ -255,28 +257,33 @@ simulation_results_2b_q1 <- run_analysis2(
   runs=runs_2b,
   generation_tracking=FALSE
 )
-simulation_2b_q1_analysis <- as.data.frame(simulation_results_2b_q1$analysis)
-simulation_2b_q1_analysis$label <- factor(simulation_2b_q1_analysis$bdd, 
+simulation_results_2b_q1 <- as.data.frame(simulation_results_2b_q1)
+simulation_results_2b_q1$label <- factor(simulation_results_2b_q1$bdd, 
                                           levels=unique(input_2b_q1$bdd),
                                           labels=c(7:9))
+simulation_results_2b_q1$r0 <- mui_2b*simulation_results_2b_q1$N*simulation_results_2b_q1$bdd
 
-simulation_results_2b <- dplyr::full_join(simulation_2b_q0_analysis,
-                                   dplyr::full_join(simulation_2b_q05_analysis,
-                                                    simulation_2b_q1_analysis))
-simulation_results_2b$Susceptible <- simulation_results_2b$S / simulation_results_2b$N
+
+simulation_results_2b <- dplyr::bind_rows(simulation_results_2b_q0,
+                                   dplyr::bind_rows(simulation_results_2b_q05,
+                                                    simulation_results_2b_q1))
 simulation_results_2b$label <- as.character(simulation_results_2b$label)
 
+saveRDS(simulation_results_2b, 'simulation_results/simulation_results_2b.RDS')
+
 #get median outbreak durations
-simulation_results_2b_median <- plyr::ddply(simulation_results_2b, ~N+Susceptible+bdd+bfd+label, plyr::summarise,
+simulation_results_2b_median <- plyr::ddply(simulation_results_2b, ~N+S+label+r0, plyr::summarise,
                                            median_duration = median(Duration))
+simulation_results_2b_median$pp <- simulation_results_2b_median$S / simulation_results_2b_median$N
+simulation_results_2b_median$pp[which(simulation_results_2b_median$pp<0.01)] <- NA
 
 #add label for plotting
 labels_2b <- c(
   expression(R[0]==2),
   expression(R[0]==5),
   expression(R[0]==10),
-  expression(R[0]==0.5*sqrt('N')),
-  expression(R[0]==sqrt(0.5)*sqrt('N')),
+  expression(R[0]==0.05*sqrt('N')),
+  expression(R[0]==sqrt(0.05)*sqrt('N')),
   expression(R[0]==sqrt('N')),
   expression(R[0]==0.05*'N'),
   expression(R[0]==0.1*'N'),
@@ -297,22 +304,23 @@ simulation_2b_critical_susceptibility <- dplyr::distinct(dplyr::select(simulatio
 
 #re0 = S/N r0
 #so when re0=1, S/N = 1/r0
-simulation_2b_critical_susceptibility$Susceptibility <- 1/simulation_2b_critical_susceptibility$r0
+simulation_2b_critical_susceptibility$pp <- 1/simulation_2b_critical_susceptibility$r0
 
-### PANEL 2b VISUALIZATION ###
+### 2b visualisation ###
 
 panel_2b <- ggplot(simulation_results_2b_median) +
-  geom_line(mapping=aes(x=Susceptible, y=median_duration, col=N), lwd=1.5) +
+  geom_line(mapping=aes(x=pp, y=median_duration, col=N), lwd=1.5) +
   facet_wrap(vars(label), labeller=label_parsed) +
   scale_x_log10() +
   labs(x="Initial proportion susceptible", y="Median outbreak duration (days)", col="") +
-  geom_vline(data=simulation_2b_critical_susceptibility, mapping=aes(xintercept=Susceptibility, col=N), lty="dashed") +
+  geom_vline(data=simulation_2b_critical_susceptibility, mapping=aes(xintercept=pp, col=N), lty="dashed") +
   theme_bw() +
   theme(axis.text.x=element_text(hjust=c(0,0.5,1)),
         legend.background = element_rect(fill=NA),
         aspect.ratio=1/2) +
   scale_color_manual(values=theme2b,
-                     labels=paste("N =", c(50, 100, 200, 500)))
+                     labels=paste("N =", c(50, 100, 200, 500))) +
+  coord_cartesian(ylim=c(0,100), xlim=c(0.01, 1))
 
 #########################
 ### Figure 2 Assembly ###
@@ -321,8 +329,12 @@ panel_2b <- ggplot(simulation_results_2b_median) +
 legend_panel_2b <- cowplot::get_legend(panel_2b + theme(legend.justification = c(1,0.5), 
                                                         legend.box.margin = margin(b=-10, r=25, unit='pt')))
 
-figure_2 <- (panel_2a + legend_panel_2b + patchwork::plot_layout(widths=c(0.75, 0.25))) / 
+pdf(file = "figures/figure_2.pdf", 
+    width = 5.9, # The width of the plot in inches
+    height = 5.58) # The height of the plot in inches
+(panel_2a + legend_panel_2b + patchwork::plot_layout(widths=c(0.75, 0.25))) / 
   patchwork::wrap_elements(full=panel_2b + guides(col='none')) + 
   patchwork::plot_layout(heights=c(0.6,3.2), guides=
                            'collect') +
-  patchwork::plot_annotation(tag_levels=list(c('A', '', 'B'))); figure_2
+  patchwork::plot_annotation(tag_levels=list(c('A', '', 'B')))
+dev.off()

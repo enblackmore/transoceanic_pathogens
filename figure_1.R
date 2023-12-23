@@ -6,14 +6,14 @@ set.seed(1492)
 theme1a <- c("#BFBBC9", "#4666FF", "#F2003C")
 theme1b <- c("#100C08",  "#00CC99", "#FFDD1F")
 
-###############################################################
-#Panels 1a--c: Basic Dynamics
-#In a fully-susceptible population (N=100) with one index case,
-#using a hypothetical pathogen ke=ki=3, mue=mui=5
-#what happens when we vary r0?
-###############################################################
+####################################################################
+## Panels 1a--c: Basic Dynamics                                   ##
+## In a fully-susceptible population (N=100) with one index case, ##
+## using a hypothetical pathogen ke=ki=3, mue=mui=5               ##
+## what happens when we vary r0?                                  ##
+####################################################################
 
-### Panel 1a-1b simulation (without generation tracking) ###
+### 1a-1b simulation (tracking 2 transmission generations) ###
 
 #constant parameters
 N_1abc <- 100
@@ -24,12 +24,13 @@ mue_1abc <- mui_1abc <- 5
 ke_1abc <- ki_1abc <- 3
 
 #varying parameters
-r0_1abc <- 10^seq(-1, 2, by=0.01)
+r0_1ab <- 10^seq(-1, 2, by=0.01)
 
-#since the modeul function requires bdd, bfd, and q
+#since the model function requires bdd, bfd, and q
 #we set q=1 and bdd=r0 / (mue*N) 
 #mathematically this is equivalent to q=0 and bfd=r0/mue
-bdd_1abc <- r0_1abc/(mue_1abc*N_1abc)
+
+bdd_1ab <- r0_1ab/(mue_1abc*N_1abc)
 q_1abc <- 1
 bfd_1abc <- 0
 
@@ -41,27 +42,28 @@ simulation_results_1ab <-run_analysis(
   ki=ki_1abc,
   mue=mue_1abc,
   mui=mui_1abc,
-  bdd=bdd_1abc,
+  bdd=bdd_1ab,
   bfd=bfd_1abc,
   q=q_1abc,
   runs=500,
-  generation_tracking = FALSE)
+  generation_tracking = TRUE,
+  generation_max = 2)
 
 #add r0 column to analysis
-simulation_results_1ab$analysis$r0 <- simulation_results_1ab$analysis$bdd * mui_1abc * N_1abc
+simulation_results_1ab$r0 <- simulation_results_1ab$bdd * mui_1abc * N_1abc
 
 #label for plotting
-simulation_results_1ab$analysis <- label.outbreaks(
-  df=simulation_results_1ab$analysis,
-  N=N_1abc,
-  r0=simulation_results_1ab$analysis$r0)
+simulation_results_1ab$S <- S_1abc
+simulation_results_1ab <- label_outbreaks(
+  df=simulation_results_1ab,
+  N=N_1abc)
 
 #Save
-saveRDS(simulation_results_1ab, file = "simulation_results_1ab.RDS")
+saveRDS(simulation_results_1ab, file = "simulation_results/simulation_results_1ab.RDS")
 
 
-#extract quantiles from the data
-simulation_results_1ab_quantiles <- plyr::ddply(simulation_results_1ab$analysis, ~bdd+r0, plyr::summarise, 
+#get quantiles
+simulation_results_1ab_quantiles <- plyr::ddply(simulation_results_1ab, ~bdd+r0, plyr::summarise, 
                                               t05=quantile(Duration, 0.05),
                                               t5=quantile(Duration, 0.5),
                                               t95=quantile(Duration, 0.95),
@@ -69,9 +71,11 @@ simulation_results_1ab_quantiles <- plyr::ddply(simulation_results_1ab$analysis,
                                               c5=quantile(Cases,0.5),
                                               c95=quantile(Cases,0.95))
 
+### 1a-1b visualisation ###
+
 #Panel 1a: duration by r0 and outbreak ending
-panel_1a <- ggplot(simulation_results_1ab$analysis) +
-  geom_point(mapping=aes(x=r0, y=Duration, col=label), cex=2, alpha=0.05) +
+panel_1a <- ggplot(simulation_results_1ab) +
+  geom_point(mapping=aes(x=r0, y=Duration, col=label), cex=2, alpha=0.01) +
   geom_line(data=simulation_results_1ab_quantiles , mapping=aes(x=r0, y=t5), lwd=1) +
   geom_line(data=simulation_results_1ab_quantiles , mapping=aes(x=r0, y=t05), lty="dashed", lwd=0.5) +
   geom_line(data=simulation_results_1ab_quantiles , mapping=aes(x=r0, y=t95), lty="dashed", lwd=0.5) +
@@ -81,8 +85,8 @@ panel_1a <- ggplot(simulation_results_1ab$analysis) +
   theme_bw(); panel_1a
 
 #Panel 1b: outbreak size by r0 and by outbreak ending
-panel_1b <- ggplot(simulation_results_1ab$analysis) + 
-  geom_point(mapping=aes(x=r0, y=Cases, col=label), cex=1, alpha=0.05) +
+panel_1b <- ggplot(simulation_results_1ab) + 
+  geom_point(mapping=aes(x=r0, y=Cases, col=label), cex=1, alpha=0.01) +
   geom_line(data=simulation_results_1ab_quantiles , mapping=aes(x=r0, y=c5), lwd=0.75) + 
   geom_line(data=simulation_results_1ab_quantiles , mapping=aes(x=r0, y=c05), lty="dashed", lwd=0.25) +
   geom_line(data=simulation_results_1ab_quantiles , mapping=aes(x=r0, y=c95), lty="dashed", lwd=0.25) + 
@@ -91,7 +95,10 @@ panel_1b <- ggplot(simulation_results_1ab$analysis) +
   labs(y="Outbreak size", x=bquote(R[0])); panel_1b 
 
 
-### Panel 1c simulation (with generation tracking) ###
+### 1c simulation (lower resolution, but tracking 20 generations) ###
+
+r0_1c <- 10^seq(-1, 2, by=0.05)
+bdd_1c <- r0_1c/(mue_1abc*N_1abc)
 
 simulation_results_1c <-run_analysis(
   N=N_1abc,
@@ -101,49 +108,48 @@ simulation_results_1c <-run_analysis(
   ki=ki_1abc,
   mue=mue_1abc,
   mui=mui_1abc,
-  bdd=bdd_1abc,
+  bdd=bdd_1c,
   bfd=bfd_1abc,
   q=q_1abc,
-  runs=100,
+  runs=500,
   generation_tracking = TRUE,
   generation_max = 20)
 
 #add r0 column to analysis
-simulation_results_1c$analysis$r0 <- simulation_results_1c$analysis$bdd * mui_1abc * N_1abc
-
+simulation_results_1c$r0 <- simulation_results_1c$bdd * mui_1abc * N_1abc
+simulation_results_1c$S <- S_1abc
+  
 #label for plotting
-simulation_results_1ab$analysis <- label.outbreaks(
-  df=simulation_results_1c$analysis,
-  N=N_1abc,
-  r0=simulation_results_1c$analysis$r0)
+simulation_results_1c <- label_outbreaks(
+  df=simulation_results_1c,
+  N=N_1abc)
 
-#Save
-saveRDS(simulation_results_1c, file = "simulation_results_1c.RDS")
-
+#save
+saveRDS(simulation_results_1c, file = "simulation_results/simulation_results_1c.RDS")
 
 #extract quantiles from the data
-simulation_results_1c_quantiles <- plyr::ddply(simulation_results_1c$analysis, ~bdd+r0, plyr::summarise, 
+simulation_results_1c_quantiles <- plyr::ddply(simulation_results_1c, ~bdd+r0, plyr::summarise, 
                                                 g05=quantile(Generations, 0.05),
                                                 g5=quantile(Generations, 0.5),
                                                 g95=quantile(Generations, 0.95))
 
-#Panel 1c: outbreak generation number by r0 and by outbreak ending
-panel_1c <- ggplot(simulation_results_1c$analysis) +
-  geom_point(mapping=aes(x=r0, y=(Generations-1), col=label), cex=1.5, alpha=0.01) +
-  geom_line(data=simulation_results_1_quantiles, mapping=aes(x=r0, y=g5-1), lwd=0.75) +
-  geom_line(data=simulation_results_1_quantiles, mapping=aes(x=r0, y=g05-1), lty="dashed", lwd=0.25) +
-  geom_line(data=simulation_results_1_quantiles, mapping=aes(x=r0, y=g95-1),  lty="dashed", lwd=0.25) + 
+### 1c visualisation ###
+
+panel_1c <- ggplot(simulation_results_1c) +
+  geom_point(mapping=aes(x=r0, y=(Generations-1), col=label), cex=1.5, alpha=0.05) +
+  geom_line(data=simulation_results_1c_quantiles, mapping=aes(x=r0, y=g5-1), lwd=0.75) +
+  geom_line(data=simulation_results_1c_quantiles, mapping=aes(x=r0, y=g05-1), lty="dashed", lwd=0.25) +
+  geom_line(data=simulation_results_1c_quantiles, mapping=aes(x=r0, y=g95-1),  lty="dashed", lwd=0.25) + 
   scale_x_log10() +
   theme_bw() +
   labs(y="Transmission\ngenerations", x=bquote(R[0])); panel_1c
 
-##########################################################
-#Figure (1d): more runs, for selected r0 values
-#so we can bootstrap cdf for introduction risk across time
-#corresponds with figure 1d
-##########################################################
+###########################################################
+## Figure (1d): more runs, for selected r0 values        ##
+## so we can bootstrap introduction risk by journey time ##
+###########################################################
 
-###PANEL 1D SIMULATION###
+### 1d simulation ###
 
 #Constant parameters
 N_1d <- 100
@@ -171,25 +177,23 @@ simulation_results_1d <- run_analysis(
   q=q_1d,
   runs=5000,
   generation_tracking = FALSE)
-saveRDS(simulation_results_1d, file = "simulation_results_1d.RDS")
+saveRDS(simulation_results_1d, file = "simulation_results/simulation_results_1d.RDS")
 
 #bootstrap cumulative introduction risk:
-simulation_analysis_1d <- simulation_results_1d$analysis
+simulation_results_1d$r0 <- simulation_results_1d$bdd * mue_1d * N_1d
+simulation_results_1d$r0 <- factor(simulation_results_1d$r0, levels=r0_1d)
+tmax_1d <- max(simulation_results_1d$Duration)
 
-simulation_analysis_1d$r0 <- simulation_analysis_1d$bdd * mue_1d * N_1d
-simulation_analysis_1d$r0 <- factor(simulation_analysis_1d$r0, levels=r0_1d)
-tmax_1d <- max(simulation_analysis_1d$Duration)
-
-introduction_risk_1d <- expand.grid("r0" = unique(simulation_analysis_1d$r0),
+introduction_risk_1d <- expand.grid("r0" = unique(simulation_results_1d$r0),
                                     "time" = seq(1, tmax_1d, by=1),
                                     "p_introduction"=NA)
 
 for(i in 1:nrow(introduction_risk_1d)){
-  subset_1d <- dplyr::filter(simulation_analysis_1d, r0 == introduction_risk_1d$r0[i])
+  subset_1d <- dplyr::filter(simulation_results_1d, r0 == introduction_risk_1d$r0[i])
   introduction_risk_1d$p_introduction[i] <- length(which(subset_1d$Duration>=introduction_risk_1d$time[i]))/nrow(subset_1d)
 }
 
-###VISUALIZATION 1D###
+### 1d visualisation ###
 
 panel_1d <- ggplot(introduction_risk_1d) + geom_line(mapping=aes(x=time, y=p_introduction, col=r0), lwd=2) +
   labs(x="Journey time (days)", y="Introduction risk", col=bquote(R[0])) +
@@ -199,13 +203,12 @@ panel_1d <- ggplot(introduction_risk_1d) + geom_line(mapping=aes(x=time, y=p_int
 panel_1d
 
 
-###################################################
-#Panel 1e: same r0 values as simulation 2
-#using mue and mui of real-life pathogens
-#corresponds with figure 1e
-###################################################
+##############################################
+## Panel 1e: same r0 values as simulation 2 ##
+## using mue and mui of real-life pathogens ##
+##############################################
 
-###PANEL 1E SIMULATION##
+### 1e simulation ###
 
 #Constants
 N_1e <- 100
@@ -276,14 +279,14 @@ simulation_results_1e_smallpox <- run_analysis(
   generation_tracking=FALSE)
 
 #add pathogen names manually
-simulation_results_1e_influenza$analysis$Pathogen <-"Influenza"
-simulation_results_1e_measles$analysis$Pathogen <-"Measles"
-simulation_results_1e_smallpox$analysis$Pathogen <-"Smallpox"
+simulation_results_1e_influenza$Pathogen <-"Influenza"
+simulation_results_1e_measles$Pathogen <-"Measles"
+simulation_results_1e_smallpox$Pathogen <-"Smallpox"
 
 #combine analysis in a single data frame
-simulation_results_1e <- dplyr::full_join(simulation_results_1e_smallpox$analysis,
-                                         dplyr::full_join(simulation_results_1e_measles$analysis, 
-                                                          simulation_results_1e_influenza$analysis))
+simulation_results_1e <- dplyr::full_join(simulation_results_1e_smallpox,
+                                         dplyr::full_join(simulation_results_1e_measles, 
+                                                          simulation_results_1e_influenza))
 
 #rewrite bdd as r0 for plotting
 simulation_results_1e$mui <- NA
@@ -292,9 +295,9 @@ simulation_results_1e$mui[which(simulation_results_1e$Pathogen == "Measles")] <-
 simulation_results_1e$mui[which(simulation_results_1e$Pathogen == "Smallpox")] <- mui_1e_smallpox
 simulation_results_1e$r0 <- simulation_results_1e$bdd*simulation_results_1e$mui*N_1e
 simulation_results_1e$r0 <- factor(simulation_results_1e$r0, levels= rev(r0_1e))
-saveRDS(simulation_results_1e, file = "simulation_results_1e.RDS")
+saveRDS(simulation_results_1e, file = "simulation_results/simulation_results_1e.RDS")
 
-###PANEL 1E VISUALIZATION###
+### 1e visualisation ###
 
 panel_1e <- ggplot(simulation_results_1e, mapping=aes(x=Duration, y=Pathogen, col=r0, group=r0)) +
   geom_point(size=2, alpha=0.05, position=position_jitterdodge(jitter.width = 0.05, dodge.width=0.6)) +
@@ -309,9 +312,9 @@ panel_1e <- ggplot(simulation_results_1e, mapping=aes(x=Duration, y=Pathogen, co
   scale_color_manual(values=theme1b); panel_1e
 
 
-#########################
-### FIGURE 1 ASSEMBLY ###
-#########################
+#######################
+## Figure 1 Assembly ##
+#######################
 
 #make the top half of the figure
 layout_1_top <- "
@@ -352,6 +355,10 @@ figure_1_bottom <- patchwork::wrap_plots(
   design = layout_1_bottom,
   widths=c(0.6, 0.4)); figure_1_bottom 
 
-figure_1 <- figure_1_top / figure_1_bottom +
+pdf(file = "figures/figure_1.pdf", 
+    width = 9, # The width of the plot in inches
+    height = 7) # The height of the plot in inches
+figure_1_top / figure_1_bottom +
   patchwork::plot_layout(heights=c(1, 0.55)) +
-  patchwork::plot_annotation(tag_levels='A'); figure_1
+  patchwork::plot_annotation(tag_levels='A')
+dev.off()
