@@ -1,12 +1,12 @@
 source('functions.R')
 set.seed(1492)
 
-#############################################################
-#Table 1: introduction risk estimates
-#for selected voyages to San Francisco
-#############################################################
+############################################
+## Table 1: introduction risk estimates   ##
+## for selected voyages to San Francisco  ##  
+############################################
 
-### Parameters for tables 1 and 2 ###
+# Parameters for tables 1 and 2
 S_proportion_tables <- 0.05
 e0_tables <- 1
 
@@ -14,7 +14,7 @@ ke_tables <- 3
 ki_tables <- 3
 
 q_tables <- 0.5
-bdd_tables <- 0.05
+bdd_tables <- 0.02
 
 #bdd depends on mue, which varies by pathogen;
 #calculate each separately
@@ -33,7 +33,7 @@ bfd_tables_smallpox <- 7/mui_tables_smallpox
 #Get ship data
 SF_data <- read.csv('data/San_Francisco_arrivals.csv')
 SF_selected_ships_simulation_tables <- c(448, 397, 25, 64, 168, 218, 341, 373, 545, 522, 132, 136, 494, 492)
-results_table1 <- SF_data[SF_selected_ships_simulation_tables,c(4,5,8,9,14)]
+results_table1 <- SF_data[SF_selected_ships_simulation_tables,c(4,5,9,10,15)]
 results_table1$S <- round(S_proportion_tables*results_table1$N_passengers, 0)
 
 #Bootstrap introduction risk
@@ -87,10 +87,10 @@ results_table1$risk_smallpox <- get_ship_risk(
 
 saveRDS(results_table1, file = "simulation_results/results_table1.RDS")
 
-#############################################################
-#Table 2: introduction risk estimates
-#for selected voyages 1492-1918
-#############################################################
+##########################################
+## Table 2: introduction risk estimates ##
+## for selected voyages 1492-1918       ##
+##########################################
 
 #Get data
 results_table2 <- read.csv('data/selected_voyages.csv')
@@ -148,10 +148,10 @@ results_table2$risk_smallpox <- get_ship_risk(
 saveRDS(results_table2, file = "simulation_results/results_table2.RDS")
 
 
-#############################################################
-#Figure 4: cumulative introduction risk
-#varying pathogens and ship size (N)
-#############################################################
+##############################################
+## Figure 4: cumulative introduction risk   ##
+## varying pathogens and ship size (N)      ##
+##############################################
 
 ### Figure 4 simulation ###
 
@@ -166,7 +166,7 @@ ke_4 <- 3
 ki_4 <- 3
 
 q_4 <- 0.5
-bdd_4 <- 0.05
+bdd_4 <- 0.02
 
 
 #bdd depends on mue, which varies by pathogen;
@@ -213,7 +213,6 @@ simulation_results_4_measles <- run_analysis2(
   runs=500,
   generation_tracking=FALSE)
 
-
 simulation_results_4_smallpox <- run_analysis2(
   N=N_4,
   S=S_4,
@@ -229,14 +228,14 @@ simulation_results_4_smallpox <- run_analysis2(
   generation_tracking=FALSE)
 
 #add pathogen indicators manually
-simulation_results_4_influenza$analysis$Pathogen <- "Influenza"
-simulation_results_4_measles$analysis$Pathogen <- "Measles"
-simulation_results_4_smallpox$analysis$Pathogen <- "Smallpox"
+simulation_results_4_influenza$Pathogen <- "Influenza"
+simulation_results_4_measles$Pathogen <- "Measles"
+simulation_results_4_smallpox$Pathogen <- "Smallpox"
 
 #Combine analysis in a data frame
-simulation_results_4 <- dplyr::bind_rows(simulation_results_4_influenza$analysis,
-                                         dplyr::bind_rows(simulation_results_4_measles$analysis,
-                                                          simulation_results_4_smallpox$analysis))
+simulation_results_4 <- dplyr::bind_rows(simulation_results_4_influenza,
+                                         dplyr::bind_rows(simulation_results_4_measles,
+                                                          simulation_results_4_smallpox))
 saveRDS(simulation_results_4, file = "simulation_results/simulation_results_4.RDS")
 
 #bootstrap introduction risk as a function of pathogen, N and journey time
@@ -259,7 +258,7 @@ for(i in 1:nrow(introduction_risk_4)){
 
 saveRDS(introduction_risk_4, file="simulation_results/introduction_risk_4.RDS")
 
-### Visualisation ###
+### Figure 4 Visualisation ###
 
 #aesthetics
 theme4_color <- c("#CE1FFF","#710F0F", "#09f04a", "#FFCA09",
@@ -280,8 +279,6 @@ figure_4_contours <- ggplot(introduction_risk_4) +
 
 #Panel 4a: overplotting San Francisco journey data
 #Adding journey time data
-#figure 4: overlay SF data
-
 data_SF <- read.csv('data/San_Francisco_arrivals.csv')
 
 #Reduce number of origins for easier plotting
@@ -326,7 +323,7 @@ panel_4b <- figure_4_contours +
   scale_shape_manual(values=theme4_shape) +
   scale_y_log10(limits=c(10,1500)); panel_4b
 
-### FIGURE ASSEMBLY ###
+### Figure 4 assembly ###
 
 #Extract legends for figure rearrangement
 fig4a_col <- cowplot::get_legend(panel_4a + 
@@ -366,7 +363,7 @@ D####
 pdf(file = "figures/figure_4.pdf", 
     width = 11, # The width of the plot in inches
     height = 7) # The height of the plot in inches
-figure_4 <- patchwork::wrap_plots(
+patchwork::wrap_plots(
   A = panel_4a + guides(shape='none', fill='none', col='none'),
   B = panel_4b + guides(fill='none', shape='none') + scale_y_log10(limits=c(10,1500)),
   C = fig4a_shape,
@@ -376,7 +373,7 @@ figure_4 <- patchwork::wrap_plots(
   design = layout_4,
   widths = c(1,1,1, 0.5, 0.25),
   heights = c(1,1,0.25)
-) + patchwork::plot_annotation(tag_levels = list(c('A', 'B','', '', '', ''))); figure_4
+) + patchwork::plot_annotation(tag_levels = list(c('A', 'B','', '', '', '')))
 dev.off()
 
 
