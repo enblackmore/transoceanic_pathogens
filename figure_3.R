@@ -1,3 +1,4 @@
+library(tidyverse)
 
 ####################################################
 ## Figure 3, Table S2: San Francisco Port Arrivals #
@@ -37,7 +38,7 @@ data_SF_summary <- plyr::ddply(data_SF,
 ########################################
 
 #Map 1: median journey time to San Francisco
-figure_3_map_data <- read_csv('data/figure_3_map_data.csv')
+figure_3_map_data <- read.csv('data/figure_3_map_data.csv')
 pacific_centered_map <- ggplot2::map_data("world", wrap=c(0,360))
 
 
@@ -76,7 +77,7 @@ panel_3a <- ggplot(data_SF) +
   labs(x="Journey Time (days)", y="Origin Port", col="Technology") +
   guides(colour = guide_legend(override.aes = list(alpha = 1))) +
   scale_x_continuous(breaks=seq(0, 250, by=50), limits = c(0,250)) +
-  scale_color_manual(values=rev(theme3), labels=c("Sail", "Steam")) +
+  scale_color_manual(values=theme3, labels=c("Sail", "Steam")) +
   theme(axis.title.y=element_text(margin=margin(r=-10, unit='pt')),
         axis.text.x=element_text(angle=45, vjust=1, hjust=1),
         axis.title.x=element_text(size=10.2),
@@ -121,7 +122,6 @@ panel_3c <- ggplot(data_SF) +
 #########################
 ### Figure 3 assembly ###
 #########################
-
 
 pdf(file = "figures/figure_3.pdf", 
     width = 13.75, # The width of the plot in inches
