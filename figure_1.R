@@ -57,10 +57,12 @@ simulation_results_1ab$S <- S_1abc
 simulation_results_1ab <- label_outbreaks(
   df=simulation_results_1ab,
   N=N_1abc)
+simulation_results_1ab$label[which(simulation_results_1ab$label == "At or above herd immunity")] <- "Below herd immunity"
 
 #Save
 saveRDS(simulation_results_1ab, file = "simulation_results/simulation_results_1ab.RDS")
 
+simulation_results_1ab$label[which(simulation_results_1ab$label == "At or above herd immunity" & simulation_results_1ab$r0 == 1)] <- "Below herd immunity"
 
 #get quantiles
 simulation_results_1ab_quantiles <- plyr::ddply(simulation_results_1ab, ~bdd+r0, plyr::summarise, 
@@ -111,7 +113,7 @@ simulation_results_1c <-run_analysis(
   bdd=bdd_1c,
   bfd=bfd_1abc,
   q=q_1abc,
-  runs=500,
+  runs=250,
   generation_tracking = TRUE,
   generation_max = 20)
 

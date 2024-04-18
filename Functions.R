@@ -593,7 +593,7 @@ run_analysis2 <- function(
   
   vector_indices <- which(unlist(lapply(inputs, length))>1)
   vector_lengths <- unlist(lapply(inputs[vector_indices], length))
-  if(var(vector_lengths) != 0){
+  if(length(vector_lengths) > 1 & var(vector_lengths) != 0){
     return(print("All input vectors must be the same length"))
   }
   
@@ -692,7 +692,8 @@ get_ship_risk <- function(
   output <- numeric(length(N))
   for(i in 1:length(N)){
     nn <- N[i]
-    subset <- dplyr::filter(sim, N==nn)
+    ss <- S[i]
+    subset <- dplyr::filter(sim, N==nn, S==ss)
     output[i] <- length(which(subset$Duration >= t[i])) / nrow(subset)
   }
   return(output)

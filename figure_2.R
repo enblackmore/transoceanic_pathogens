@@ -1,5 +1,6 @@
 #Figure 2: Incorporating POpulation Size and Susceptibility
 source('functions.R')
+library(ggplot2)
 set.seed(1492)
 
 #colour schemes
@@ -24,7 +25,7 @@ q_2a <- 1
 bfd_2a <- 0
 
 #variables
-re0_2a <- c(1, 2, 8)
+re0_2a <- c(1.25, 2, 8)
 
 #simulation parameters
 runs_2a <- 500
@@ -41,11 +42,11 @@ generation_max_2a <- 2
 #bdd = re0_2a/(mui_2a*S_2a) 
 
 mui_2a <- 5
-bdd_2a_re0_1 <- re0_2a[1]/(mui_2a*S_2a)
+bdd_2a_re0_1.25 <- re0_2a[1]/(mui_2a*S_2a)
 bdd_2a_re0_2 <- re0_2a[2]/(mui_2a*S_2a)
 bdd_2a_re0_8 <- re0_2a[3]/(mui_2a*S_2a)
 
-simulation_results_2a_re0_1 <- run_analysis2(
+simulation_results_2a_re0_1.25 <- run_analysis2(
   N=N_2a,
   S=S_2a,
   e0=e0_2a,
@@ -53,7 +54,7 @@ simulation_results_2a_re0_1 <- run_analysis2(
   ki=ki_2a,
   mue=mue_2a,
   mui=mui_2a,
-  bdd=bdd_2a_re0_1,
+  bdd=bdd_2a_re0_1.25,
   bfd=bfd_2a,
   q=q_2a,
   runs=runs_2a,
@@ -94,12 +95,12 @@ simulation_results_2a_re0_8 <- run_analysis2(
 )
 
 #manually add re0 values
-simulation_results_2a_re0_1$re0 <- 1
+simulation_results_2a_re0_1.25$re0 <- 1.25
 simulation_results_2a_re0_2$re0 <- 2
 simulation_results_2a_re0_8$re0 <- 8
 
 #combine analyses in a single data frame
-simulation_results_2a <- dplyr::bind_rows(simulation_results_2a_re0_1,
+simulation_results_2a <- dplyr::bind_rows(simulation_results_2a_re0_1.25,
                                          dplyr::bind_rows(simulation_results_2a_re0_2,
                                                           simulation_results_2a_re0_8))
 #manually add r0 values, to identify whether outbreaks reach herd immunity

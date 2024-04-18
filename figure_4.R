@@ -1,4 +1,6 @@
 source('functions.R')
+library(ggplot2)
+library(tidyverse)
 set.seed(1492)
 
 ############################################
@@ -14,25 +16,29 @@ ke_tables <- 3
 ki_tables <- 3
 
 q_tables <- 0.5
-bdd_tables <- 0.02
+
 
 #bdd depends on mue, which varies by pathogen;
 #calculate each separately
 mue_tables_influenza <- 2
 mui_tables_influenza <- 3
 bfd_tables_influenza <- 1.5/mui_tables_influenza
+bdd_tables_influenza <- bfd_tables_influenza/75
 
 mue_tables_measles <- 12
 mui_tables_measles <- 8
 bfd_tables_measles <- 15/mui_tables_measles
+bdd_tables_measles <- bfd_tables_measles/75
 
 mue_tables_smallpox <- 12
 mui_tables_smallpox <- 17.5
 bfd_tables_smallpox <- 7/mui_tables_smallpox
+bdd_tables_smallpox <- bfd_tables_smallpox/75
+
 
 #Get ship data
 SF_data <- read.csv('data/San_Francisco_arrivals.csv')
-SF_selected_ships_simulation_tables <- c(448, 397, 25, 64, 168, 218, 341, 373, 545, 522, 132, 136, 494, 492)
+SF_selected_ships_simulation_tables <- c(448, 397, 25, 64, 256, 257, 158, 341, 373, 545, 522, 132, 136, 494, 492)
 results_table1 <- SF_data[SF_selected_ships_simulation_tables,c(4,5,9,10,15)]
 results_table1$S <- round(S_proportion_tables*results_table1$N_passengers, 0)
 
@@ -42,7 +48,7 @@ results_table1$risk_influenza <- get_ship_risk(
   S=results_table1$S,
   t=results_table1$Voyage_days,
   e0=1,
-  bdd=bdd_tables,
+  bdd=bdd_tables_influenza,
   bfd=bfd_tables_influenza,
   mue=mue_tables_influenza,
   mui=mui_tables_influenza,
@@ -58,7 +64,7 @@ results_table1$risk_measles <- get_ship_risk(
   S=results_table1$S,
   t=results_table1$Voyage_days,
   e0=1,
-  bdd=bdd_tables,
+  bdd=bdd_tables_measles,
   bfd=bfd_tables_measles,
   mue=mue_tables_measles,
   mui=mui_tables_measles,
@@ -74,7 +80,7 @@ results_table1$risk_smallpox <- get_ship_risk(
   S=results_table1$S,
   t=results_table1$Voyage_days,
   e0=1,
-  bdd=bdd_tables,
+  bdd=bdd_tables_smallpox,
   bfd=bfd_tables_smallpox,
   mue=mue_tables_smallpox,
   mui=mui_tables_smallpox,
@@ -102,7 +108,7 @@ results_table2$risk_influenza <- get_ship_risk(
   S=results_table2$S,
   t=results_table2$t,
   e0=1,
-  bdd=bdd_tables,
+  bdd=bdd_tables_influenza,
   bfd=bfd_tables_influenza,
   mue=mue_tables_influenza,
   mui=mui_tables_influenza,
@@ -110,7 +116,7 @@ results_table2$risk_influenza <- get_ship_risk(
   ki=ki_tables,
   q=q_tables,
   generation_tracking = FALSE,
-  runs=5000
+  runs=1500
 )
 
 results_table2$risk_measles <- get_ship_risk(
@@ -118,7 +124,7 @@ results_table2$risk_measles <- get_ship_risk(
   S=results_table2$S,
   t=results_table2$t,
   e0=1,
-  bdd=bdd_tables,
+  bdd=bdd_tables_measles,
   bfd=bfd_tables_measles,
   mue=mue_tables_measles,
   mui=mui_tables_measles,
@@ -126,7 +132,7 @@ results_table2$risk_measles <- get_ship_risk(
   ki=ki_tables,
   q=q_tables,
   generation_tracking = FALSE,
-  runs=5000
+  runs=1500
 )
 
 results_table2$risk_smallpox <- get_ship_risk(
@@ -134,7 +140,7 @@ results_table2$risk_smallpox <- get_ship_risk(
   S=results_table2$S,
   t=results_table2$t,
   e0=1,
-  bdd=bdd_tables,
+  bdd=bdd_tables_smallpox,
   bfd=bfd_tables_smallpox,
   mue=mue_tables_smallpox,
   mui=mui_tables_smallpox,
@@ -142,7 +148,7 @@ results_table2$risk_smallpox <- get_ship_risk(
   ki=ki_tables,
   q=q_tables,
   generation_tracking = FALSE,
-  runs=5000
+  runs=1500
 )
 
 saveRDS(results_table2, file = "simulation_results/results_table2.RDS")
@@ -158,7 +164,7 @@ saveRDS(results_table2, file = "simulation_results/results_table2.RDS")
 S_proportion_4 <- 0.05
 e0_4 <- 1
 
-N_4 <- round(10^seq(1,3.2,by=0.01),0)
+N_4 <- unique(round(10^seq(1,3.2,by=0.01),0))
 S_4 <- round(S_proportion_4*N_4,0)
 any(N_4 < S_4 + e0_4) #sanity check
 
@@ -166,22 +172,23 @@ ke_4 <- 3
 ki_4 <- 3
 
 q_4 <- 0.5
-bdd_4 <- 0.02
-
 
 #bdd depends on mue, which varies by pathogen;
 #calculate each separately
 mue_4_influenza <- 2
 mui_4_influenza <- 3
 bfd_4_influenza <- 1.5/mui_4_influenza
+bdd_4_influenza <- bfd_4_influenza/75
 
 mue_4_measles <- 12
 mui_4_measles <- 8
 bfd_4_measles <- 15/mui_4_measles
+bdd_4_measles <- bfd_4_measles/75
 
 mue_4_smallpox <- 12
 mui_4_smallpox <- 17.5
 bfd_4_smallpox <- 7/mui_4_smallpox
+bdd_4_smallpox <- bfd_4_smallpox/75
 
 pathogens_4 <- c("Influenza", "Measles", "Smallpox")
 
@@ -193,7 +200,7 @@ simulation_results_4_influenza <- run_analysis2(
   ki=ki_4,
   mue=mue_4_influenza,
   mui=mui_4_influenza,
-  bdd=bdd_4,
+  bdd=bdd_4_influenza,
   bfd=bfd_4_influenza,
   q=q_4,
   runs=500,
@@ -207,7 +214,7 @@ simulation_results_4_measles <- run_analysis2(
   ki=ki_4,
   mue=mue_4_measles,
   mui=mui_4_measles,
-  bdd=bdd_4,
+  bdd=bdd_4_measles,
   bfd=bfd_4_measles,
   q=q_4,
   runs=500,
@@ -221,7 +228,7 @@ simulation_results_4_smallpox <- run_analysis2(
   ki=ki_4,
   mue=mue_4_smallpox,
   mui=mui_4_smallpox,
-  bdd=bdd_4,
+  bdd=bdd_4_smallpox,
   bfd=bfd_4_smallpox,
   q=q_4,
   runs=500,
@@ -245,16 +252,23 @@ time_max <- round(max(simulation_results_4$Duration),0)
 #list of times to assess introduction risk
 times <- seq(0, time_max, by=1)
 
-#create output data frame to store results
-introduction_risk_4 <- expand.grid(pathogens_4, N_4, times, NA)
-colnames(introduction_risk_4) <- c("Pathogen", "N", 'time', 'p_introduction')
+Pathogen <- unique(simulation_results_4$Pathogen)
+introduction_risk_4 <- expand.grid(N=N_4, time=times, Pathogen=unique(simulation_results_4$Pathogen), p_introduction=NA)
 
-for(i in 1:nrow(introduction_risk_4)){
-  subset <- dplyr::filter(simulation_results_4, 
-                          N==introduction_risk_4$N[i] & Pathogen==introduction_risk_4$Pathogen[i])
-  introduction_risk_4$p_introduction[i] <- length(which(subset$Duration > introduction_risk_4$time[i]))/nrow(subset)
-  print(i/nrow(introduction_risk_4))
+for(i in 1:length(Pathogen)){
+  for(j in 1:length(N_4)){
+    subset_2 <- intersect(which(simulation_results_4$Pathogen==Pathogen[i]), which(simulation_results_4$N==N_4[j]))
+    subset_intro <- intersect(which(introduction_risk_4$N == N_4[j]),
+                                        which(introduction_risk_4$Pathogen == Pathogen[i]))
+    vec_j <- numeric(length(times))
+    for(k in 1:length(times)){
+      vec_j[k] <- length(which(simulation_results_4$Duration[subset_2] > times[k]))/length(subset_2)
+    }
+    introduction_risk_4$p_introduction[subset_intro] <- vec_j
+  }
+  print(paste(i, "of", length(Pathogen)))
 }
+
 
 saveRDS(introduction_risk_4, file="simulation_results/introduction_risk_4.RDS")
 
