@@ -300,7 +300,7 @@ simulation_results_1e$r0 <- factor(simulation_results_1e$r0, levels= rev(r0_1e))
 saveRDS(simulation_results_1e, file = "simulation_results/simulation_results_1e.RDS")
 
 ### 1e visualisation ###
-
+simulation_results_1e$Pathogen <- factor(simulation_results_1e$Pathogen, levels=c("Smallpox", "Measles", "Influenza"))
 panel_1e <- ggplot(simulation_results_1e, mapping=aes(x=Duration, y=Pathogen, col=r0, group=r0)) +
   geom_point(size=2, alpha=0.05, position=position_jitterdodge(jitter.width = 0.05, dodge.width=0.6)) +
   theme_bw() +
@@ -311,6 +311,7 @@ panel_1e <- ggplot(simulation_results_1e, mapping=aes(x=Duration, y=Pathogen, co
                                 "Measles<br>\u03bc<sub>E</sub> = 12<br>\u03bc<sub>I</sub> = 8",
                                 "Smallpox<br>\u03bc<sub>E</sub> = 12<br>\u03bc<sub>I</sub> = 17.5"))) +
   theme(axis.text.y = ggtext::element_markdown(size=8)) +
+  xlim(0,400) +
   scale_color_manual(values=theme1b); panel_1e
 
 

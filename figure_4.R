@@ -23,17 +23,17 @@ q_tables <- 0.5
 mue_tables_influenza <- 2
 mui_tables_influenza <- 3
 bfd_tables_influenza <- 1.5/mui_tables_influenza
-bdd_tables_influenza <- bfd_tables_influenza/75
+bdd_tables_influenza <- bfd_tables_influenza/100
 
 mue_tables_measles <- 12
 mui_tables_measles <- 8
 bfd_tables_measles <- 15/mui_tables_measles
-bdd_tables_measles <- bfd_tables_measles/75
+bdd_tables_measles <- bfd_tables_measles/100
 
 mue_tables_smallpox <- 12
 mui_tables_smallpox <- 17.5
 bfd_tables_smallpox <- 7/mui_tables_smallpox
-bdd_tables_smallpox <- bfd_tables_smallpox/75
+bdd_tables_smallpox <- bfd_tables_smallpox/100
 
 
 #Get ship data
@@ -56,7 +56,7 @@ results_table1$risk_influenza <- get_ship_risk(
   ki=ki_tables,
   q=q_tables,
   generation_tracking = FALSE,
-  runs=5000
+  runs=1000
 )
 
 results_table1$risk_measles <- get_ship_risk(
@@ -72,7 +72,7 @@ results_table1$risk_measles <- get_ship_risk(
   ki=ki_tables,
   q=q_tables,
   generation_tracking = FALSE,
-  runs=5000
+  runs=1000
 )
 
 results_table1$risk_smallpox <- get_ship_risk(
@@ -88,7 +88,7 @@ results_table1$risk_smallpox <- get_ship_risk(
   ki=ki_tables,
   q=q_tables,
   generation_tracking = FALSE,
-  runs=5000
+  runs=1000
 )
 
 saveRDS(results_table1, file = "simulation_results/results_table1.RDS")
@@ -116,7 +116,7 @@ results_table2$risk_influenza <- get_ship_risk(
   ki=ki_tables,
   q=q_tables,
   generation_tracking = FALSE,
-  runs=1500
+  runs=1000
 )
 
 results_table2$risk_measles <- get_ship_risk(
@@ -132,7 +132,7 @@ results_table2$risk_measles <- get_ship_risk(
   ki=ki_tables,
   q=q_tables,
   generation_tracking = FALSE,
-  runs=1500
+  runs=1000
 )
 
 results_table2$risk_smallpox <- get_ship_risk(
@@ -148,7 +148,7 @@ results_table2$risk_smallpox <- get_ship_risk(
   ki=ki_tables,
   q=q_tables,
   generation_tracking = FALSE,
-  runs=1500
+  runs=1000
 )
 
 saveRDS(results_table2, file = "simulation_results/results_table2.RDS")
