@@ -28,7 +28,7 @@ bfd_2a <- 0
 re0_2a <- c(1.25, 2, 8)
 
 #simulation parameters
-runs_2a <- 500
+runs_2a <- 10
 
 #run simulation with generation tracking, and
 #set generation_max=2, because we only need to distinguish 
@@ -180,28 +180,28 @@ q_2b_q0 <- 0
 bfd_2b_q0 <- c(0.4, 1, 2)
 bdd_2b_q0 <- 0
 
-input_2b_q0 <- expand.grid(N=N_2b, pp=proportion_S_2b, bfd=bfd_2b_q0)
+input_2b_q0 <- expand.grid(N=N_2b, pp=proportion_S_2b, x=c(1:3))
 input_2b_q0$S <- round(input_2b_q0$N * input_2b_q0$pp, 0)
 any(input_2b_q0$S > input_2b_q0$N - e0_2b)
 
 #case 2: q=0.5
 q_2b_q05 <- 0.5
-bfd_2b_q05 <- 1
-bdd_2b_q05 <- c(0.01, 0.02, 0.04)
+bfd_2b_q05 <- c(0.4, 1, 2)
+bdd_2b_q05 <- c(0.4, 1, 2)/100
 
-input_2b_q05 <- expand.grid(N=N_2b, pp=proportion_S_2b, bdd=bdd_2b_q05)
+input_2b_q05 <- expand.grid(N=N_2b, pp=proportion_S_2b, x=c(1:3))
 input_2b_q05$S <- round(input_2b_q05$N * input_2b_q05$pp, 0)
 
 #case 3: q=1
 q_2b_q1 <- 1
 bfd_2b_q1 <- 0
-bdd_2b_q1 <- c(0.01, 0.02, 0.04)
+bdd_2b_q1 <- c(0.4, 1, 2)/100
 
-input_2b_q1 <- expand.grid(N=N_2b, pp=proportion_S_2b, bdd=bdd_2b_q1)
+input_2b_q1 <- expand.grid(N=N_2b, pp=proportion_S_2b, x=c(1:3))
 input_2b_q1$S <- round(input_2b_q1$N * input_2b_q1$pp, 0)
 
 #simulation parameters
-runs_2b <- 200
+runs_2b <- 500
 
 #run simulation
 simulation_results_2b_q0 <- run_analysis2(
@@ -213,14 +213,14 @@ simulation_results_2b_q0 <- run_analysis2(
   mue=mue_2b,
   mui=mui_2b,
   bdd=bdd_2b_q0,
-  bfd=input_2b_q0$bfd,
+  bfd=bfd_2b_q0[input_2b_q0$x],
   q=q_2b_q0,
   runs=runs_2b,
   generation_tracking=FALSE
 )
 simulation_results_2b_q0 <- as.data.frame(simulation_results_2b_q0)
 simulation_results_2b_q0$label <- factor(simulation_results_2b_q0$bfd, 
-                                         levels=unique(input_2b_q0$bfd),
+                                         levels=bfd_2b_q0,
                                          labels=c(1:3))
 simulation_results_2b_q0$r0 <- simulation_results_2b_q0$bfd * mui_2b
 
@@ -232,17 +232,17 @@ simulation_results_2b_q05 <- run_analysis2(
   ki=ki_2b,
   mue=mue_2b,
   mui=mui_2b,
-  bdd=input_2b_q05$bdd,
-  bfd=bfd_2b_q05,
+  bdd=bdd_2b_q05[input_2b_q05$x],
+  bfd=bfd_2b_q05[input_2b_q05$x],
   q=q_2b_q05,
   runs=runs_2b,
   generation_tracking=FALSE
 )
 simulation_results_2b_q05<- as.data.frame(simulation_results_2b_q05)
 simulation_results_2b_q05$label <- factor(simulation_results_2b_q05$bdd, 
-                                          levels=unique(input_2b_q05$bdd),
+                                          levels=bdd_2b_q05,
                                           labels=c(4:6))
-simulation_results_2b_q05$r0 <- mui_2b*sqrt(bfd_2b_q05)*sqrt(simulation_results_2b_q05$N*simulation_results_2b_q05$bdd)
+simulation_results_2b_q05$r0 <- mui_2b*sqrt(simulation_results_2b_q05$bfd*simulation_results_2b_q05$bdd*simulation_results_2b_q05$N)
 
 simulation_results_2b_q1 <- run_analysis2(
   N=input_2b_q1$N,
@@ -252,7 +252,7 @@ simulation_results_2b_q1 <- run_analysis2(
   ki=ki_2b,
   mue=mue_2b,
   mui=mui_2b,
-  bdd=input_2b_q1$bdd,
+  bdd=bdd_2b_q1[input_2b_q1$x],
   bfd=bfd_2b_q1,
   q=q_2b_q1,
   runs=runs_2b,
@@ -260,7 +260,7 @@ simulation_results_2b_q1 <- run_analysis2(
 )
 simulation_results_2b_q1 <- as.data.frame(simulation_results_2b_q1)
 simulation_results_2b_q1$label <- factor(simulation_results_2b_q1$bdd, 
-                                          levels=unique(input_2b_q1$bdd),
+                                          levels=bdd_2b_q1,
                                           labels=c(7:9))
 simulation_results_2b_q1$r0 <- mui_2b*simulation_results_2b_q1$N*simulation_results_2b_q1$bdd
 
@@ -283,12 +283,12 @@ labels_2b <- c(
   expression(R[0]==2),
   expression(R[0]==5),
   expression(R[0]==10),
-  expression(R[0]==0.05*sqrt('N')),
-  expression(R[0]==sqrt(0.05)*sqrt('N')),
+  expression(R[0]==0.2*sqrt('N')),
+  expression(R[0]==0.5*sqrt('N')),
   expression(R[0]==sqrt('N')),
+  expression(R[0]==0.02*'N'),
   expression(R[0]==0.05*'N'),
-  expression(R[0]==0.1*'N'),
-  expression(R[0]==0.2*'N')
+  expression(R[0]==0.1*'N')
 )
 
 

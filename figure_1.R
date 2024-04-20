@@ -312,7 +312,7 @@ panel_1e <- ggplot(simulation_results_1e, mapping=aes(x=Duration, y=Pathogen, co
                                 "Smallpox<br>\u03bc<sub>E</sub> = 12<br>\u03bc<sub>I</sub> = 17.5"))) +
   theme(axis.text.y = ggtext::element_markdown(size=8)) +
   xlim(0,400) +
-  scale_color_manual(values=theme1b); panel_1e
+  scale_color_manual(values=rev(theme1b)); panel_1e
 
 
 #######################

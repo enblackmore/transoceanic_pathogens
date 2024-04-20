@@ -17,7 +17,7 @@ mui_s2_influenza <- 3
 bfd_s2_influenza <- 1.5/mui_s2_influenza
 
 q_s2 <- c(0, 0.25, 0.5, 0.75, 1)
-c_s2 <- c(50, 75, 100)
+c_s2 <- c(50, 100, 150)
 
 runs <- 500
 
@@ -85,10 +85,10 @@ theme4_shape <- c(22,23,25, 8, 4,21,10,24)
 introduction_risk_s2$p_introduction[which(introduction_risk_s2$p_introduction == 1)] <- 0.99
 
 introduction_risk_s2$q <- factor(introduction_risk_s2$q, levels=q_s2, 
-                                 labels=c("q=0", "q=0.25", "q=0.5", "q-0.75", "q=1"))
+                                 labels=c("q = 0", "q = 0.25", "q = 0.5", "q = 0.75", "q = 1"))
 
 introduction_risk_s2$c <- factor(introduction_risk_s2$c, levels=c_s2, 
-                                 labels=c("c=1/50", "c=1/75", "c=1/100"))
+                                 labels=c("c = 50", "c = 100", "c = 150"))
 
 figure_s2_contours <- ggplot(introduction_risk_s2) +
   geom_contour_filled(bins=6, mapping=aes(y=N, x=time, z=p_introduction), breaks=c(0, 0.01, 0.05, 0.1, 0.25, 0.5, 1)) + 
@@ -98,22 +98,27 @@ figure_s2_contours <- ggplot(introduction_risk_s2) +
   scale_fill_manual(values=alpha(grey.colors(6, start=1, end=0.2), c(0,1,1,1,1,1))) +
   xlim(0,200)
 
-#Panel S2_b: overplotting selected historical voyages
-data_panel_s2b <- read.csv("data/Selected_voyages.csv")
+#Panel S2: overplotting selected historical voyages
+data_panel_s2 <- read.csv("data/Selected_voyages.csv")
 
 #factor column 'Ship' so ships appear in chronological order
-data_panel_s2b$Ship <- factor(data_panel_s2b$Ship,
-                              levels=data_panel_s2b$Ship)
+data_panel_s2$Ship <- factor(data_panel_s2$Ship,
+                              levels=data_panel_s2$Ship)
 
-panel_s2b_influenza <- figure_s2_contours +
-  geom_point(data=data_panel_s2b, mapping=aes(x=t, y=N, pch=Ship), col="black", fill="white",  cex=3) + 
+figure_s2_influenza <- figure_s2_contours +
+  geom_point(data=data_panel_s2, mapping=aes(x=t, y=N, pch=Ship), col="black", fill="white",  cex=3) + 
   theme(legend.text = element_text(margin = margin(b=2, t=2, unit='pt')), legend.justification='top') +
   guides(fill=guide_colorsteps(show.limits=TRUE, frame.colour="black", frame.linewidth=0.5, frame.linetype=1)) +
-  labs(col="Voyage", title="Sensitivity of influenza introduction risk to q and c") +
+  labs(col="Voyage") +
   scale_shape_manual(values=theme4_shape) +
-  scale_y_log10(limits=c(10,1500)); panel_s2b_influenza
+  scale_y_log10(limits=c(10,1500)); figure_s2_influenza
 
 
+pdf(file = "figures/figure_s2.pdf", 
+    width = 9.32, # The width of the plot in inches
+    height = 6.21) # The height of the plot in inches
+figure_s2_influenza
+dev.off()
 
 
 
@@ -136,7 +141,7 @@ mui_s3_measles <- 8
 bfd_s3_measles <- 15/mui_s3_measles
 
 q_s3 <- c(0, 0.25, 0.5, 0.75, 1)
-c_s3 <- c(50, 75, 100)
+c_s3 <- c(50, 100, 150)
 
 runs <- 1000
 
@@ -204,10 +209,10 @@ theme4_shape <- c(22,23,25, 8, 4,21,10,24)
 introduction_risk_s3$p_introduction[which(introduction_risk_s3$p_introduction == 1)] <- 0.99
 
 introduction_risk_s3$q <- factor(introduction_risk_s3$q, levels=q_s3, 
-                                 labels=c("q=0", "q=0.25", "q=0.5", "q-0.75", "q=1"))
+                                 labels=c("q = 0", "q = 0.25", "q = 0.5", "q = 0.75", "q = 1"))
 
 introduction_risk_s3$c <- factor(introduction_risk_s3$c, levels=c_s3, 
-                                 labels=c("c=1/50", "c=1/75", "c=1/100"))
+                                 labels=c("c = 50", "c = 100", "c = 150"))
 
 
 
@@ -227,18 +232,18 @@ data_panel_s3$Ship <- factor(data_panel_s3$Ship,
                               levels=data_panel_s3$Ship)
 
 
-panel_s3_measles <- figure_s3_contours +
+figure_s3_measles <- figure_s3_contours +
   geom_point(data=data_panel_s3, mapping=aes(x=t, y=N, pch=Ship), col="black", fill="white",  cex=3) + 
   theme(legend.text = element_text(margin = margin(b=2, t=2, unit='pt')), legend.justification='top') +
   guides(fill=guide_colorsteps(show.limits=TRUE, frame.colour="black", frame.linewidth=0.5, frame.linetype=1)) +
-  labs(col="Voyage", title="Sensitivity of measles introduction risk to q and c") +
+  labs(col="Voyage") +
   scale_shape_manual(values=theme4_shape) +
-  scale_y_log10(limits=c(10,1500)); panel_s3_measles
+  scale_y_log10(limits=c(10,1500)); figure_s3_measles
 
 pdf(file = "figures/figure_s3.pdf", 
     width = 9.32, # The width of the plot in inches
     height = 6.21) # The height of the plot in inches
-panel_s3_measles
+figure_s3_measles
 dev.off()
 
 #figure 4 sensitivity analysis
@@ -260,7 +265,7 @@ mui_s4_smallpox <- 17.5
 bfd_s4_smallpox <- 7/mui_s4_smallpox
 
 q_s4 <- c(0, 0.25, 0.5, 0.75, 1)
-c_s4 <- c(50, 75, 100)
+c_s4 <- c(50, 100, 150)
 
 runs <- 500
 
@@ -328,10 +333,10 @@ theme4_shape <- c(22,23,25, 8, 4,21,10,24)
 introduction_risk_s4$p_introduction[which(introduction_risk_s4$p_introduction == 1)] <- 0.99
 
 introduction_risk_s4$q <- factor(introduction_risk_s4$q, levels=q_s4, 
-                                 labels=c("q=0", "q=0.25", "q=0.5", "q-0.75", "q=1"))
+                                 labels=c("q = 0", "q = 0.25", "q = 0.5", "q = 0.75", "q = 1"))
 
 introduction_risk_s4$c <- factor(introduction_risk_s4$c, levels=c_s4, 
-                                 labels=c("c=1/50", "c=1/75", "c=1/100"))
+                                 labels=c("c = 50", "c = 75", "c = 100"))
 
 
 
@@ -350,18 +355,18 @@ data_panel_s4 <- read.csv("data/Selected_voyages.csv")
 data_panel_s4$Ship <- factor(data_panel_s4$Ship,
                               levels=data_panel_s4$Ship)
 
-panel_s4_smallpox <- figure_s4_contours +
+figure_s4_smallpox <- figure_s4_contours +
   geom_point(data=data_panel_s4, mapping=aes(x=t, y=N, pch=Ship), col="black", fill="white",  cex=3) + 
   theme(legend.text = element_text(margin = margin(b=2, t=2, unit='pt')), legend.justification='top') +
   guides(fill=guide_colorsteps(show.limits=TRUE, frame.colour="black", frame.linewidth=0.5, frame.linetype=1)) +
   labs(col="Voyage", title="Sensitivity of smallpox introduction risk to q and c") +
   scale_shape_manual(values=theme4_shape) +
-  scale_y_log10(limits=c(10,1500)); panel_s4_smallpox
+  scale_y_log10(limits=c(10,1500)); figure_s4_smallpox
 
 pdf(file = "figures/figure_s4.pdf", 
     width = 9.32, # The width of the plot in inches
     height = 6.21) # The height of the plot in inches
-panel_s4_smallpox
+figure_s4_smallpox
 dev.off()
 
 ## sensitivity analysis on p
@@ -380,7 +385,7 @@ ki_s5 <- 3
 mue_s5 <- c(2,12,12)
 mui_s5 <- c(3, 8, 17.5)
 bfd_s5<- c(1.5, 15, 7)/mui_s5
-bdd_s5 <- bfd_s5/75
+bdd_s5 <- bfd_s5/100
 q <- 0.5
 
 runs <- 500
@@ -472,8 +477,7 @@ panel_s5 <- figure_s5_contours +
   geom_point(data=data_panel_s5, mapping=aes(x=t, y=N, pch=Ship), col="black", fill="white",  cex=3) + 
   theme(legend.text = element_text(margin = margin(b=2, t=2, unit='pt')), legend.justification='top') +
   guides(fill=guide_colorsteps(show.limits=TRUE, frame.colour="black", frame.linewidth=0.5, frame.linetype=1)) +
-  labs(col="Voyage", title="Sensitivity of introduction risk to S(0)/N, by pathogen",
-       subtitle = "q=0.5; c=1/75") +
+  labs(col="Voyage") +
   scale_shape_manual(values=theme4_shape) +
   scale_y_log10(limits=c(10,1500)); panel_s5
 
